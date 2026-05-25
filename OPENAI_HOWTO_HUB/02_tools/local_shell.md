@@ -1,6 +1,6 @@
 # Source Pull
 
-- Source: https://developers.openai.com/api/docs/guides/tools-local-shell.md
+- Source: https://platform.openai.com/docs/guides/tools-local-shell.md
 - HTTP status: 200
 - Content-Type: text/markdown; charset=utf-8
 

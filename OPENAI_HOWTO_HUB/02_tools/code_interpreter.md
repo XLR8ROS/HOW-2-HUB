@@ -1,6 +1,6 @@
 # Source Pull
 
-- Source: https://developers.openai.com/api/docs/guides/tools-code-interpreter.md
+- Source: https://platform.openai.com/docs/guides/tools-code-interpreter.md
 - HTTP status: 200
 - Content-Type: text/markdown; charset=utf-8
 

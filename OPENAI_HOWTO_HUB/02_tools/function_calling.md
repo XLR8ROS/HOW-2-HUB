@@ -1,6 +1,6 @@
 # Source Pull
 
-- Source: https://developers.openai.com/api/docs/guides/function-calling.md
+- Source: https://platform.openai.com/docs/guides/function-calling.md
 - HTTP status: 200
 - Content-Type: text/markdown; charset=utf-8
 

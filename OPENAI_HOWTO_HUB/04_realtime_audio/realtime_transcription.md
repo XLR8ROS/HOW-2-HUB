@@ -1,6 +1,6 @@
 # Source Pull
 
-- Source: https://developers.openai.com/api/docs/guides/realtime-transcription.md
+- Source: https://platform.openai.com/docs/guides/realtime-transcription.md
 - HTTP status: 200
 - Content-Type: text/markdown; charset=utf-8
 

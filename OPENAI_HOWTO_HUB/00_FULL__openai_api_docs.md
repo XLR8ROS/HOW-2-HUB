@@ -1,6 +1,6 @@
 # Source Pull
 
-- Source: https://developers.openai.com/api/docs/llms-full.txt
+- Source: https://platform.openai.com/docs/llms-full.txt
 - HTTP status: 200
 - Content-Type: text/plain; charset=utf-8
 

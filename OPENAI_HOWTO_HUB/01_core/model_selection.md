@@ -1,6 +1,6 @@
 # Source Pull
 
-- Source: https://developers.openai.com/api/docs/guides/model-selection.md
+- Source: https://platform.openai.com/docs/guides/model-selection.md
 - HTTP status: 200
 - Content-Type: text/markdown; charset=utf-8
 

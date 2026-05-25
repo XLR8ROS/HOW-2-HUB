@@ -1,6 +1,6 @@
 # Source Pull
 
-- Source: https://developers.openai.com/api/docs/guides/tools-computer-use.md
+- Source: https://platform.openai.com/docs/guides/tools-computer-use.md
 - HTTP status: 200
 - Content-Type: text/markdown; charset=utf-8
 

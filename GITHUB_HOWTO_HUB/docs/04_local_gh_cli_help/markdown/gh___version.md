@@ -1,0 +1,6 @@
+```text
+Command: gh --version
+
+gh version 2.89.0 (2026-03-26)
+https://github.com/cli/cli/releases/tag/v2.89.0
+```

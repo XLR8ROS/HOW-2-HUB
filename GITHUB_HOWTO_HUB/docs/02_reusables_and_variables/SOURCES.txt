@@ -1,0 +1,2 @@
+https://github.com/github/docs/tree/main/data/reusables
+https://github.com/github/docs/tree/main/data/variables

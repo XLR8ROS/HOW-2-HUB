@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Local-first search sidecar with BM25, vectors, reranking, and query expansion">
+<title>QMD memory engine - OpenClaw</title>
+<link rel="canonical" href="https://docs.openclaw.ai/concepts/memory-qmd">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="OpenClaw">
+<meta property="og:title" content="QMD memory engine · OpenClaw">
+<meta property="og:description" content="Local-first search sidecar with BM25, vectors, reranking, and query expansion">
+<meta property="og:url" content="https://docs.openclaw.ai/concepts/memory-qmd">
+<meta property="og:image" content="https://docs.openclaw.ai/og/concepts/memory-qmd.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="OpenClaw — Local-first search sidecar with BM25, vectors, reranking, and query expansion">
+<meta property="og:locale" content="en">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="QMD memory engine · OpenClaw">
+<meta name="twitter:description" content="Local-first search sidecar with BM25, vectors, reranking, and query expansion">
+<meta name="twitter:image" content="https://docs.openclaw.ai/og/concepts/memory-qmd.png">
+<meta name="twitter:image:alt" content="OpenClaw — Local-first search sidecar with BM25, vectors, reranking, and query expansion">
+<meta name="theme-color" content="#FF5A36">
+<link rel="icon" href="/assets/pixel-lobster.svg">
+<link rel="stylesheet" href="/assets/docs-site.css?v=e827648cca02">
+<script>window.OPENCLAW_DOCS_BASE="";window.OPENCLAW_DOCS_CHAT_API="/ask-molty/api/chat";document.documentElement.dataset.theme=localStorage.getItem("theme")||"dark"</script>
+</head>
+<body>
+<header class="site-header">
+<div class="header-row">
+<div class="header-left"><a class="brand" href="/"><img src="/assets/pixel-lobster.svg" alt=""></a><div class="language-picker" data-language-picker><button class="language-trigger" type="button" data-language-trigger aria-haspopup="listbox" aria-expanded="false"><span class="locale-flag" aria-hidden="true">🇺🇸</span><span class="language-current">English</span><span class="language-chevron" aria-hidden="true"><svg class="icon icon-chevron-down" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></button><div class="language-menu" role="listbox" aria-label="Language"><a class="language-option active" role="option" aria-selected="true" href="/concepts/memory-qmd" data-locale-option><span class="locale-flag" aria-hidden="true">🇺🇸</span><span class="language-name">English</span><span class="language-check" aria-hidden="true">✓</span></a><a class="language-option" role="option" aria-selected="false" href="/zh-CN/concepts/memory-qmd" data-locale-option><span class="locale-flag" aria-hidden="true">🇨🇳</span><span class="language-name">简体中文</span><span class="language-check" aria-hidden="true">✓</span></a><a class="language-option" role="option" aria-selected="false" href="/zh-TW/concepts/memory-qmd" data-locale-option><span class="locale-flag" aria-hidden="true">🇨🇳</span><span class="language-name">繁體中文</span><span class="language-check" aria-hidden="true">✓</span></a><a class="language-option" role="option" aria-selected="false" href="/ja-JP/concepts/memory-qmd" data-locale-option><span class="locale-flag" aria-hidden="true">🇯🇵</span><span class="language-name">日本語</span><span class="language-check" aria-hidden="true">✓</span></a><a class="language-option" role="option" aria-selected="false" href="/es/concepts/memory-qmd" data-locale-option><span class="locale-flag" aria-hidden="true">🇪🇸</span><span class="language-name">Español</span><span class="language-check" aria-hidden="true">✓</span></a><a class="language-option" role="option" aria-selected="false" href="/pt-BR/concepts/memory-qmd" data-locale-option><span class="locale-flag" aria-hidden="true">🇧🇷</span><span class="language-name">Português (BR)</span><span class="language-check" aria-hidden="true">✓</span></a><a class="language-option" role="option" aria-selected="false" href="/ko/concepts/memory-qmd" data-locale-option><span class="locale-flag" aria-hidden="true">🇰🇷</span><span class="language-name">한국어</span><span class="language-check" aria-hidden="true">✓</span></a><a class="language-option" role="option" aria-selected="false" href="/de/concepts/memory-qmd" data-locale-option><span class="locale-flag" aria-hidden="true">🇩🇪</span><span class="language-name">Deutsch</span><span class="language-check" aria-hidden="true">✓</span></a><a class="language-option" role="option" aria-selected="false" href="/fr/concepts/memory-qmd" data-locale-option><span class="locale-flag" aria-hidden="true">🇫🇷</span><span class="language-name">Français</span><span class="language-check" aria-hidden="true">✓</span></a><a class="language-option" role="option" aria-selected="false" href="/ar/concepts/memory-qmd" data-locale-option><span class="locale-flag" aria-hidden="true">🇸🇦</span><span class="language-name">العربية</span><span class="language-check" aria-hidden="true">✓</span></a><a class="language-option" role="option" aria-selected="false" href="/it/concepts/memory-qmd" data-locale-option><span class="locale-flag" aria-hidden="true">🇮🇹</span><span class="language-name">Italiano</span><span class="language-check" aria-hidden="true">✓</span></a><a class="language-option" role="option" aria-selected="false" href="/vi/concepts/memory-qmd" data-locale-option><span class="locale-flag" aria-hidden="true">🇻🇳</span><span class="language-name">Tiếng Việt</span><span class="language-check" aria-hidden="true">✓</span></a><a class="language-option" role="option" aria-selected="false" href="/nl/concepts/memory-qmd" data-locale-option><span class="locale-flag" aria-hidden="true">🇳🇱</span><span class="language-name">Nederlands</span><span class="language-check" aria-hidden="true">✓</span></a><a class="language-option" role="option" aria-selected="false" href="/tr/concepts/memory-qmd" data-locale-option><span class="locale-flag" aria-hidden="true">🇹🇷</span><span class="language-name">Türkçe</span><span class="language-check" aria-hidden="true">✓</span></a><a class="language-option" role="option" aria-selected="false" href="/uk/concepts/memory-qmd" data-locale-option><span class="locale-flag" aria-hidden="true">🇺🇦</span><span class="language-name">Українська</span><span class="language-check" aria-hidden="true">✓</span></a><a class="language-option" role="option" aria-selected="false" href="/id/concepts/memory-qmd" data-locale-option><span class="locale-flag" aria-hidden="true">🇮🇩</span><span class="language-name">Bahasa Indonesia</span><span class="language-check" aria-hidden="true">✓</span></a><a class="language-option" role="option" aria-selected="false" href="/pl/concepts/memory-qmd" data-locale-option><span class="locale-flag" aria-hidden="true">🇵🇱</span><span class="language-name">Polski</span><span class="language-check" aria-hidden="true">✓</span></a><a class="language-option" role="option" aria-selected="false" href="/fa/concepts/memory-qmd" data-locale-option><span class="locale-flag" aria-hidden="true">🇮🇷</span><span class="language-name">فارسی</span><span class="language-check" aria-hidden="true">✓</span></a><a class="language-option" role="option" aria-selected="false" href="/th/concepts/memory-qmd" data-locale-option><span class="locale-flag" aria-hidden="true">🇹🇭</span><span class="language-name">ไทย</span><span class="language-check" aria-hidden="true">✓</span></a></div></div></div>
+<button class="search-button" type="button" data-search-open><svg class="icon icon-search" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 21-4.35-4.35"/><circle cx="11" cy="11" r="7"/></svg><span class="search-label">Search...</span><span class="search-shortcut">⌘K</span></button>
+<nav class="header-links"><a href="https://github.com/openclaw/openclaw"><svg class="icon icon-github" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor"><path d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.08 1.84 2.82 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.66-.3-5.46-1.33-5.46-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.8 5.62-5.47 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57A12 12 0 0 0 12 .5Z"/></svg><span>GitHub</span></a><a href="https://github.com/openclaw/openclaw/releases"><svg class="icon icon-package" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 8-9-5-9 5 9 5 9-5Z"/><path d="m3 8 9 5 9-5"/><path d="M12 22V13"/><path d="m3 8v8l9 6 9-6V8"/></svg><span>Releases</span></a><a href="https://discord.com/invite/clawd"><svg class="icon icon-discord" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor"><path d="M20.32 4.37A19.8 19.8 0 0 0 15.37 2.84a13.77 13.77 0 0 0-.63 1.31 18.4 18.4 0 0 0-5.48 0 13.7 13.7 0 0 0-.64-1.31 19.72 19.72 0 0 0-4.95 1.54C.55 9.07-.32 13.64.1 18.15a19.9 19.9 0 0 0 6.07 3.07 14.6 14.6 0 0 0 1.3-2.11 12.9 12.9 0 0 1-2.05-.98c.17-.13.34-.26.5-.39a14.2 14.2 0 0 0 12.16 0c.17.14.33.27.5.39-.65.38-1.33.7-2.05.98.38.74.82 1.45 1.3 2.11a19.86 19.86 0 0 0 6.08-3.07c.5-5.23-.84-9.76-3.59-13.78ZM8.02 15.38c-1.18 0-2.15-1.08-2.15-2.41 0-1.33.95-2.42 2.15-2.42 1.2 0 2.18 1.1 2.15 2.42 0 1.33-.95 2.41-2.15 2.41Zm7.96 0c-1.18 0-2.15-1.08-2.15-2.41 0-1.33.95-2.42 2.15-2.42 1.2 0 2.17 1.1 2.15 2.42 0 1.33-.95 2.41-2.15 2.41Z"/></svg><span>Discord</span></a><button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle theme"><svg class="icon icon-moon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.9 13.5a8.5 8.5 0 0 1-10.4-10.4 8.5 8.5 0 1 0 10.4 10.4Z"/></svg></button></nav>
+<button class="nav-toggle" type="button" data-nav-toggle>Menu</button>
+</div>
+<nav class="tabs"><a class="tab-link" href="/">Get started</a><a class="tab-link" href="/install">Install</a><a class="tab-link" href="/channels">Channels</a><a class="tab-link active" href="/concepts/architecture">Agents</a><a class="tab-link" href="/tools">Capabilities</a><a class="tab-link" href="/clawhub">ClawHub</a><a class="tab-link" href="/providers">Models</a><a class="tab-link" href="/platforms">Platforms</a><a class="tab-link" href="/gateway">Gateway &amp; Ops</a><a class="tab-link" href="/cli">Reference</a><a class="tab-link" href="/help">Help</a><span class="tab-underline" aria-hidden="true"></span></nav>
+</header>
+<div class="doc-shell">
+<aside class="sidebar">
+<button class="sidebar-close" type="button" data-nav-close aria-label="Close menu">Close</button>
+<nav><section class="nav-section"><h2>Fundamentals</h2><a class="nav-link" href="/concepts/architecture">Gateway architecture</a><a class="nav-link" href="/concepts/agent">Agent runtime</a><a class="nav-link" href="/concepts/agent-loop">Agent loop</a><a class="nav-link" href="/concepts/agent-runtimes">Agent runtimes</a><a class="nav-link" href="/concepts/system-prompt">System prompt</a><a class="nav-link" href="/concepts/context">Context</a><a class="nav-link" href="/concepts/context-engine">Context engine</a><a class="nav-link" href="/concepts/agent-workspace">Agent workspace</a><a class="nav-link" href="/concepts/soul">SOUL.md personality guide</a><a class="nav-link" href="/concepts/oauth">OAuth</a><a class="nav-link" href="/start/bootstrapping">Agent bootstrapping</a><a class="nav-link" href="/concepts/experimental-features">Experimental features</a><a class="nav-link" href="/concepts/qa-e2e-automation">QA overview</a><a class="nav-link" href="/concepts/personal-agent-benchmark-pack">Personal agent benchmark pack</a><a class="nav-link" href="/concepts/qa-matrix">Matrix QA</a></section><section class="nav-section"><h2>Sessions and memory</h2><a class="nav-link" href="/concepts/session">Session management</a><a class="nav-link" href="/concepts/channel-docking">Channel docking</a><a class="nav-link" href="/concepts/session-pruning">Session pruning</a><a class="nav-link" href="/concepts/session-tool">Session tools</a><div class="nav-nested"><h2>Memory</h2><a class="nav-link" href="/concepts/memory">Memory overview</a><a class="nav-link" href="/concepts/memory-builtin">Builtin memory engine</a><a class="nav-link active" href="/concepts/memory-qmd">QMD memory engine</a><a class="nav-link" href="/concepts/memory-honcho">Honcho memory</a><a class="nav-link" href="/concepts/memory-search">Memory search</a><a class="nav-link" href="/concepts/active-memory">Active memory</a><a class="nav-link" href="/concepts/commitments">Inferred commitments</a><a class="nav-link" href="/concepts/dreaming">Dreaming</a></div><a class="nav-link" href="/concepts/compaction">Compaction</a></section><section class="nav-section"><h2>Multi-agent</h2><a class="nav-link" href="/concepts/multi-agent">Multi-agent routing</a><a class="nav-link" href="/concepts/parallel-specialist-lanes">Parallel specialist lanes</a><a class="nav-link" href="/concepts/presence">Presence</a><a class="nav-link" href="/concepts/delegate-architecture">Delegate architecture</a></section><section class="nav-section"><h2>Messages and delivery</h2><a class="nav-link" href="/concepts/messages">Messages</a><a class="nav-link" href="/concepts/message-lifecycle-refactor">Message lifecycle refactor</a><a class="nav-link" href="/concepts/streaming">Streaming and chunking</a><a class="nav-link" href="/concepts/progress-drafts">Progress drafts</a><a class="nav-link" href="/concepts/retry">Retry policy</a><a class="nav-link" href="/concepts/queue">Command queue</a><a class="nav-link" href="/concepts/queue-steering">Steering queue</a></section></nav>
+</aside>
+<main class="main" id="main">
+<article class="article">
+<header class="article-header">
+<nav class="breadcrumbs" aria-label="Breadcrumb"><span>Agents</span><span aria-hidden="true">/</span><span>Sessions and memory</span><span aria-hidden="true">/</span><span aria-current="page">QMD memory engine</span></nav>
+<p class="article-kicker">Sessions and memory</p>
+<h1>QMD memory engine</h1>
+
+<div class="page-tools" data-page-tools data-page-url="https://docs.openclaw.ai/concepts/memory-qmd"><button type="button" data-copy-page>Copy page</button><a href="https://github.com/openclaw/openclaw/edit/main/docs/concepts/memory-qmd.md">Edit source</a></div>
+</header>
+<div class="doc" data-pagefind-body><p><a href="https://github.com/tobi/qmd">QMD</a> is a local-first search sidecar that runs
+alongside OpenClaw. It combines BM25, vector search, and reranking in a single
+binary, and can index content beyond your workspace memory files.</p>
+<h2 id="what-it-adds-over-builtin" tabindex="-1">What it adds over builtin</h2>
+<ul>
+<li><strong>Reranking and query expansion</strong> for better recall.</li>
+<li><strong>Index extra directories</strong> -- project docs, team notes, anything on disk.</li>
+<li><strong>Index session transcripts</strong> -- recall earlier conversations.</li>
+<li><strong>Fully local</strong> -- runs with the optional node-llama-cpp runtime package and
+auto-downloads GGUF models.</li>
+<li><strong>Automatic fallback</strong> -- if QMD is unavailable, OpenClaw falls back to the
+builtin engine seamlessly.</li>
+</ul>
+<h2 id="getting-started" tabindex="-1">Getting started</h2>
+<h3 id="prerequisites" tabindex="-1">Prerequisites</h3>
+<ul>
+<li>Install QMD: <code>npm install -g @tobilu/qmd</code> or <code>bun install -g @tobilu/qmd</code></li>
+<li>SQLite build that allows extensions (<code>brew install sqlite</code> on macOS).</li>
+<li>QMD must be on the gateway's <code>PATH</code>.</li>
+<li>macOS and Linux work out of the box. Windows is best supported via WSL2.</li>
+</ul>
+<h3 id="enable" tabindex="-1">Enable</h3>
+<figure class="oc-code" data-code-label="json5"><figcaption><span class="oc-code-label">json5</span><button type="button" data-code-copy data-copy-label="Copy code" aria-label="Copy code"><span class="oc-visually-hidden">Copy code</span></button></figcaption><pre><code class="language-json5"><span class="code-line" data-line="1">{</span><span class="code-line" data-line="2">  <span class="hljs-attr">memory</span>: {</span><span class="code-line" data-line="3">    <span class="hljs-attr">backend</span>: <span class="hljs-string">&quot;qmd&quot;</span>,</span><span class="code-line" data-line="4">  },</span><span class="code-line" data-line="5">}</span></code></pre></figure><p>OpenClaw creates a self-contained QMD home under
+<code>~/.openclaw/agents/&lt;agentId&gt;/qmd/</code> and manages the sidecar lifecycle
+automatically -- collections, updates, and embedding runs are handled for you.
+It prefers current QMD collection and MCP query shapes, but still falls back to
+alternate collection pattern flags and older MCP tool names when needed.
+Boot-time reconciliation also recreates stale managed collections back to their
+canonical patterns when an older QMD collection with the same name is still
+present.</p>
+<h2 id="how-the-sidecar-works" tabindex="-1">How the sidecar works</h2>
+<ul>
+<li>OpenClaw creates collections from your workspace memory files and any
+configured <code>memory.qmd.paths</code>, then runs <code>qmd update</code> when the QMD manager is
+opened and periodically afterward (default every 5 minutes). These refreshes
+run through QMD subprocesses, not an in-process filesystem crawl. Semantic
+modes also run <code>qmd embed</code>.</li>
+<li>The default workspace collection tracks <code>MEMORY.md</code> plus the <code>memory/</code>
+tree. Lowercase <code>memory.md</code> is not indexed as a root memory file.</li>
+<li>QMD's own scanner ignores hidden paths and common dependency/build
+directories such as <code>.git</code>, <code>.cache</code>, <code>node_modules</code>, <code>vendor</code>, <code>dist</code>, and
+<code>build</code>. Gateway startup does not initialize QMD by default, so cold boot
+avoids importing the memory runtime or creating the long-lived watcher before
+memory is first used.</li>
+<li>If you want a gateway-start refresh anyway, set
+<code>memory.qmd.update.startup</code> to <code>idle</code> or <code>immediate</code>. The opt-in startup
+refresh uses a one-shot QMD subprocess path instead of creating the full
+long-lived in-process watcher.</li>
+<li>Searches use the configured <code>searchMode</code> (default: <code>search</code>; also supports
+<code>vsearch</code> and <code>query</code>). <code>search</code> is BM25-only, so OpenClaw skips semantic
+vector readiness probes and embedding maintenance in that mode. If a mode
+fails, OpenClaw retries with <code>qmd query</code>.</li>
+<li>With QMD releases that advertise multi-collection filters, OpenClaw groups
+same-source collections into one QMD search invocation. Older QMD releases
+keep the compatible per-collection fallback.</li>
+<li>If QMD fails entirely, OpenClaw falls back to the builtin SQLite engine.
+Repeated chat-turn attempts back off briefly after an open failure so a
+missing binary or broken sidecar dependency does not create a retry storm;
+<code>openclaw memory status</code> and one-shot CLI probes still recheck QMD directly.</li>
+</ul>
+<aside class="oc-callout oc-callout-info"><strong>Info</strong>
+<p>The first search may be slow -- QMD auto-downloads GGUF models (~2 GB) for
+reranking and query expansion on the first <code>qmd query</code> run.</p>
+</aside>
+<h2 id="search-performance-and-compatibility" tabindex="-1">Search performance and compatibility</h2>
+<p>OpenClaw keeps the QMD search path compatible with both current and older QMD
+installs.</p>
+<p>On startup, OpenClaw checks the installed QMD help text once per manager. If the
+binary advertises support for multiple collection filters, OpenClaw searches all
+same-source collections with one command:</p>
+<figure class="oc-code" data-code-label="bash"><figcaption><span class="oc-code-label">bash</span><button type="button" data-code-copy data-copy-label="Copy code" aria-label="Copy code"><span class="oc-visually-hidden">Copy code</span></button></figcaption><pre><code class="language-bash"><span class="code-line" data-line="1">qmd search <span class="hljs-string">&quot;router notes&quot;</span> --json -n 10 -c memory-root-main -c memory-dir-main</span></code></pre></figure><p>This avoids starting one QMD subprocess for every durable-memory collection.
+Session transcript collections stay in their own source group, so mixed
+<code>memory</code> + <code>sessions</code> searches still give the result diversifier input from both
+sources.</p>
+<p>Older QMD builds only accept one collection filter. When OpenClaw detects one
+of those builds, it keeps the compatibility path and searches each collection
+separately before merging and deduplicating results.</p>
+<p>To inspect the installed contract manually, run:</p>
+<figure class="oc-code" data-code-label="bash"><figcaption><span class="oc-code-label">bash</span><button type="button" data-code-copy data-copy-label="Copy code" aria-label="Copy code"><span class="oc-visually-hidden">Copy code</span></button></figcaption><pre><code class="language-bash"><span class="code-line" data-line="1">qmd --<span class="hljs-built_in">help</span> | grep -i collection</span></code></pre></figure><p>Current QMD help says collection filters can target one or more collections.
+Older help usually describes a single collection.</p>
+<h2 id="model-overrides" tabindex="-1">Model overrides</h2>
+<p>QMD model environment variables pass through unchanged from the gateway
+process, so you can tune QMD globally without adding new OpenClaw config:</p>
+<figure class="oc-code" data-code-label="bash"><figcaption><span class="oc-code-label">bash</span><button type="button" data-code-copy data-copy-label="Copy code" aria-label="Copy code"><span class="oc-visually-hidden">Copy code</span></button></figcaption><pre><code class="language-bash"><span class="code-line" data-line="1"><span class="hljs-built_in">export</span> QMD_EMBED_MODEL=<span class="hljs-string">&quot;hf:Qwen/Qwen3-Embedding-0.6B-GGUF/Qwen3-Embedding-0.6B-Q8_0.gguf&quot;</span></span><span class="code-line" data-line="2"><span class="hljs-built_in">export</span> QMD_RERANK_MODEL=<span class="hljs-string">&quot;/absolute/path/to/reranker.gguf&quot;</span></span><span class="code-line" data-line="3"><span class="hljs-built_in">export</span> QMD_GENERATE_MODEL=<span class="hljs-string">&quot;/absolute/path/to/generator.gguf&quot;</span></span></code></pre></figure><p>After changing the embedding model, rerun embeddings so the index matches the
+new vector space.</p>
+<h2 id="indexing-extra-paths" tabindex="-1">Indexing extra paths</h2>
+<p>Point QMD at additional directories to make them searchable:</p>
+<figure class="oc-code" data-code-label="json5"><figcaption><span class="oc-code-label">json5</span><button type="button" data-code-copy data-copy-label="Copy code" aria-label="Copy code"><span class="oc-visually-hidden">Copy code</span></button></figcaption><pre><code class="language-json5"><span class="code-line" data-line="1">{</span><span class="code-line" data-line="2">  <span class="hljs-attr">memory</span>: {</span><span class="code-line" data-line="3">    <span class="hljs-attr">backend</span>: <span class="hljs-string">&quot;qmd&quot;</span>,</span><span class="code-line" data-line="4">    <span class="hljs-attr">qmd</span>: {</span><span class="code-line" data-line="5">      <span class="hljs-attr">paths</span>: [{ <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;docs&quot;</span>, <span class="hljs-attr">path</span>: <span class="hljs-string">&quot;~/notes&quot;</span>, <span class="hljs-attr">pattern</span>: <span class="hljs-string">&quot;**/*.md&quot;</span> }],</span><span class="code-line" data-line="6">    },</span><span class="code-line" data-line="7">  },</span><span class="code-line" data-line="8">}</span></code></pre></figure><p>Snippets from extra paths appear as <code>qmd/&lt;collection&gt;/&lt;relative-path&gt;</code> in
+search results. <code>memory_get</code> understands this prefix and reads from the correct
+collection root.</p>
+<h2 id="indexing-session-transcripts" tabindex="-1">Indexing session transcripts</h2>
+<p>Enable session indexing to recall earlier conversations:</p>
+<figure class="oc-code" data-code-label="json5"><figcaption><span class="oc-code-label">json5</span><button type="button" data-code-copy data-copy-label="Copy code" aria-label="Copy code"><span class="oc-visually-hidden">Copy code</span></button></figcaption><pre><code class="language-json5"><span class="code-line" data-line="1">{</span><span class="code-line" data-line="2">  <span class="hljs-attr">memory</span>: {</span><span class="code-line" data-line="3">    <span class="hljs-attr">backend</span>: <span class="hljs-string">&quot;qmd&quot;</span>,</span><span class="code-line" data-line="4">    <span class="hljs-attr">qmd</span>: {</span><span class="code-line" data-line="5">      <span class="hljs-attr">sessions</span>: { <span class="hljs-attr">enabled</span>: <span class="hljs-literal">true</span> },</span><span class="code-line" data-line="6">    },</span><span class="code-line" data-line="7">  },</span><span class="code-line" data-line="8">}</span></code></pre></figure><p>Transcripts are exported as sanitized User/Assistant turns into a dedicated QMD
+collection under <code>~/.openclaw/agents/&lt;id&gt;/qmd/sessions/</code>.</p>
+<h2 id="search-scope" tabindex="-1">Search scope</h2>
+<p>By default, QMD search results are surfaced in direct and channel sessions
+(not groups). Configure <code>memory.qmd.scope</code> to change this:</p>
+<figure class="oc-code" data-code-label="json5"><figcaption><span class="oc-code-label">json5</span><button type="button" data-code-copy data-copy-label="Copy code" aria-label="Copy code"><span class="oc-visually-hidden">Copy code</span></button></figcaption><pre><code class="language-json5"><span class="code-line" data-line="1">{</span><span class="code-line" data-line="2">  <span class="hljs-attr">memory</span>: {</span><span class="code-line" data-line="3">    <span class="hljs-attr">qmd</span>: {</span><span class="code-line" data-line="4">      <span class="hljs-attr">scope</span>: {</span><span class="code-line" data-line="5">        <span class="hljs-attr">default</span>: <span class="hljs-string">&quot;deny&quot;</span>,</span><span class="code-line" data-line="6">        <span class="hljs-attr">rules</span>: [{ <span class="hljs-attr">action</span>: <span class="hljs-string">&quot;allow&quot;</span>, <span class="hljs-attr">match</span>: { <span class="hljs-attr">chatType</span>: <span class="hljs-string">&quot;direct&quot;</span> } }],</span><span class="code-line" data-line="7">      },</span><span class="code-line" data-line="8">    },</span><span class="code-line" data-line="9">  },</span><span class="code-line" data-line="10">}</span></code></pre></figure><p>When scope denies a search, OpenClaw logs a warning with the derived channel and
+chat type so empty results are easier to debug.</p>
+<h2 id="citations" tabindex="-1">Citations</h2>
+<p>When <code>memory.citations</code> is <code>auto</code> or <code>on</code>, search snippets include a
+<code>Source: &lt;path#line&gt;</code> footer. Set <code>memory.citations = &quot;off&quot;</code> to omit the footer
+while still passing the path to the agent internally.</p>
+<h2 id="when-to-use" tabindex="-1">When to use</h2>
+<p>Choose QMD when you need:</p>
+<ul>
+<li>Reranking for higher-quality results.</li>
+<li>To search project docs or notes outside the workspace.</li>
+<li>To recall past session conversations.</li>
+<li>Fully local search with no API keys.</li>
+</ul>
+<p>For simpler setups, the <a href="/concepts/memory-builtin">builtin engine</a> works well
+with no extra dependencies.</p>
+<h2 id="troubleshooting" tabindex="-1">Troubleshooting</h2>
+<p><strong>QMD not found?</strong> Ensure the binary is on the gateway's <code>PATH</code>. If OpenClaw
+runs as a service, create a symlink:
+<code>sudo ln -s ~/.bun/bin/qmd /usr/local/bin/qmd</code>.</p>
+<p>If <code>qmd --version</code> works in your shell but OpenClaw still reports
+<code>spawn qmd ENOENT</code>, the gateway process likely has a different <code>PATH</code> than your
+interactive shell. Pin the binary explicitly:</p>
+<figure class="oc-code" data-code-label="json5"><figcaption><span class="oc-code-label">json5</span><button type="button" data-code-copy data-copy-label="Copy code" aria-label="Copy code"><span class="oc-visually-hidden">Copy code</span></button></figcaption><pre><code class="language-json5"><span class="code-line" data-line="1">{</span><span class="code-line" data-line="2">  <span class="hljs-attr">memory</span>: {</span><span class="code-line" data-line="3">    <span class="hljs-attr">backend</span>: <span class="hljs-string">&quot;qmd&quot;</span>,</span><span class="code-line" data-line="4">    <span class="hljs-attr">qmd</span>: {</span><span class="code-line" data-line="5">      <span class="hljs-attr">command</span>: <span class="hljs-string">&quot;/absolute/path/to/qmd&quot;</span>,</span><span class="code-line" data-line="6">    },</span><span class="code-line" data-line="7">  },</span><span class="code-line" data-line="8">}</span></code></pre></figure><p>Use <code>command -v qmd</code> in the environment where QMD is installed, then recheck
+with <code>openclaw memory status --deep</code>.</p>
+<p><strong>First search very slow?</strong> QMD downloads GGUF models on first use. Pre-warm
+with <code>qmd query &quot;test&quot;</code> using the same XDG dirs OpenClaw uses.</p>
+<p><strong>Many QMD subprocesses during search?</strong> Update QMD if possible. OpenClaw uses
+one process for same-source multi-collection searches only when the installed
+QMD advertises support for multiple <code>-c</code> filters; otherwise it keeps the older
+per-collection fallback for correctness.</p>
+<p><strong>BM25-only QMD still trying to build llama.cpp?</strong> Set
+<code>memory.qmd.searchMode = &quot;search&quot;</code>. OpenClaw treats that mode as lexical-only,
+does not run QMD vector status probes or embedding maintenance, and leaves
+semantic readiness checks to <code>vsearch</code> or <code>query</code> setups.</p>
+<p><strong>Search times out?</strong> Increase <code>memory.qmd.limits.timeoutMs</code> (default: 4000ms).
+Set to <code>120000</code> for slower hardware.</p>
+<p><strong>Empty results in group chats?</strong> Check <code>memory.qmd.scope</code> -- the default only
+allows direct and channel sessions.</p>
+<p><strong>Root memory search suddenly got too broad?</strong> Restart the gateway or wait for
+the next startup reconciliation. OpenClaw recreates stale managed collections
+back to canonical <code>MEMORY.md</code> and <code>memory/</code> patterns when it detects a same-name
+conflict.</p>
+<p><strong>Workspace-visible temp repos causing <code>ENAMETOOLONG</code> or broken indexing?</strong>
+QMD traversal currently follows the underlying QMD scanner behavior rather than
+OpenClaw's builtin symlink rules. Keep temporary monorepo checkouts under
+hidden directories like <code>.tmp/</code> or outside indexed QMD roots until QMD exposes
+cycle-safe traversal or explicit exclusion controls.</p>
+<h2 id="configuration" tabindex="-1">Configuration</h2>
+<p>For the full config surface (<code>memory.qmd.*</code>), search modes, update intervals,
+scope rules, and all other knobs, see the
+<a href="/reference/memory-config">Memory configuration reference</a>.</p>
+<h2 id="related" tabindex="-1">Related</h2>
+<ul>
+<li><a href="/concepts/memory">Memory overview</a></li>
+<li><a href="/concepts/memory-builtin">Builtin memory engine</a></li>
+<li><a href="/concepts/memory-honcho">Honcho memory</a></li>
+</ul>
+</div>
+<section class="page-feedback" aria-label="Page feedback"><span>Was this useful?</span><button type="button" data-feedback-value="yes">Yes</button><button type="button" data-feedback-value="no">No</button><output data-feedback-result></output></section>
+<nav class="page-nav"><a href="/concepts/memory-builtin"><small>Previous</small>Builtin memory engine</a><a class="next" href="/concepts/memory-honcho"><small>Next</small>Honcho memory</a></nav>
+</article>
+<aside class="toc"><h2>On this page</h2><a class="toc-l2" href="#what-it-adds-over-builtin">What it adds over builtin</a><a class="toc-l2" href="#getting-started">Getting started</a><a class="toc-l3" href="#prerequisites">Prerequisites</a><a class="toc-l3" href="#enable">Enable</a><a class="toc-l2" href="#how-the-sidecar-works">How the sidecar works</a><a class="toc-l2" href="#search-performance-and-compatibility">Search performance and compatibility</a><a class="toc-l2" href="#model-overrides">Model overrides</a><a class="toc-l2" href="#indexing-extra-paths">Indexing extra paths</a><a class="toc-l2" href="#indexing-session-transcripts">Indexing session transcripts</a><a class="toc-l2" href="#search-scope">Search scope</a><a class="toc-l2" href="#citations">Citations</a><a class="toc-l2" href="#when-to-use">When to use</a><a class="toc-l2" href="#troubleshooting">Troubleshooting</a><a class="toc-l2" href="#configuration">Configuration</a><a class="toc-l2" href="#related">Related</a></aside>
+</main>
+</div>
+<div class="search-modal"><div class="search-panel"><div class="search-head"><input data-search-input placeholder="Search commands, channels, config..."><button data-search-close>Close</button></div><div class="search-hints" aria-label="Search shortcuts"><button type="button" data-search-suggestion="install">install</button><button type="button" data-search-suggestion="telegram">telegram</button><button type="button" data-search-suggestion="gateway">gateway</button><button type="button" data-search-suggestion="plugins">plugins</button></div><div class="search-results" data-search-results></div></div></div>
+<section class="docs-chat" data-docs-chat aria-label="OpenClaw docs assistant">
+<button class="docs-chat-launcher" type="button" data-chat-toggle aria-expanded="false" aria-controls="docs-chat-panel"><span aria-hidden="true">*</span><span>Ask Molty</span></button>
+<div class="docs-chat-panel" id="docs-chat-panel" role="dialog" aria-modal="false" aria-labelledby="docs-chat-title">
+<header class="docs-chat-head"><div class="docs-chat-title"><span class="docs-chat-mark" aria-hidden="true"><svg class="icon icon-sparkles" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.6 4.4L6 9l4.4 1.6L12 15l1.6-4.4L18 9l-4.4-1.6L12 3Z"/><path d="m19 14-.8 2.2L16 17l2.2.8L19 20l.8-2.2L22 17l-2.2-.8L19 14Z"/><path d="m5 4-.7 1.8L2.5 6.5l1.8.7L5 9l.7-1.8 1.8-.7-1.8-.7L5 4Z"/></svg></span><h2 id="docs-chat-title">Assistant</h2></div><div class="docs-chat-actions"><button class="docs-chat-icon docs-chat-maximize" type="button" data-chat-maximize aria-label="Maximize docs assistant" aria-pressed="false"><svg class="icon icon-maximize-2" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="m21 3-7 7"/><path d="M9 21H3v-6"/><path d="m3 21 7-7"/></svg></button><button class="docs-chat-icon docs-chat-copy" type="button" data-chat-copy aria-label="Copy conversation" hidden><svg class="icon icon-copy" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><button class="docs-chat-icon docs-chat-retry" type="button" data-chat-retry aria-label="Reload last answer" hidden disabled><svg class="icon icon-refresh-cw" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 1-15.1 6.64"/><path d="M3 12A9 9 0 0 1 18.1 5.36"/><path d="M21 3v6h-6"/><path d="M3 21v-6h6"/></svg></button><button class="docs-chat-icon docs-chat-clear" type="button" data-chat-clear aria-label="Clear conversation" hidden><svg class="icon icon-trash" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="m19 6-1 14H6L5 6"/><path d="M10 11v5"/><path d="M14 11v5"/></svg></button><button class="docs-chat-icon docs-chat-close" type="button" data-chat-close aria-label="Close docs assistant">x</button></div></header>
+<div class="docs-chat-auth" data-chat-auth hidden></div>
+<div class="docs-chat-log" data-chat-log aria-live="polite">
+<div class="docs-chat-empty">Responses are generated using AI and may contain mistakes.</div>
+</div>
+<form class="docs-chat-form" data-chat-form><textarea data-chat-input rows="2" maxlength="2000" placeholder="Ask a question..."></textarea><span class="docs-chat-attach" aria-hidden="true"><svg class="icon icon-paperclip" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg></span><button type="submit" data-chat-submit aria-label="Send"><svg class="icon icon-send" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4 20-7Z"/><path d="M22 2 11 13"/></svg></button></form>
+</div>
+</section>
+<script type="module" src="/assets/docs-site.js?v=e827648cca02"></script>
+</body>
+</html>

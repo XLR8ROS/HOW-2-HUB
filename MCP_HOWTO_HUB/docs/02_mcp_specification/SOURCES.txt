@@ -1,0 +1,2 @@
+https://modelcontextprotocol.io/docs
+https://modelcontextprotocol.io/llms.txt

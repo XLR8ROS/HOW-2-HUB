@@ -1,5 +1,6 @@
 # MCP Document Index
 
+- docs/00_modelcontextprotocol_site_markdown/SOURCES.txt
 - docs/00_modelcontextprotocol_site_markdown/markdown/modelcontextprotocol.io_clients.md.md
 - docs/00_modelcontextprotocol_site_markdown/markdown/modelcontextprotocol.io_community_antitrust.md.md
 - docs/00_modelcontextprotocol_site_markdown/markdown/modelcontextprotocol.io_community_charter-template.md.md
@@ -11,8 +12,8 @@
 - docs/00_modelcontextprotocol_site_markdown/markdown/modelcontextprotocol.io_community_governance.md.md
 - docs/00_modelcontextprotocol_site_markdown/markdown/modelcontextprotocol.io_community_inspector-v2_charter.md.md
 - docs/00_modelcontextprotocol_site_markdown/markdown/modelcontextprotocol.io_community_interceptors_charter.md.md
-- docs/00_modelcontextprotocol_site_markdown/markdown/modelcontextprotocol.io_community_sdk_charter.md.md
 - docs/00_modelcontextprotocol_site_markdown/markdown/modelcontextprotocol.io_community_sdk-tiers.md.md
+- docs/00_modelcontextprotocol_site_markdown/markdown/modelcontextprotocol.io_community_sdk_charter.md.md
 - docs/00_modelcontextprotocol_site_markdown/markdown/modelcontextprotocol.io_community_sep-guidelines.md.md
 - docs/00_modelcontextprotocol_site_markdown/markdown/modelcontextprotocol.io_community_server-card_charter.md.md
 - docs/00_modelcontextprotocol_site_markdown/markdown/modelcontextprotocol.io_community_skills-over-mcp_charter.md.md
@@ -119,12 +120,12 @@
 - docs/00_modelcontextprotocol_site_markdown/markdown/modelcontextprotocol.io_specification_2025-11-25_server_utilities_completion.md.md
 - docs/00_modelcontextprotocol_site_markdown/markdown/modelcontextprotocol.io_specification_2025-11-25_server_utilities_logging.md.md
 - docs/00_modelcontextprotocol_site_markdown/markdown/modelcontextprotocol.io_specification_2025-11-25_server_utilities_pagination.md.md
-- docs/00_modelcontextprotocol_site_markdown/SOURCES.txt
+- docs/01_modelcontextprotocol_repo/SOURCES.txt
 - docs/01_modelcontextprotocol_repo/markdown/.claude-plugin/marketplace.json
-- docs/01_modelcontextprotocol_repo/markdown/.github/dependabot.yml
 - docs/01_modelcontextprotocol_repo/markdown/.github/ISSUE_TEMPLATE/bug_report.yml
 - docs/01_modelcontextprotocol_repo/markdown/.github/ISSUE_TEMPLATE/config.yml
 - docs/01_modelcontextprotocol_repo/markdown/.github/ISSUE_TEMPLATE/work_tracking.yml
+- docs/01_modelcontextprotocol_repo/markdown/.github/dependabot.yml
 - docs/01_modelcontextprotocol_repo/markdown/.github/labeler.yml
 - docs/01_modelcontextprotocol_repo/markdown/.github/workflows/blog-preview.yml
 - docs/01_modelcontextprotocol_repo/markdown/.github/workflows/deploy-blog.yml
@@ -140,6 +141,12 @@
 - docs/01_modelcontextprotocol_repo/markdown/.prettierrc.json
 - docs/01_modelcontextprotocol_repo/markdown/AGENTS.md
 - docs/01_modelcontextprotocol_repo/markdown/ANTITRUST.md
+- docs/01_modelcontextprotocol_repo/markdown/CODE_OF_CONDUCT.md
+- docs/01_modelcontextprotocol_repo/markdown/CONTRIBUTING.md
+- docs/01_modelcontextprotocol_repo/markdown/GOVERNANCE.md
+- docs/01_modelcontextprotocol_repo/markdown/MAINTAINERS.md
+- docs/01_modelcontextprotocol_repo/markdown/README.md
+- docs/01_modelcontextprotocol_repo/markdown/SECURITY.md
 - docs/01_modelcontextprotocol_repo/markdown/blog/archetypes/default.md
 - docs/01_modelcontextprotocol_repo/markdown/blog/content/_index.md
 - docs/01_modelcontextprotocol_repo/markdown/blog/content/archives.md
@@ -165,8 +172,6 @@
 - docs/01_modelcontextprotocol_repo/markdown/blog/content/posts/client_registration/index.md
 - docs/01_modelcontextprotocol_repo/markdown/blog/content/posts/welcome-to-mcp-blog.md
 - docs/01_modelcontextprotocol_repo/markdown/blog/content/search.md
-- docs/01_modelcontextprotocol_repo/markdown/CODE_OF_CONDUCT.md
-- docs/01_modelcontextprotocol_repo/markdown/CONTRIBUTING.md
 - docs/01_modelcontextprotocol_repo/markdown/docs/.well-known/security.txt
 - docs/01_modelcontextprotocol_repo/markdown/docs/clients.mdx
 - docs/01_modelcontextprotocol_repo/markdown/docs/community/antitrust.mdx
@@ -372,15 +377,12 @@
 - docs/01_modelcontextprotocol_repo/markdown/docs/specification/draft/server/utilities/completion.mdx
 - docs/01_modelcontextprotocol_repo/markdown/docs/specification/draft/server/utilities/logging.mdx
 - docs/01_modelcontextprotocol_repo/markdown/docs/specification/draft/server/utilities/pagination.mdx
-- docs/01_modelcontextprotocol_repo/markdown/GOVERNANCE.md
-- docs/01_modelcontextprotocol_repo/markdown/MAINTAINERS.md
 - docs/01_modelcontextprotocol_repo/markdown/package-lock.json
 - docs/01_modelcontextprotocol_repo/markdown/package.json
 - docs/01_modelcontextprotocol_repo/markdown/plugins/mcp-spec/.claude-plugin/plugin.json
 - docs/01_modelcontextprotocol_repo/markdown/plugins/mcp-spec/README.md
 - docs/01_modelcontextprotocol_repo/markdown/plugins/mcp-spec/skills/draft-sep/SKILL.md
 - docs/01_modelcontextprotocol_repo/markdown/plugins/mcp-spec/skills/search-mcp-github/SKILL.md
-- docs/01_modelcontextprotocol_repo/markdown/README.md
 - docs/01_modelcontextprotocol_repo/markdown/schema/2024-11-05/schema.json
 - docs/01_modelcontextprotocol_repo/markdown/schema/2025-03-26/schema.json
 - docs/01_modelcontextprotocol_repo/markdown/schema/2025-06-18/schema.json
@@ -423,7 +425,6 @@
 - docs/01_modelcontextprotocol_repo/markdown/schema/draft/examples/DiscoverRequest/server-discover-request.json
 - docs/01_modelcontextprotocol_repo/markdown/schema/draft/examples/DiscoverResult/server-capabilities-discovery.json
 - docs/01_modelcontextprotocol_repo/markdown/schema/draft/examples/DiscoverResultResponse/discover-result-response.json
-- docs/01_modelcontextprotocol_repo/markdown/schema/draft/examples/ElicitationCompleteNotification/elicitation-complete.json
 - docs/01_modelcontextprotocol_repo/markdown/schema/draft/examples/ElicitRequest/elicitation-request.json
 - docs/01_modelcontextprotocol_repo/markdown/schema/draft/examples/ElicitRequestFormParams/elicit-multiple-fields.json
 - docs/01_modelcontextprotocol_repo/markdown/schema/draft/examples/ElicitRequestFormParams/elicit-single-field.json
@@ -431,6 +432,7 @@
 - docs/01_modelcontextprotocol_repo/markdown/schema/draft/examples/ElicitResult/accept-url-mode-no-content.json
 - docs/01_modelcontextprotocol_repo/markdown/schema/draft/examples/ElicitResult/input-multiple-fields.json
 - docs/01_modelcontextprotocol_repo/markdown/schema/draft/examples/ElicitResult/input-single-field.json
+- docs/01_modelcontextprotocol_repo/markdown/schema/draft/examples/ElicitationCompleteNotification/elicitation-complete.json
 - docs/01_modelcontextprotocol_repo/markdown/schema/draft/examples/EmbeddedResource/embedded-file-resource-with-annotations.json
 - docs/01_modelcontextprotocol_repo/markdown/schema/draft/examples/GetPromptRequest/get-prompt-request.json
 - docs/01_modelcontextprotocol_repo/markdown/schema/draft/examples/GetPromptRequestParams/get-code-review-prompt.json
@@ -449,12 +451,12 @@
 - docs/01_modelcontextprotocol_repo/markdown/schema/draft/examples/ListPromptsRequest/list-prompts-request.json
 - docs/01_modelcontextprotocol_repo/markdown/schema/draft/examples/ListPromptsResult/prompts-list-with-cursor-and-ttl.json
 - docs/01_modelcontextprotocol_repo/markdown/schema/draft/examples/ListPromptsResultResponse/list-prompts-result-response.json
-- docs/01_modelcontextprotocol_repo/markdown/schema/draft/examples/ListResourcesRequest/list-resources-request.json
-- docs/01_modelcontextprotocol_repo/markdown/schema/draft/examples/ListResourcesResult/resources-list-with-cursor-and-ttl.json
-- docs/01_modelcontextprotocol_repo/markdown/schema/draft/examples/ListResourcesResultResponse/list-resources-result-response.json
 - docs/01_modelcontextprotocol_repo/markdown/schema/draft/examples/ListResourceTemplatesRequest/list-resource-templates-request.json
 - docs/01_modelcontextprotocol_repo/markdown/schema/draft/examples/ListResourceTemplatesResult/resource-templates-list-with-cursor-and-ttl.json
 - docs/01_modelcontextprotocol_repo/markdown/schema/draft/examples/ListResourceTemplatesResultResponse/list-resource-templates-result-response.json
+- docs/01_modelcontextprotocol_repo/markdown/schema/draft/examples/ListResourcesRequest/list-resources-request.json
+- docs/01_modelcontextprotocol_repo/markdown/schema/draft/examples/ListResourcesResult/resources-list-with-cursor-and-ttl.json
+- docs/01_modelcontextprotocol_repo/markdown/schema/draft/examples/ListResourcesResultResponse/list-resources-result-response.json
 - docs/01_modelcontextprotocol_repo/markdown/schema/draft/examples/ListRootsRequest/list-roots-request.json
 - docs/01_modelcontextprotocol_repo/markdown/schema/draft/examples/ListRootsResult/multiple-root-directories.json
 - docs/01_modelcontextprotocol_repo/markdown/schema/draft/examples/ListRootsResult/single-root-directory.json
@@ -516,7 +518,6 @@
 - docs/01_modelcontextprotocol_repo/markdown/schema/draft/examples/UntitledSingleSelectEnumSchema/color-select-schema.json
 - docs/01_modelcontextprotocol_repo/markdown/schema/draft/schema.json
 - docs/01_modelcontextprotocol_repo/markdown/schema/draft/schema.mdx
-- docs/01_modelcontextprotocol_repo/markdown/SECURITY.md
 - docs/01_modelcontextprotocol_repo/markdown/seps/1024-mcp-client-security-requirements-for-local-server-.md
 - docs/01_modelcontextprotocol_repo/markdown/seps/1034--support-default-values-for-all-primitive-types-in.md
 - docs/01_modelcontextprotocol_repo/markdown/seps/1036-url-mode-elicitation-for-secure-out-of-band-intera.md
@@ -564,7 +565,7 @@
 - docs/01_modelcontextprotocol_repo/markdown/tools/sep-automation/package.json
 - docs/01_modelcontextprotocol_repo/markdown/tools/sep-automation/tsconfig.json
 - docs/01_modelcontextprotocol_repo/markdown/tsconfig.json
-- docs/01_modelcontextprotocol_repo/SOURCES.txt
+- docs/02_mcp_specification/SOURCES.txt
 - docs/02_mcp_specification/markdown/modelcontextprotocol.io_specification_2025-11-25_architecture_index.md.md
 - docs/02_mcp_specification/markdown/modelcontextprotocol.io_specification_2025-11-25_basic_authorization.md.md
 - docs/02_mcp_specification/markdown/modelcontextprotocol.io_specification_2025-11-25_basic_index.md.md
@@ -587,7 +588,7 @@
 - docs/02_mcp_specification/markdown/modelcontextprotocol.io_specification_2025-11-25_server_utilities_completion.md.md
 - docs/02_mcp_specification/markdown/modelcontextprotocol.io_specification_2025-11-25_server_utilities_logging.md.md
 - docs/02_mcp_specification/markdown/modelcontextprotocol.io_specification_2025-11-25_server_utilities_pagination.md.md
-- docs/02_mcp_specification/SOURCES.txt
+- docs/03_mcp_seps/SOURCES.txt
 - docs/03_mcp_seps/markdown/modelcontextprotocol.io_seps_1024-mcp-client-security-requirements-for-local-server-.md.md
 - docs/03_mcp_seps/markdown/modelcontextprotocol.io_seps_1034--support-default-values-for-all-primitive-types-in.md.md
 - docs/03_mcp_seps/markdown/modelcontextprotocol.io_seps_1036-url-mode-elicitation-for-secure-out-of-band-intera.md.md
@@ -630,7 +631,7 @@
 - docs/03_mcp_seps/markdown/modelcontextprotocol.io_seps_991-enable-url-based-client-registration-using-oauth-c.md.md
 - docs/03_mcp_seps/markdown/modelcontextprotocol.io_seps_994-shared-communication-practicesguidelines.md.md
 - docs/03_mcp_seps/markdown/modelcontextprotocol.io_seps_index.md.md
-- docs/03_mcp_seps/SOURCES.txt
+- docs/04_mcp_registry/SOURCES.txt
 - docs/04_mcp_registry/markdown/modelcontextprotocol.io_registry_about.md.md
 - docs/04_mcp_registry/markdown/modelcontextprotocol.io_registry_authentication.md.md
 - docs/04_mcp_registry/markdown/modelcontextprotocol.io_registry_faq.md.md
@@ -642,7 +643,7 @@
 - docs/04_mcp_registry/markdown/modelcontextprotocol.io_registry_remote-servers.md.md
 - docs/04_mcp_registry/markdown/modelcontextprotocol.io_registry_terms-of-service.md.md
 - docs/04_mcp_registry/markdown/modelcontextprotocol.io_registry_versioning.md.md
-- docs/04_mcp_registry/SOURCES.txt
+- docs/05_mcp_extensions/SOURCES.txt
 - docs/05_mcp_extensions/markdown/modelcontextprotocol.io_extensions_apps_build.md.md
 - docs/05_mcp_extensions/markdown/modelcontextprotocol.io_extensions_apps_overview.md.md
 - docs/05_mcp_extensions/markdown/modelcontextprotocol.io_extensions_auth_enterprise-managed-authorization.md.md
@@ -651,4 +652,3 @@
 - docs/05_mcp_extensions/markdown/modelcontextprotocol.io_extensions_client-matrix.md.md
 - docs/05_mcp_extensions/markdown/modelcontextprotocol.io_extensions_overview.md.md
 - docs/05_mcp_extensions/markdown/modelcontextprotocol.io_extensions_tasks_overview.md.md
-- docs/05_mcp_extensions/SOURCES.txt

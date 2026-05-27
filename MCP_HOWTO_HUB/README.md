@@ -10,7 +10,3 @@ Markdown documentation pulled from official Model Context Protocol sources.
 - `docs/03_mcp_seps/markdown/` — Specification Enhancement Proposals.
 - `docs/04_mcp_registry/markdown/` — MCP registry docs.
 - `docs/05_mcp_extensions/markdown/` — MCP extension docs.
-
-## Boundary
-
-This hub contains documentation only. It does not create SOP files, backlog files, task files, or Codi queue files.

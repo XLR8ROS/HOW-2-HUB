@@ -1,0 +1,45 @@
+{
+  "name": "oas-infra",
+  "version": "0.0.0",
+  "description": "OpenAPI Specification Automation & Infrastructure",
+  "author": {
+    "name": "OpenAPI Initiative TSC",
+    "email": "tsc@openapis.org",
+    "url": "https://openapis.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OAI/OpenAPI-Specification.git"
+  },
+  "license": "Apache-2.0",
+  "scripts": {
+    "build": "bash ./scripts/md2html/build.sh",
+    "build-src": "npm run validate-markdown && bash ./scripts/md2html/build.sh src && bash ./scripts/schema-publish.sh src",
+    "test": "c8 --100 vitest run --coverage",
+    "format-markdown": "npx markdownlint-cli2 --config spec.markdownlint.yaml --fix src/oas.md && npx markdownlint-cli2 --fix *.md",
+    "validate-markdown": "npx markdownlint-cli2 --config spec.markdownlint.yaml src/oas.md && npx markdownlint-cli2 *.md && npx linkspector check"
+  },
+  "dependencies": {
+    "cheerio": "^1.2.0",
+    "highlight.js": "^11.11.1",
+    "markdown-it": "^14.1.0",
+    "respec": "35.8.0",
+    "yargs": "^18.0.0"
+  },
+  "devDependencies": {
+    "@hyperjump/json-schema-coverage": "^1.2.1",
+    "@umbrelladocs/linkspector": "^0.5.3",
+    "@vitest/coverage-v8": "^4.1.7",
+    "c8": "^11.0.0",
+    "markdownlint-cli2": "^0.22.1",
+    "vitest": "^4.0.1",
+    "yaml": "^2.9.0"
+  },
+  "keywords": [
+    "OpenAPI",
+    "OAS",
+    "Swagger",
+    "schema",
+    "API"
+  ]
+}

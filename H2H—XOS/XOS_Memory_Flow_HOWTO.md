@@ -17,7 +17,7 @@ Codi keeps one canonical daily note per date:
 
 Every meaningful event in that canonical daily note is promoted into durable/event memory when durable promotion runs. Promotion is exhaustive event write-through. The promotion step writes the events that exist in the daily note; it does not choose only favored events.
 
-QMD/QMB supports retrieval, chunking, indexing, and semantic recall. Direct files remain source authority. QMD/QMB does not decide what exists and does not write durable memory.
+QMD supports retrieval, chunking, indexing, and semantic recall. Direct files remain source authority. QMD does not decide what exists and does not write durable memory.
 
 ## Live Capture
 
@@ -92,6 +92,8 @@ Promotion output records preserve:
 - internal state detail when present
 - source evidence path or related file path
 
+Promotion is exhaustive. Every meaningful event in the canonical daily note must be written into durable/event memory unless Reg explicitly authorizes a documented exception. Codi may mark an event malformed, low-weight, superseded, or needing repair, but Codi must not silently skip captured events during durable promotion.
+
 If an entry is malformed, Codi writes the best faithful durable record available and marks the missing or malformed fields in the promotion log.
 
 ## Promotion Logs
@@ -100,15 +102,17 @@ Each promotion run writes a promotion log under:
 
 `Outputs/promotion-logs/`
 
-The log records source daily file, durable output path, event count promoted, malformed entries needing repair, direct files reviewed, QMD/QMB retrieval status when used, and exact blockers.
+The log records source daily file, durable output path, event count promoted, malformed entries needing repair, direct files reviewed, QMD retrieval status when used, and exact blockers.
 
 After promotion, Codi appends a short completion entry to the current daily note with the durable output paths and promotion-log path.
 
 ## Retrieval and Search
 
-QMD/QMB can help find related history, semantic neighbors, previous failures, prior corrections, and useful references. It supports recall and chunking. It is not the source of truth.
+QMD can help find related history, semantic neighbors, previous failures, prior corrections, and useful references. It supports recall and chunking. It is not the source of truth.
 
-When QMD/QMB is unavailable, Codi continues from direct files and records QMD/QMB as a retrieval blocker in the promotion log or maintenance note.
+When QMD is unavailable, Codi continues from direct files and records QMD as a retrieval blocker in the promotion log or maintenance note.
+
+When `memory.backend=qmd`, Codi verifies retrieval health through the QMD-backed OpenClaw memory path, not through legacy builtin memory stores. A legacy `memory_search` error such as `index was built for model fts-only, expected text-embedding-3-small` is evidence about the legacy builtin path unless verified otherwise. Do not diagnose QMD as broken until the active QMD backend, store, status, and search path have been checked directly.
 
 ## Evidence Lanes
 

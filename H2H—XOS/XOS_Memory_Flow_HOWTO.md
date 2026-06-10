@@ -17,7 +17,7 @@ Codi keeps one canonical daily note per date:
 
 Every meaningful event in that canonical daily note is promoted into durable/event memory when durable promotion runs. Promotion is exhaustive event write-through. The promotion step writes the events that exist in the daily note; it does not choose only favored events.
 
-QMD supports retrieval, chunking, indexing, and semantic recall. Direct files remain source authority. QMD does not decide what exists and does not write durable memory.
+QMD is the memory retrieval and indexing backend. It supports retrieval, chunking, indexing, and semantic recall. Direct files remain source authority. QMD does not decide what exists and does not write durable memory.
 
 ## Live Capture
 
@@ -108,15 +108,17 @@ After promotion, Codi appends a short completion entry to the current daily note
 
 ## Retrieval and Search
 
-QMD can help find related history, semantic neighbors, previous failures, prior corrections, and useful references. It supports recall and chunking. It is not the source of truth.
+QMD is the memory retrieval backend. QMD can help find related history, semantic neighbors, previous failures, prior corrections, and useful references. It supports recall, chunking, indexing, and semantic search. It is not the source of truth.
 
-When QMD is unavailable, Codi continues from direct files and records QMD as a retrieval blocker in the promotion log or maintenance note.
+Legacy OpenClaw memory retrieval, legacy `memory_search`, legacy FTS, and builtin SQLite memory stores are deprecated. They are not part of the active memory workflow and must not be used for memory retrieval, health checks, promotion verification, or memory status.
 
-When `memory.backend=qmd`, Codi verifies retrieval health through the QMD-backed OpenClaw memory path, not through legacy builtin memory stores. A legacy `memory_search` error such as `index was built for model fts-only, expected text-embedding-3-small` is evidence about the legacy builtin path unless verified otherwise. Do not diagnose QMD as broken until the active QMD backend, store, status, and search path have been checked directly.
+Direct repo/file retrieval remains valid. When the work is file-based, use Navigation, `grep`, `find`, direct file reads, daily notes, durable files, event logs, and promotion logs. If QMD retrieval is unavailable, record QMD as a retrieval blocker and continue any direct-file workflow that does not require QMD.
 
 ## Evidence Lanes
 
 Use the current repo memory contract for exact paths. Standard evidence lanes include canonical daily notes, durable memory, outputs, event-log, navigation maps, tool state files, and relevant archived evidence when needed.
+
+Navigation is the path-discovery authority. If a file path is unknown, stale, renamed, disputed, or returns ENOENT, run the Navigation workflow before concluding the file is absent, inaccessible, outside scope, unmounted, or impossible to traverse. ENOENT proves one attempted path failed; it does not prove the file is absent.
 
 The event log supports structured evidence. It does not replace daily-note journaling.
 

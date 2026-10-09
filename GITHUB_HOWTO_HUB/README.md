@@ -2,6 +2,36 @@
 
 Markdown documentation pulled from official GitHub sources.
 
+## Source-first agent usage library (precedence: OpenAI → Paperclip → GitHub)
+
+**Rule for all XOS How-To Hubs:** Search and preserve authoritative vendor procedures first. Reuse them directly by linking to the original maintained documentation and to existing locally preserved source files. Create XOS-authored operational guidance only for a verified gap specific to XOS; label it as a local overlay, not as vendor documentation. Check upstream changes before relying on a cached copy. This section is the entrypoint for agents who need to USE GitHub, not a credential setup checklist.
+
+### 1. OpenAI: Codex agent operations and repository instructions
+
+- [OpenAI Codex AGENTS.md source](https://github.com/openai/codex/blob/main/docs/agents_md.md) — how Codex finds and follows repository-level instructions. Use for navigating the agent's repository instructions; XOS agent identity is not equivalent to its job title.
+- [OpenAI Codex prompting guide](https://developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide) — Codex task execution and `AGENTS.md` behavior.
+- [OpenAI agents architecture and tooling](https://developers.openai.com/api/docs/guides/agents) — distinguish agent tool execution from hosted/SDK integrations.
+- **Already preserved** in this hub's sibling `CODEX_HOWTO_HUB`: official Codex integration material, including `docs/00_openai_codex_developer_docs/markdown/developers.openai.com_codex_integrations_github.md`. Consult the original source there rather than copying another Codex manual into this GitHub hub.
+
+### 2. Paperclip: GitHub work performed by Paperclip agents
+
+- [Connect an agent to a GitHub repository and open PRs](https://docs.paperclip.ing/how-to/connect-agent-to-github/) — **primary Paperclip operating procedure**: project workspaces, isolated worktrees, credential preflight, branch/commit/push, PR creation, review handoff, troubleshooting. Use before writing custom agent instructions.
+- [Paperclip GitHub connector overview](https://docs.paperclip.ing/connectors/github/) — distinguishes GitHub tool calls, shell Git/`gh`, and review-bot channels.
+- [Paperclip GitHub connector setup](https://docs.paperclip.ing/connectors/github-setup/) — credential methods and connection action policies, only when connection administration is needed.
+- [Paperclip reusable skills and GitHub imports](https://docs.paperclip.ing/guides/org/skills/) — import vendor or repository skills, retain upstream linkage and refresh pins. Check the bundled `paperclip-create-agent` skill's coder variant before generating XOS-authored PR instructions.
+
+### 3. GitHub: primary operation manuals
+
+- [GitHub CLI manual](https://cli.github.com/manual/gh) — repository, issue, PR, Actions, API, authentication and project command documentation. **Locally preserved already**: `docs/03_github_cli_manual/markdown/manual.md` and `docs/04_local_gh_cli_help/markdown/`.
+- [GitHub official docs](https://docs.github.com/) — authoritative GitHub product and API documentation. **Locally preserved already**: `docs/01_docs_github_com_content/markdown/` and `docs/02_reusables_and_variables/markdown/`.
+- [GitHub Copilot agents on GitHub](https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/overview) — applies to GitHub Copilot cloud agents, not automatically to Paperclip/Codex agents.
+- [GitHub Copilot CLI](https://docs.github.com/en/copilot/how-tos/copilot-cli) — applies to GitHub Copilot CLI, which is distinct from `gh` and OpenAI Codex.
+
+**Agent navigation priority:** Determine actual runtime (Codex, Paperclip execution shell, GitHub connector, or GitHub Copilot), read the corresponding vendor usage guide, resolve assigned repository/owner and worktree, inspect live authentication without disclosing it, carry out the authorized repository workflow, and verify observable GitHub and Paperclip results. Never equate an available secret, GitHub host login, or successful README read with complete access.
+
+**XOS-only overlay:** Sections below recording local Secrets navigation, owner names, Alpha/Addy grants, and current verification state are historical and deployment-specific. They do not replace the vendor procedures above.
+
+---
 ## XOS self-hosted Paperclip GitHub workflow (2026-10-09)
 
 Scope: XOS Mac Paperclip (verified server version 2026.1001.0), not the retired Ubuntu instance. Use the GitHub fine-grained personal access token (PAT) and Paperclip's company secret/agent environment bindings. No Paperclip Cloud enrollment is needed for this secret-based shell-access route.

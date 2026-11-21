@@ -1,0 +1,33 @@
+# Operator incident response
+Source: https://docs.openclaw.ai/gateway/security/operator-incident-response
+
+## Incident response
+
+### Contain
+
+1. Stop it: stop the macOS app (if it supervises the Gateway) or terminate your `openclaw gateway` process.
+2. Close exposure: set `gateway.bind: "loopback"` (or disable Tailscale Funnel/Serve) until you understand what happened.
+3. Freeze access: switch risky DMs/groups to `dmPolicy: "disabled"` / require mentions, and remove any `"*"` allow-all entries.
+
+### Rotate (assume compromise if secrets leaked)
+
+1. Rotate Gateway auth (`gateway.auth.token` / `gateway.auth.password`). Rotation hot-applies only when the effective auth mode stays the same; set `gateway.auth.mode` explicitly for SecretRefs. Restart for an auth-mode change or updated process environment credentials such as `OPENCLAW_GATEWAY_PASSWORD`.
+2. Rotate remote client secrets (`gateway.remote.token` / `.password`) on any machine that can call the Gateway.
+3. Rotate provider/API credentials (WhatsApp creds, Slack/Discord tokens, model/API keys in SQLite auth stores, and encrypted secrets payload values when used).
+
+### Audit
+
+1. Check Gateway logs with `openclaw logs` (or `openclaw --profile <profile> logs` for a named profile). Default files are under the selected state directory's `logs/` directory, unless `logging.file` overrides it; see [log locations](/logging#where-logs-live).
+2. Review the relevant transcript(s): `~/.openclaw/agents/<agentId>/sessions/*.jsonl`.
+3. Review recent config changes that could have widened access: `gateway.bind`, `gateway.auth`, DM/group policies, `tools.elevated`, plugin changes.
+4. Re-run `openclaw security audit --deep` and confirm critical findings are resolved.
+
+### Collect for a report
+
+- Timestamp, gateway host OS + OpenClaw version.
+- The session transcript(s) + a short log tail (after redacting).
+- What the attacker sent and what the agent did.
+- Whether the Gateway was exposed beyond loopback (LAN/Tailscale Funnel/Serve).
+
+---
+

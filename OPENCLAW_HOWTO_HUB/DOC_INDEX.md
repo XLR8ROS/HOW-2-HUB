@@ -1,0 +1,1480 @@
+# OpenClaw Official Documentation: Local Index
+
+Snapshot: 2026-11-21T01:35:43+00:00
+
+Official source: https://docs.openclaw.ai/llms.txt
+Indexed URLs mirrored: 1467/1467.
+Total pages mirrored (including full-export-only): 1467.
+
+## Indexed documentation
+
+- [Agent runtime architecture](reference/agent-runtime-architecture.md) — How OpenClaw structures the built-in agent runtime: code layout, boundaries, resource manifests, and runtime selection.
+- [BlueBubbles removal and the imsg iMessage path](reference/announcements/bluebubbles-imessage.md) — BlueBubbles support was removed from OpenClaw. Use the official iMessage plugin with imsg for new and migrated iMessage setups.
+- [Writer admission authority](reference/architecture/writer-admission-authority.md) — Proposed transferable authority contracts for SQLite writer admission
+- [Auth credential semantics](reference/auth-credential-semantics.md) — Credential eligibility and resolution rules for auth profiles
+- [Automation](reference/automation.md) — Overview of automation mechanisms: automations, hooks, standing orders, and workflows
+- [Automations](reference/automation/cron-jobs.md) — Automations: scheduled jobs, webhooks, and Gmail PubSub triggers for the Gateway scheduler
+- [Automation delivery](reference/automation/cron-jobs/delivery.md) — Announce, webhook, and none delivery modes, failure alerts, and output language
+- [Gmail PubSub triggers](reference/automation/cron-jobs/gmail.md) — Wire Gmail inbox events into OpenClaw through Google Pub/Sub and a restricted reader
+- [How automations work](reference/automation/cron-jobs/how-it-works.md) — Automation runtime model, run lifecycle, and promoting a repeated job into a schedule
+- [Manage automations](reference/automation/cron-jobs/managing-jobs.md) — CLI examples, job management commands, run history, and cron configuration keys
+- [Automation payloads](reference/automation/cron-jobs/payloads.md) — Payload kinds, agent-turn flags, command and script payloads, and session execution styles
+- [Automation schedules](reference/automation/cron-jobs/schedules.md) — Schedule kinds, cron expressions, stream sources, pacing, and condition triggers
+- [Automation troubleshooting](reference/automation/cron-jobs/troubleshooting.md) — Command ladder and fixes for jobs that do not fire or do not deliver
+- [Inbound webhooks](reference/automation/cron-jobs/webhooks.md) — Gateway HTTP hooks that let an external service wake an agent or submit a turn
+- [Hooks](reference/automation/hooks.md) — Internal hooks: install, write, and verify automation for commands and lifecycle events
+- [Bundled hooks](reference/automation/hooks/bundled-hooks.md) — The hooks shipped with OpenClaw and the behavior and options of each
+- [Hook configuration and discovery](reference/automation/hooks/configuration.md) — Selecting and enabling internal hooks, and how the Gateway discovers them across sources
+- [Hook event types and context](reference/automation/hooks/event-types.md) — Every internal event key, its trigger and wait behavior, and the context each producer supplies
+- [Hook troubleshooting](reference/automation/hooks/troubleshooting.md) — Diagnose a hook that is not discovered, not eligible, or not executing
+- [Writing hooks](reference/automation/hooks/writing-hooks.md) — Hook directory layout, the handler contract, reply delivery, and the HOOK.md metadata fields
+- [IMAP email trigger](reference/automation/imap.md) — Watch an IMAP mailbox and route authenticated incoming email to an isolated restricted reader agent
+- [MCP Events](reference/automation/mcp-events.md) — Subscribe to MCP events and run existing Automations from signed webhooks
+- [Standing orders](reference/automation/standing-orders.md) — Define permanent operating authority for autonomous agent programs
+- [Chat channels](reference/channels.md) — Messaging platforms OpenClaw can connect to
+- [A2A](reference/channels/a2a.md) — Connect external agents to OpenClaw through the A2A 1.0 JSON-RPC protocol
+- [Access groups](reference/channels/access-groups.md) — Reusable sender allowlists for message channels
+- [Ambient room events](reference/channels/ambient-room-events.md) — Let supported group rooms provide quiet context unless the agent sends with the message tool
+- [Bot loop protection](reference/channels/bot-loop-protection.md) — Bot-to-bot loop protection defaults and channel overrides
+- [Broadcast groups](reference/channels/broadcast-groups.md) — Run bounded agent group threads across messaging channels
+- [Buzz](reference/channels/buzz.md) — Connect OpenClaw agents to Buzz rooms
+- [Channel routing](reference/channels/channel-routing.md) — How OpenClaw picks an agent and session for each inbound message, and how replies route back
+- [ClickClack](reference/channels/clickclack.md) — ClickClack bot-token channel setup and target syntax
+- [Discord](reference/channels/discord.md) — Discord bot setup, config keys, components, voice, and troubleshooting
+- [Discord Activities](reference/channels/discord-activities.md) — Launch self-contained OpenClaw HTML widgets inside Discord Activities
+- [Discord access control](reference/channels/discord/access-control.md) — DM policy, guild allowlists, mention gating, role routing, command auth, and action gates
+- [Discord events and operations](reference/channels/discord/events.md) — Reaction notifications, presence events and configuration, config writes, proxying, and PluralKit
+- [Discord message behavior](reference/channels/discord/messaging.md) — Runtime model, reply tags, link previews, live stream previews, ack reactions, and mention aliases
+- [Discord components and approvals](reference/channels/discord/rich-messages.md) — Components v2 containers, interactive component payloads, and exec approvals in Discord
+- [Discord setup](reference/channels/discord/setup.md) — Create the Discord application, invite the bot, and set up a guild workspace
+- [Discord threads and sessions](reference/channels/discord/threads-and-sessions.md) — Forum threads, history and context limits, subagent thread sessions, and ACP channel bindings
+- [Discord troubleshooting](reference/channels/discord/troubleshooting.md) — Fixes for blocked guild messages, intent errors, gateway timeouts, bot loops, and voice STT drops
+- [Discord voice channels](reference/channels/discord/voice-channels.md) — Realtime Discord voice channels, auto-join, realtime modes, and voice message attachments
+- [Follow users in Discord voice](reference/channels/discord/voice-follow.md) — Make the bot join, move between, and leave Discord voice channels with selected users
+- [Discord voice transcripts and meeting notes](reference/channels/discord/voice-transcripts.md) — Continuous voice capture, transcript storage, and automatic meeting notes
+- [Feishu](reference/channels/feishu.md) — Feishu bot overview, features, and configuration
+- [Feishu access control](reference/channels/feishu/access-control.md) — Feishu DM policy, group policy, mention gating, and how to find chat and user IDs
+- [Feishu advanced configuration](reference/channels/feishu/advanced-configuration.md) — Feishu multi-account setup, message limits, streaming, workspace tools, ACP sessions, and multi-agent routing
+- [Feishu configuration reference](reference/channels/feishu/configuration-reference.md) — Every `channels.feishu` configuration key with its default
+- [Feishu dynamic agents](reference/channels/feishu/dynamic-agents.md) — Per-user agent isolation for Feishu, giving each DM user their own workspace and agent
+- [Feishu message types](reference/channels/feishu/messaging.md) — Which Feishu message types OpenClaw receives and sends, including stickers and thread replies
+- [Feishu setup](reference/channels/feishu/setup.md) — Feishu/Lark bot setup wizard, and how inbound events are durably queued
+- [Feishu troubleshooting](reference/channels/feishu/troubleshooting.md) — Silent Feishu bots, missing events, QR setup failures, and leaked App Secrets
+- [Google Chat](reference/channels/googlechat.md) — Google Chat app support status, capabilities, and configuration
+- [WhatsApp group messages](reference/channels/group-messages.md) — WhatsApp group message handling — activation, allowlists, sessions, and context injection
+- [Groups](reference/channels/groups.md) — Group chat behavior across surfaces (Discord/iMessage/Matrix/Microsoft Teams/QQBot/Signal/Slack/Telegram/WhatsApp/Zalo)
+- [iMessage](reference/channels/imessage.md) — Native iMessage support via imsg (JSON-RPC over stdio), with private API actions for replies, tapbacks, effects, polls, attachments, and group management. Preferred for new OpenClaw iMessage setups when host requirements fit.
+- [Coming from BlueBubbles](reference/channels/imessage-from-bluebubbles.md) — Translate old BlueBubbles configs to the official iMessage plugin: key mapping, group allowlist gates, and cutover verification.
+- [iMessage access control and routing](reference/channels/imessage/access-control.md) — iMessage DM and group policy, mention gating, per-group prompts, ACP bindings, and config writes
+- [iMessage deployment patterns](reference/channels/imessage/deployment.md) — Dedicated bot macOS user, remote Mac over Tailscale, multi-account, and DM history patterns
+- [iMessage media and attachments](reference/channels/imessage/media.md) — iMessage attachment ingestion, outbound staging, text chunking, and delivery target formats
+- [iMessage message behavior](reference/channels/imessage/messaging.md) — Split-send DM coalescing and automatic inbound recovery after a bridge or gateway restart
+- [Enabling the imsg private API](reference/channels/imessage/private-api.md) — Disable SIP and library validation, inject the imsg helper, and verify the private API bridge
+- [iMessage private API actions](reference/channels/imessage/rich-messages.md) — iMessage tapbacks, threaded replies, effects, native polls, approval controls, and agent questions
+- [iMessage setup](reference/channels/imessage/setup.md) — Install the iMessage plugin, set up imsg on the Messages Mac, and grant macOS permissions
+- [iMessage troubleshooting](reference/channels/imessage/troubleshooting.md) — Fixes for a missing imsg binary, silent inbound, ignored DMs and groups, and failed remote attachments
+- [IRC](reference/channels/irc.md) — IRC plugin setup, access controls, and troubleshooting
+- [LINE](reference/channels/line.md) — LINE Messaging API plugin setup, config, and usage
+- [Channel location parsing](reference/channels/location.md) — Channel location parsing and portable outbound location payloads
+- [Matrix](reference/channels/matrix.md) — Matrix support status, setup, and configuration examples
+- [Matrix migration](reference/channels/matrix-migration.md) — How OpenClaw upgrades the previous Matrix plugin in place, including encrypted-state recovery limits and manual recovery steps.
+- [Matrix presentation metadata](reference/channels/matrix-presentation.md) — Matrix MessagePresentation metadata for OpenClaw-aware clients
+- [Matrix push rules for quiet previews](reference/channels/matrix-push-rules.md) — Per-recipient Matrix push rules for quiet finalized preview edits
+- [Matrix access control](reference/channels/matrix/access-control.md) — DM and room policy, allowlists, bot-to-bot traffic, and command authorization
+- [Matrix accounts and homeservers](reference/channels/matrix/accounts-and-homeservers.md) — Multi-account layout, private homeservers, proxies, profiles, and target resolution
+- [Matrix encryption and verification](reference/channels/matrix/encryption.md) — E2EE setup, device verification, cross-signing, and room-key backup
+- [Matrix message behavior](reference/channels/matrix/messaging.md) — Inbound restart recovery, streaming previews, voice-note transcription, and reactions
+- [Matrix rich messages and approvals](reference/channels/matrix/rich-messages.md) — Structured reply controls, approval event metadata, and exec approval prompts
+- [Matrix setup](reference/channels/matrix/setup.md) — Install the plugin, configure a homeserver account, and control which invites the bot accepts
+- [Matrix threads and sessions](reference/channels/matrix/threads-and-sessions.md) — Session routing, reply threading, ACP bindings, and room history context
+- [Mattermost](reference/channels/mattermost.md) — Mattermost bot setup and OpenClaw config
+- [Microsoft Teams](reference/channels/msteams.md) — Microsoft Teams bot support status, capabilities, and configuration
+- [Microsoft Teams access control](reference/channels/msteams/access-control.md) — Microsoft Teams DM and group policy, team and channel allowlists, and conversation IDs
+- [Microsoft Teams authentication](reference/channels/msteams/authentication.md) — Certificate and managed identity authentication for the Microsoft Teams bot
+- [Microsoft Teams cards and actions](reference/channels/msteams/cards-and-actions.md) — Microsoft Teams Adaptive Card approvals, polls, presentation cards, member info, and targets
+- [Microsoft Teams configuration](reference/channels/msteams/configuration.md) — Microsoft Teams configuration keys, environment variables, and history limits
+- [Microsoft Teams manifest and permissions](reference/channels/msteams/manifest-and-permissions.md) — Microsoft Teams app manifest, RSC permissions, and the Graph permissions each capability needs
+- [Microsoft Teams message behavior](reference/channels/msteams/messaging.md) — Microsoft Teams session routing, reply style, attachments, and file sending
+- [Microsoft Teams setup](reference/channels/msteams/setup.md) — Install the Microsoft Teams plugin, register the bot and Teams app, and run against a dev tunnel
+- [Microsoft Teams troubleshooting](reference/channels/msteams/troubleshooting.md) — Microsoft Teams known limitations, common failures, and reference links
+- [Nextcloud Talk](reference/channels/nextcloud-talk.md) — Nextcloud Talk support status, capabilities, and configuration
+- [Nostr](reference/channels/nostr.md) — Nostr DM channel via NIP-04 encrypted messages
+- [Pairing](reference/channels/pairing.md) — Pairing overview: approve who can DM you + which nodes can join
+- [QA channel](reference/channels/qa-channel.md) — Synthetic Slack-class channel plugin for repeatable OpenClaw QA scenarios
+- [QQ bot](reference/channels/qqbot.md) — QQ Bot setup, config, and usage
+- [Raft](reference/channels/raft.md) — Raft External Agent support through the Raft CLI wake bridge
+- [Reef](reference/channels/reef.md) — Reef channel setup: guarded, end-to-end-encrypted messaging between OpenClaw agents of different people
+- [Signal](reference/channels/signal.md) — Signal support via signal-cli (native daemon or bbernhard container), setup paths, and number model
+- [Slack](reference/channels/slack.md) — Slack setup and runtime behavior (Socket Mode, HTTP Request URLs, and relay mode)
+- [Slack access control](reference/channels/slack/access-control.md) — DM policy, channel allowlists, mention gating, and action gates
+- [Slack Enterprise Grid](reference/channels/slack/enterprise-grid.md) — Org-wide Slack installs across every workspace in a Grid organization
+- [Slack events and operations](reference/channels/slack/events.md) — System events, interactions, and optional presence polling
+- [Slack manifest and scopes](reference/channels/slack/manifest-and-scopes.md) — Base app manifest, OAuth scopes, and optional manifest settings
+- [Slack media and attachments](reference/channels/slack/media.md) — Audio clips, inbound file handling, chunking, and delivery targets
+- [Slack message behavior](reference/channels/slack/messaging.md) — Acknowledgement reactions, live streaming previews, and slash commands
+- [Slack charts, tables, and approvals](reference/channels/slack/rich-messages.md) — Native Block Kit charts and tables, modal submissions, and approval buttons
+- [Slack setup](reference/channels/slack/setup.md) — Install the Slack plugin, create the app, and configure tokens
+- [Slack threads and sessions](reference/channels/slack/threads-and-sessions.md) — Session keys, thread replies, reply tags, and Agent View DMs
+- [Slack transports](reference/channels/slack/transports.md) — Socket Mode, HTTP Request URLs, and relay mode compared
+- [Slack troubleshooting](reference/channels/slack/troubleshooting.md) — Fixes for silent channels, ignored DMs, and dead transports
+- [SMS](reference/channels/sms.md) — Twilio SMS/MMS setup, access controls, webhooks, and delivery status
+- [Synology Chat](reference/channels/synology-chat.md) — Synology Chat webhook setup and OpenClaw config
+- [Telegram](reference/channels/telegram.md) — Telegram bot support status, capabilities, and configuration
+- [Telegram access control](reference/channels/telegram/access-control.md) — DM policy, group allowlists, mention gating, and per-chat tool policy
+- [Telegram events and operations](reference/channels/telegram/events.md) — Reaction notifications, config writes from Telegram events, and error reply policy
+- [Telegram media and attachments](reference/channels/telegram/media.md) — Photo albums, voice notes, video notes, locations, venues, and stickers
+- [Telegram message behavior](reference/channels/telegram/messaging.md) — Runtime model, stream previews, native commands, reply tags, ack reactions, and send limits
+- [Telegram Control UI Mini App](reference/channels/telegram/mini-app.md) — Open the OpenClaw Control UI as a Telegram WebApp with /controlui
+- [Telegram rich messages and approvals](reference/channels/telegram/rich-messages.md) — Bot API 10.3 rich messages, inline buttons, message actions, and exec approvals
+- [Telegram setup](reference/channels/telegram/setup.md) — Create the Telegram bot token, configure the channel, and approve the first DM
+- [Telegram threads and sessions](reference/channels/telegram/threads-and-sessions.md) — Forum topic session keys, topic config inheritance, per-topic agents, and ACP bindings
+- [Telegram transports](reference/channels/telegram/transports.md) — Long polling and webhook mode compared, with Gateway routes and durable ingress behavior
+- [Telegram troubleshooting](reference/channels/telegram/troubleshooting.md) — Fixes for silent groups, missing commands, rejected tokens, and unstable polling
+- [Tlon](reference/channels/tlon.md) — Tlon/Urbit support status, capabilities, and configuration
+- [Channel troubleshooting](reference/channels/troubleshooting.md) — Fast channel level troubleshooting with per channel failure signatures and fixes
+- [Twitch](reference/channels/twitch.md) — Twitch chat bot: install, credentials, access control, token refresh
+- [WeChat](reference/channels/wechat.md) — WeChat channel setup through the external openclaw-weixin plugin
+- [WeCom](reference/channels/wecom.md) — Install the external WeCom plugin and find its versioned setup documentation
+- [WhatsApp](reference/channels/whatsapp.md) — WhatsApp channel support, access controls, delivery behavior, and operations
+- [X / Twitter](reference/channels/x.md) — X / Twitter mentions, allowlisted public replies, thread context, and event modes
+- [Yuanbao](reference/channels/yuanbao.md) — Yuanbao bot overview, features, and configuration
+- [Zalo](reference/channels/zalo.md) — Zalo bot support status, capabilities, and configuration
+- [Zalo ClawBot](reference/channels/zaloclawbot.md) — Zalo ClawBot channel setup through the external openclaw-zaloclawbot plugin
+- [Zalo personal](reference/channels/zalouser.md) — Zalo personal account support via native zca-js (QR login), capabilities, and configuration
+- [CI pipeline](reference/ci.md) — CI job graph, scope gates, release umbrellas, and local command equivalents
+- [Adaptive CI experiments](reference/ci/adaptive-testing.md) — Export test evidence and evaluate adaptive CI without changing test execution
+- [CI capacity and shard weights](reference/ci/capacity.md) — Runner registration budget, concurrency headroom, and measured shard timings
+- [CI checkout ownership](reference/ci/checkout.md) — Shared checkout anchors, retry budgets, and trusted action policy
+- [Local checks and Testbox](reference/ci/local-proof.md) — Local command equivalents, shrink-only ratchets, and Crabbox remote proof
+- [CI pipeline jobs](reference/ci/pipeline.md) — Job graph, failure reporting, and the Control UI size budgets
+- [Release validation workflows](reference/ci/release-validation.md) — Full Release Validation, Package Acceptance, install smoke, and Docker E2E
+- [Full Release Validation](reference/ci/release-validation/full-release-validation.md) — The Full Release Validation umbrella, release publish, and Docker Release dispatch
+- [Install smoke and Docker E2E](reference/ci/release-validation/install-smoke-and-docker-e2e.md) — Install Smoke coverage, the local Docker E2E aggregate, and release-path Docker chunks
+- [Live and E2E shards](reference/ci/release-validation/live-and-e2e-shards.md) — Named live and E2E shards in the release live/E2E child workflow
+- [Package Acceptance](reference/ci/release-validation/package-acceptance.md) — Package Acceptance jobs, candidate sources, suite profiles, and dispatch examples
+- [Plugin Prerelease](reference/ci/release-validation/plugin-prerelease.md) — The separate Plugin Prerelease workflow, its batching limits, and when it runs
+- [CI routing costs](reference/ci/routing-costs.md) — Measured CI provider costs, routing decisions, and the 15-minute qualification
+- [CI runner classes](reference/ci/runners.md) — Event-based runner routing, Blacksmith classes, and runner backend modes
+- [Scheduled and maintenance workflows](reference/ci/scheduled-workflows.md) — Performance, QA Lab, CodeQL, Security Review, maintenance jobs, and ClawSweeper forwarding
+- [CI scope and routing](reference/ci/scope-and-routing.md) — Changed-scope detection, lane routing, and manual dispatch behavior
+- [Job budgets and platform lanes](reference/ci/scope-and-routing/job-budgets.md) — UI shards, concurrency and job budgets, lint memory policy, Android rows, and sticky-disk keys
+- [Manual dispatches](reference/ci/scope-and-routing/manual-dispatches.md) — Manual CI dispatch behavior, release-gate fallbacks, and the Windows Testbox Check
+- [Node test lanes](reference/ci/scope-and-routing/node-test-lanes.md) — How the slowest Node test families are split, balanced, packed, and cached
+- [Scope selection](reference/ci/scope-and-routing/selection.md) — Changed-scope detection and the per-area rules that select CI lanes
+- [Watch a CI run](reference/ci/watching-runs.md) — Wait on a pull request head, recover a stuck run, and clear the evidence gate
+- [ClawHub](reference/clawhub.md) — Public ClawHub overview for discovery, install, publish, security, and the clawhub CLI.
+- [Acceptable Usage](reference/clawhub/acceptable-usage.md) — Marketplace policy: what ClawHub allows and what it will not host.
+- [API v1](reference/clawhub/api.md) — Public REST API (v1) overview and conventions.
+- [Auth](reference/clawhub/auth.md) — ClawHub sign-in, API tokens, CLI login, token storage, and revocation.
+- [CLI](reference/clawhub/cli.md) — CLI reference: commands, flags, config, and lockfile behavior.
+- [Content Rights Requests](reference/clawhub/content-rights.md) — How to submit a copyright or other content rights concern about material published on ClawHub.
+- [How ClawHub Works](reference/clawhub/how-it-works.md) — How ClawHub listings, versions, installs, publishing, scans, and updates work.
+- [HTTP API](reference/clawhub/http-api.md) — HTTP API reference (public + CLI endpoints + auth).
+- [Manage company MCP plugins](reference/clawhub/managed-mcp.md) — Publish and maintain company MCP integrations through the ClawHub management UI and admin CLI.
+- [Moderation and Account Safety](reference/clawhub/moderation.md) — How ClawHub reports, moderation holds, hidden listings, bans, and account standing work.
+- [Org and Namespace Claims](reference/clawhub/namespace-claims.md) — How to request ClawHub review for org, brand, owner-handle, package-scope, skill-slug, or namespace ownership disputes.
+- [Refreshing plugin categories](reference/clawhub/plugin-category-refresh.md) — Operate the reviewed production plugin category refresh and rollback workflow
+- [Plugin validation fixes](reference/clawhub/plugin-validation-fixes.md) — Fix ClawHub plugin package validation findings before publishing
+- [Publishing](reference/clawhub/publishing.md) — How ClawHub publishing works for skills, plugins, owners, scopes, releases, and review.
+- [Quickstart](reference/clawhub/quickstart.md) — Start using ClawHub: find, install, update, and publish skills or plugins.
+- [Security](reference/clawhub/security.md) — How to report ClawHub security issues and when vulnerabilities are publicly disclosed.
+- [Security Audits](reference/clawhub/security-audits.md) — How to understand ClawHub security audit results before installing a skill or plugin.
+- [Skill format](reference/clawhub/skill-format.md) — Skill folder format, required files, supporting artifacts, limits.
+- [Telemetry](reference/clawhub/telemetry.md) — Install telemetry collected by the ClawHub CLI and how to opt out.
+- [Repairing published Template artwork](reference/clawhub/template-artwork-repair.md) — Preview, apply, verify, or undo a single historical Template artwork repair
+- [Experimental Template packages](reference/clawhub/templates.md) — How to author, publish, and discover experimental Template packages.
+- [Troubleshooting](reference/clawhub/troubleshooting.md) — Troubleshooting ClawHub sign-in, install, publish, update, and API issues.
+- [CLI reference](reference/cli.md) — OpenClaw CLI index: command list, global flags, and links to per-command pages
+- [ACP](reference/cli/acp.md) — Run the ACP bridge for IDE integrations
+- [Agent](reference/cli/agent.md) — CLI reference for Gateway-backed `openclaw agent` turns and isolated `agent exec` runs
+- [Agents](reference/cli/agents.md) — CLI reference for `openclaw agents` (roles, teams, workspaces, routing, and identity)
+- [Approvals](reference/cli/approvals.md) — CLI reference for `openclaw approvals` and `openclaw exec-policy`
+- [Attach CLI](reference/cli/attach.md) — CLI reference for `openclaw attach` (launch Claude Code with a scoped Gateway MCP grant)
+- [Audit records](reference/cli/audit.md) — CLI reference for activity records, execution identity, and decision receipts
+- [Backup](reference/cli/backup.md) — CLI reference for `openclaw backup` (local and offsite archives, SQLite snapshots, Git history, and schedules)
+- [Browser](reference/cli/browser.md) — CLI reference for `openclaw browser` (lifecycle, profiles, tabs, actions, state, and debugging)
+- [Channels](reference/cli/channels.md) — CLI reference for `openclaw channels` (accounts, status, dead letters, capabilities, resolve, logs, login/logout)
+- [Clawbot](reference/cli/clawbot.md) — CLI reference for `openclaw clawbot` (legacy alias namespace)
+- [Completion](reference/cli/completion.md) — CLI reference for `openclaw completion` (generate/install shell completion scripts)
+- [Config](reference/cli/config.md) — CLI reference for `openclaw config` (get/set/patch/unset/file/schema/validate)
+- [Configure](reference/cli/configure.md) — CLI reference for `openclaw configure` (interactive configuration prompts)
+- [Connect](reference/cli/connect.md) — Connect a device to an OpenClaw Gateway with one pasted command
+- [Automations (cron)](reference/cli/cron.md) — CLI reference for `openclaw automations` (schedule and run background jobs)
+- [Daemon](reference/cli/daemon.md) — CLI reference for `openclaw daemon` (legacy alias for gateway service management)
+- [Dashboard CLI](reference/cli/dashboard.md) — CLI reference for `openclaw dashboard` (securely open the Control UI)
+- [Devices](reference/cli/devices.md) — CLI reference for `openclaw devices` (device pairing + token rotation/revocation)
+- [Directory](reference/cli/directory.md) — CLI reference for `openclaw directory` (self, peers, groups)
+- [DNS](reference/cli/dns.md) — CLI reference for `openclaw dns` (wide-area discovery helpers)
+- [Docs](reference/cli/docs.md) — CLI reference for `openclaw docs` (search the live docs index)
+- [Doctor CLI](reference/cli/doctor.md) — CLI reference for `openclaw doctor` (health checks + guided repairs)
+- [Other checks and repairs](reference/cli/doctor/checks.md) — The remaining doctor checks and repairs, from Nix mode to plugins, sandbox, and channels
+- [Structured health check contract](reference/cli/doctor/health-contract.md) — The detect/repair contract that doctor checks and plugin health checks implement
+- [Lint and post-upgrade modes](reference/cli/doctor/lint.md) — Read-only lint findings, check selection, and post-upgrade plugin checks
+- [Gateway and service recovery](reference/cli/doctor/recovery.md) — Recover the Gateway service, a remote Gateway, Control UI assets, and Gateway tokens
+- [Run doctor](reference/cli/doctor/running.md) — Doctor postures, example invocations, and the full option table
+- [SQLite maintenance and session migration](reference/cli/doctor/sqlite-maintenance.md) — Shared-state compaction plus targeted session SQLite inspection, import, and recovery
+- [Legacy state migration](reference/cli/doctor/state-migrations.md) — How `doctor --fix` migrates legacy file-backed state into SQLite
+- [File transfers](reference/cli/file-transfer.md) — CLI reference for `openclaw file-transfer` (review and migrate standing file-transfer approvals)
+- [Gateway](reference/cli/gateway.md) — OpenClaw Gateway CLI (`openclaw gateway`) — run, query, and discover gateways
+- [Discover gateways (Bonjour)](reference/cli/gateway/discovery.md) — `openclaw gateway discover` and the Bonjour beacons and TXT hints it scans for
+- [Query a running Gateway](reference/cli/gateway/query.md) — Query a running Gateway: health, usage-cost, stability, diagnostics export, status, connectivity checks, call, suspend, and resume
+- [Restart and supervision](reference/cli/gateway/restart-and-supervision.md) — `openclaw gateway restart`, install identity, external process supervisors, and Gateway profiling
+- [Run the Gateway](reference/cli/gateway/running.md) — `openclaw gateway` run options, startup behavior, and revealing the configured token
+- [Manage the Gateway service](reference/cli/gateway/service.md) — Install, start, stop, and uninstall the managed Gateway service, including wrappers, heap sizing, and install-time auth
+- [Health](reference/cli/health.md) — CLI reference for `openclaw health` (gateway health snapshot via RPC)
+- [Hooks CLI](reference/cli/hooks.md) — CLI reference for internal hook discovery, eligibility, enablement, and hook packs
+- [OpenClaw ID](reference/cli/id.md) — CLI reference for `openclaw id` (OpenClaw ID remote access status, moving a claw to new keys, publishing)
+- [Inference CLI](reference/cli/infer.md) — Infer-first CLI for provider-backed model, image, audio, TTS, video, web, and embedding workflows
+- [Logs](reference/cli/logs.md) — CLI reference for `openclaw logs` (tail gateway logs via RPC)
+- [MCP](reference/cli/mcp.md) — Expose OpenClaw channel conversations over MCP and manage saved MCP server definitions
+- [MCP Apps](reference/cli/mcp/apps.md) — Enable and secure the MCP Apps host bridge that renders server-provided HTML views
+- [MCP in the Control UI](reference/cli/mcp/control-ui.md) — Edit and inspect MCP servers from the browser Control UI settings page
+- [JSON output shapes](reference/cli/mcp/json-output.md) — JSON output shapes for openclaw mcp status, doctor, and check
+- [Manage saved MCP servers](reference/cli/mcp/registry.md) — Manage OpenClaw-saved MCP server definitions with the mcp registry subcommands
+- [Run OpenClaw as an MCP server](reference/cli/mcp/serve.md) — Run OpenClaw as a stdio MCP server so an MCP client can read and send channel conversations
+- [Transports and OAuth](reference/cli/mcp/transports.md) — Stdio, SSE/HTTP, and Streamable HTTP transport fields plus the MCP OAuth workflow
+- [Memory](reference/cli/memory.md) — CLI reference for `openclaw memory` (status/index/reset/search/forget/promote/promote-explain/rem-harness/rem-backfill/session-backfill)
+- [Message](reference/cli/message.md) — CLI reference for `openclaw message` (send + channel actions)
+- [Migrate](reference/cli/migrate.md) — CLI reference for `openclaw migrate` (import state from another agent system)
+- [Models](reference/cli/models.md) — CLI reference for `openclaw models` (status/list/set/scan, aliases, fallbacks, shared auth, personal accounts)
+- [Node](reference/cli/node.md) — CLI reference for `openclaw node` (headless node host)
+- [Nodes CLI](reference/cli/nodes.md) — CLI reference for `openclaw nodes` (status, pairing, invoke, camera/screen/location/notify and the macOS widget panel)
+- [Onboard](reference/cli/onboard.md) — CLI reference for `openclaw onboard` (interactive onboarding)
+- [OpenClaw setup agent](reference/cli/openclaw.md) — CLI reference and security model for the inference-backed OpenClaw setup and repair helper
+- [Pair](reference/cli/pair.md) — CLI reference for `openclaw pair` (approve a browser showing a pairing code)
+- [Pairing CLI](reference/cli/pairing.md) — CLI reference for `openclaw pairing` (approve/list pairing requests)
+- [Path](reference/cli/path.md) — CLI reference for `openclaw path` (inspect and edit workspace files via the `oc://` addressing scheme)
+- [Plugins CLI](reference/cli/plugins.md) — CLI reference for `openclaw plugins` (init, build, validate, lint, list, install, reload, marketplace, uninstall, enable/disable, doctor)
+- [Author plugins](reference/cli/plugins/authoring.md) — Scaffold, build, validate, and pack an OpenClaw plugin with `openclaw plugins init`
+- [Inspect and diagnose plugins](reference/cli/plugins/inspect-and-diagnose.md) — `plugins inspect`, `plugins doctor`, and `plugins registry` for plugin state, load failures, and the cold registry
+- [Install plugins](reference/cli/plugins/install.md) — Install sources and locators, trust and install policy, capability consent, and marketplace installs
+- [List installed plugins](reference/cli/plugins/list.md) — `plugins list` output and options, discovery diagnostics, and the persisted plugin index
+- [Marketplace feeds](reference/cli/plugins/marketplace.md) — `plugins marketplace` entries, list, and refresh, plus hosted feed trust and signed feed profiles
+- [Uninstall and update plugins](reference/cli/plugins/uninstall-and-update.md) — What `plugins uninstall` removes, how `plugins update` resolves sources, channels, pins, and integrity drift, and reloading edited plugins
+- [Policy](reference/cli/policy.md) — CLI reference for `openclaw policy` conformance checks
+- [Accept and watch policy state](reference/cli/policy/attestation.md) — Policy evidence, the attestation hash tuple, and `policy watch` drift detection
+- [Author a policy file](reference/cli/policy/authoring.md) — Enable the Policy plugin and author `policy.jsonc`, with a minimal example covering every supported section
+- [Policy findings, repair, and exit codes](reference/cli/policy/findings.md) — Every policy check id, what `doctor --fix` will and will not repair, and command exit codes
+- [Policy rule reference](reference/cli/policy/rules.md) — Every supported `policy.jsonc` rule, the OpenClaw state it observes, and when to use it
+- [Run and configure policy checks](reference/cli/policy/running-checks.md) — `policy check`, `policy compare`, and the `plugins.entries.policy.config` settings that govern them
+- [Scoped policy overlays](reference/cli/policy/scopes.md) — Use `scopes.<scopeName>` to hold specific agents or channels to stricter policy than the baseline
+- [Promos](reference/cli/promos.md) — CLI reference for `openclaw promos` (list and claim promotional model offers)
+- [Proxy](reference/cli/proxy.md) — CLI reference for `openclaw proxy`, including operator-managed proxy validation and the local debug proxy capture inspector
+- [QR](reference/cli/qr.md) — CLI reference for `openclaw qr` (generate mobile pairing QR + setup code)
+- [Reset](reference/cli/reset.md) — CLI reference for `openclaw reset` (reset local state/config)
+- [Resume](reference/cli/resume.md) — CLI reference for attaching the TUI to a recent Gateway session
+- [Sandbox CLI](reference/cli/sandbox.md) — Manage sandbox runtimes and inspect effective sandbox policy
+- [Secrets CLI](reference/cli/secrets.md) — CLI reference for `openclaw secrets` (store, reload, audit, configure, apply)
+- [Security CLI](reference/cli/security.md) — CLI reference for `openclaw security` (audit and fix common security footguns)
+- [Sessions](reference/cli/sessions.md) — CLI reference for listing, importing, archiving, deleting, and maintaining stored sessions
+- [Setup CLI](reference/cli/setup.md) — CLI reference for `openclaw setup` (system-agent chat with onboarding fallback)
+- [Skills CLI](reference/cli/skills.md) — CLI reference for `openclaw skills` (search/install/update/verify/list/info/check/library/workshop)
+- [openclaw status](reference/cli/status.md) — CLI reference for `openclaw status` (diagnostics, checks, usage snapshots)
+- [storage](reference/cli/storage.md) — List, initialize, and test configured storage locations
+- [System](reference/cli/system.md) — CLI reference for `openclaw system` (system events, heartbeat, presence)
+- [Templates](reference/cli/templates.md) — Author, inspect, and add Template bundles as ordinary agents
+- [Transcripts CLI](reference/cli/transcripts.md) — CLI reference for `openclaw transcripts` (list, show, and export stored transcripts)
+- [Triage](reference/cli/triage.md) — CLI reference for `openclaw triage` (sanitized diagnostics and agent handoff)
+- [openclaw tui](reference/cli/tui.md) — CLI reference for `openclaw tui` (Gateway-backed or local embedded terminal UI)
+- [Uninstall CLI](reference/cli/uninstall.md) — CLI reference for `openclaw uninstall` (remove gateway service + local data)
+- [Update](reference/cli/update.md) — CLI reference for `openclaw update` (updates, repair, and recovery cleanup)
+- [How an update runs](reference/cli/update/how-updates-run.md) — How `openclaw update` switches channels, checks the new version, hands off the restart, and updates a Git checkout
+- [Update repair and recovery](reference/cli/update/repair-and-recovery.md) — Recovering from a failed `openclaw update`, plus the `update repair` and `update cleanup` subcommands
+- [Update status and run history](reference/cli/update/status-and-history.md) — `openclaw update status` plus the durable run ledger, reports, and artifacts every update writes
+- [Users](reference/cli/users.md) — CLI reference for `openclaw users` (profiles, email aliases, and duplicate merges)
+- [Voicecall](reference/cli/voicecall.md) — CLI reference for `openclaw voicecall` (voice-call plugin command surface)
+- [Webhooks](reference/cli/webhooks.md) — CLI reference for `openclaw webhooks` (Gmail Pub/Sub setup and runner)
+- [Wiki](reference/cli/wiki.md) — CLI reference for `openclaw wiki` (memory-wiki vault status, search, compile, lint, apply, bridge, ChatGPT import, and Obsidian helpers)
+- [Workboard CLI](reference/cli/workboard.md) — CLI reference for `openclaw workboard` cards, dispatch, and worker runs
+- [Worker](reference/cli/worker.md) — Internal operator reference for the restricted cloud worker runtime
+- [Active memory](reference/concepts/active-memory.md) — Deep conversation-history recall that escalates only when rule-based memory recall is insufficient
+- [Advanced overrides and transcripts](reference/concepts/active-memory/advanced-options.md) — Escape hatches for thinking, fast mode, and the sub-agent prompt, plus exporting blocking sub-agent transcripts for debugging.
+- [Configuration reference](reference/concepts/active-memory/configuration.md) — Every plugins.entries.active-memory key: type, meaning, range, and default, plus the extra tuning fields.
+- [Enabling active memory](reference/concepts/active-memory/enabling.md) — Two ways to turn active memory on: the per-agent rememberAcrossConversations product setting, and the advanced plugin quick start.
+- [How active memory works](reference/concepts/active-memory/how-it-works.md) — The escalation flow, which surfaces run active memory, the two targeting paths, and the session types the advanced path allows.
+- [Memory tools](reference/concepts/active-memory/memory-tools.md) — The concrete recall tools the blocking sub-agent may call, and per-provider setups for built-in memory, LanceDB, and Lossless Claw.
+- [Recommended setup](reference/concepts/active-memory/recommended-setup.md) — The starter configuration to begin with, and the cold-start grace budget to set when upgrading from v2026.4.x.
+- [Session controls](reference/concepts/active-memory/session-controls.md) — Pause or resume active memory per session or globally, and surface its status, debug summary, and raw hidden prefix in a chat.
+- [Troubleshooting active memory](reference/concepts/active-memory/troubleshooting.md) — A checklist for when active memory does not run, and the common recall failures with their causes.
+- [Query modes, prompts, and models](reference/concepts/active-memory/tuning.md) — How much conversation the sub-agent sees, how eager it is about returning memory, and how its model is resolved.
+- [Agent runtime](reference/concepts/agent.md) — Agent runtime, workspace contract, and session bootstrap
+- [Agent bindings](reference/concepts/agent-bindings.md) — Route channel accounts and conversations to the right OpenClaw agent
+- [Agent loop](reference/concepts/agent-loop.md) — Agent loop lifecycle, streams, and wait semantics
+- [Agent runtimes](reference/concepts/agent-runtimes.md) — How OpenClaw separates model providers, models, channels, and agent runtimes
+- [Agent workspace](reference/concepts/agent-workspace.md) — Agent workspace: location, layout, and backup strategy
+- [Agents and Templates](reference/concepts/agents-and-templates.md) — When to make a new agent, how to give it a job, and how to package it as a Template
+- [Gateway architecture](reference/concepts/architecture.md) — WebSocket gateway architecture, components, and client flows
+- [Compaction](reference/concepts/compaction.md) — How OpenClaw summarizes long conversations to stay within model limits
+- [Context](reference/concepts/context.md) — Context: what the model sees, how it is built, and how to inspect it
+- [Context engine](reference/concepts/context-engine.md) — Context engine: pluggable context assembly, compaction, and subagent lifecycle
+- [Decision models](reference/concepts/decision-models.md) — Choose decision models and define typed choices, scores, and Boolean judgments
+- [Delegate architecture](reference/concepts/delegate-architecture.md) — Delegate architecture: running OpenClaw as a named agent on behalf of an organization
+- [Dreaming](reference/concepts/dreaming.md) — Background memory consolidation with light, deep, and REM phases plus a Dream Diary
+- [Experimental features](reference/concepts/experimental-features.md) — What experimental flags mean in OpenClaw and which ones are currently documented
+- [Features](reference/concepts/features.md) — OpenClaw capabilities across channels, routing, media, and UX.
+- [The main session](reference/concepts/main-session.md) — One rolling conversation across all your channels: the personal-agent default
+- [Managed worktrees](reference/concepts/managed-worktrees.md) — Run agent tasks in isolated git checkouts with automatic snapshots and cleanup
+- [Mantis](reference/concepts/mantis.md) — Mantis captures visual end-to-end evidence for live transport comparisons and focused candidate-only browser proofs, then attaches the artifacts to PRs.
+- [Mantis Slack desktop runbook](reference/concepts/mantis-slack-desktop-runbook.md) — Operator runbook for Mantis Slack desktop QA: GitHub dispatch, local CLI, warm VNC leases, hydrate modes, timing interpretation, artifacts, and failure handling.
+- [Markdown formatting](reference/concepts/markdown-formatting.md) — Markdown formatting pipeline for outbound channels
+- [Memory overview](reference/concepts/memory.md) — How OpenClaw remembers things across sessions
+- [Memory architecture](reference/concepts/memory-architecture.md) — End-to-end architecture of OpenClaw memory: tiers, provenance, dreaming, recall lanes, the user model, and standing intents
+- [Builtin memory engine](reference/concepts/memory-builtin.md) — The default SQLite-based memory backend with keyword, vector, and hybrid search
+- [Honcho memory](reference/concepts/memory-honcho.md) — AI-native cross-session memory via the Honcho plugin
+- [Memory provenance and deletion](reference/concepts/memory-provenance.md) — Trace session-derived memories, control ingestion, and preview or delete tracked memory artifacts
+- [Memory search](reference/concepts/memory-search.md) — How memory search finds relevant notes using embeddings and hybrid retrieval
+- [Messages](reference/concepts/messages.md) — Message flow, sessions, queueing, and reasoning visibility
+- [Model failover](reference/concepts/model-failover.md) — How OpenClaw rotates auth profiles and falls back across models
+- [Model providers](reference/concepts/model-providers.md) — Index of the model provider reference: quick rules, Control UI and keys, bundled provider plugins, and custom providers
+- [Control UI and API keys](reference/concepts/model-providers/control-ui-and-keys.md) — Configuring providers from Settings -> Models, plugin-owned provider behavior, and API key rotation.
+- [Custom providers and local runtimes](reference/concepts/model-providers/custom-providers.md) — Providers configured through models.providers: custom endpoints, base URLs, and local inference servers.
+- [Official provider plugins](reference/concepts/model-providers/official-provider-plugins.md) — Per-provider setup for the bundled provider plugins, the bundled provider table, and provider quirks.
+- [Quick rules](reference/concepts/model-providers/quick-rules.md) — Model refs, CLI helpers, the primary-model preservation rule, and the OpenAI provider/runtime split.
+- [Models CLI](reference/concepts/models.md) — How OpenClaw resolves provider/model refs, config keys, and the `/model` chat command
+- [Multi-agent routing](reference/concepts/multi-agent.md) — Multi-agent routing: agent boundaries, channel accounts, and bindings
+- [Multi-user mode](reference/concepts/multi-user.md) — How session ownership, presence, and human mentions work when several people operate one agent
+- [OAuth](reference/concepts/oauth.md) — OAuth in OpenClaw: token exchange, storage, and multi-account patterns
+- [Parallel specialist lanes](reference/concepts/parallel-specialist-lanes.md) — Run parallel specialist agents without clogging shared model and tool capacity
+- [Personal agent benchmark pack](reference/concepts/personal-agent-benchmark-pack.md) — Local qa-channel scenarios for privacy-preserving personal assistant workflow checks.
+- [Presence](reference/concepts/presence.md) — How OpenClaw presence entries are produced, merged, and displayed
+- [Progress drafts](reference/concepts/progress-drafts.md) — Progress drafts: one visible work-in-progress message that updates while an agent runs
+- [QA overview](reference/concepts/qa-e2e-automation.md) — Index of the private QA stack: qa-lab, qa-channel, repo-backed scenarios, live transport lanes, transport adapters, and reporting.
+- [Channel QA reference](reference/concepts/qa-e2e-automation/channel-qa-reference.md) — Shared CLI flags for the real-transport lanes and the Buzz, Telegram, and Discord lane reference.
+- [Command surface](reference/concepts/qa-e2e-automation/command-surface.md) — The `pnpm openclaw qa` subcommand table and the profile-backed `qa run` selector.
+- [Extending the QA stack](reference/concepts/qa-e2e-automation/extending-the-stack.md) — Repo-backed seed assets, provider mock lanes, transport adapters, and what adding a channel takes.
+- [Operator flow](reference/concepts/qa-e2e-automation/operator-flow.md) — Bring up QA Lab and run the observability, Matrix, Discord Mantis, Slack desktop, and credential-pool lanes.
+- [QA reporting](reference/concepts/qa-e2e-automation/qa-reporting.md) — QA report and evidence artifacts, the character-eval judged report, and where each run writes them.
+- [Scenario coverage](reference/concepts/qa-e2e-automation/scenario-coverage.md) — How taxonomy coverage IDs, scenario YAML, and profiles select what a QA run executes, plus the Multipass suite runner.
+- [Slack QA](reference/concepts/qa-e2e-automation/slack-qa.md) — The Slack QA lane and the workspace, app, and scope provisioning it needs.
+- [WhatsApp QA and credentials](reference/concepts/qa-e2e-automation/whatsapp-and-credentials.md) — The WhatsApp QA lane and the shared Convex credential pool used by the real-transport lanes.
+- [Command queue](reference/concepts/queue.md) — Auto-reply queue modes, shared background capacity, and per-session overrides
+- [Steering queue](reference/concepts/queue-steering.md) — How active-run steering queues messages at runtime boundaries
+- [Recommended models](reference/concepts/recommended-models.md) — How the curated recommended model list is reviewed, ordered, and published
+- [Retry policy](reference/concepts/retry.md) — Retry policy for outbound provider calls
+- [Runtime execution profiles](reference/concepts/runtime-profiles.md) — How the standalone build selects host execution capabilities and where dynamic code runs
+- [Session management](reference/concepts/session.md) — How OpenClaw manages conversation sessions
+- [Session synchronization and attachment](reference/concepts/session-attachment.md) — How Gateway-owned sessions continue across the Control UI, terminal, CLI, mobile clients, and coding harnesses
+- [Session controller](reference/concepts/session-controller.md) — Session scheduling ownership, input custody, and retained settlement
+- [Session pruning](reference/concepts/session-pruning.md) — Trimming old tool results to keep context lean and caching efficient
+- [Session search](reference/concepts/session-search.md) — Search past session transcripts and reopen the matching context
+- [Session state awareness](reference/concepts/session-state.md) — Durable session state signal log: state versions, watchers, stale-state notices, and reconciliation
+- [Session tools](reference/concepts/session-tool.md) — Agent tools for session creation, cross-session status, recall, messaging, and sub-agent orchestration
+- [SOUL.md personality guide](reference/concepts/soul.md) — Use SOUL.md to give your OpenClaw agent an actual voice instead of generic assistant sludge
+- [Standing intents](reference/concepts/standing-intents.md) — Remember event-conditioned future actions without relying on long conversational context
+- [Storage locations](reference/concepts/storage-locations.md) — Named storage destinations, explicit initialization, encryption, and provider configuration
+- [Streaming and chunking](reference/concepts/streaming.md) — Streaming + chunking behavior (block replies, channel preview streaming, mode mapping)
+- [Subagent yield handoff](reference/concepts/subagent-yield-handoff.md) — Ownership of subagent completion and progress when a requester yields
+- [System prompt](reference/concepts/system-prompt.md) — What the OpenClaw system prompt contains and how it is assembled
+- [Timezones](reference/concepts/timezone.md) — Where timezones show up in OpenClaw — envelopes, tool payloads, runtime context
+- [TypeBox](reference/concepts/typebox.md) — TypeBox schemas as the single source of truth for the gateway protocol
+- [Typing indicators](reference/concepts/typing-indicators.md) — When OpenClaw shows typing indicators and how to tune them
+- [Usage tracking](reference/concepts/usage-tracking.md) — Usage tracking surfaces and credential requirements
+- [User model](reference/concepts/user-model.md) — Manage durable user preferences and your Gateway profile identity
+- [Date and time](reference/date-time.md) — Date and time handling across envelopes, prompts, tools, and channel plugins
+- [Diagnostics flags](reference/diagnostics/flags.md) — Diagnostics flags for targeted debug logs
+- [Docs map](reference/docs_map.md) — Generated heading map for OpenClaw docs pages
+- [Gateway runbook](reference/gateway.md) — Runbook for the Gateway service, lifecycle, and operations
+- [1Password](reference/gateway/1password.md) — Use the 1Password plugin, bundled skill, or official MCP with OpenClaw
+- [Audit history](reference/gateway/audit.md) — Metadata-only activity history plus durable run identity and decision receipts
+- [Authentication](reference/gateway/authentication.md) — Model authentication: OAuth, API keys, Claude CLI reuse, and Anthropic setup-token
+- [Background exec and process tool](reference/gateway/background-process.md) — Background exec execution and process management
+- [Bonjour discovery](reference/gateway/bonjour.md) — Bonjour/mDNS discovery + debugging (Gateway beacons, clients, and common failure modes)
+- [CLI backends](reference/gateway/cli-backends.md) — CLI backends: run agent turns through a local AI CLI, with an optional MCP tool bridge
+- [Building a Gateway client](reference/gateway/clients.md) — Build a third-party operator or WebChat client for the Gateway WebSocket protocol
+- [Cloud Sessions](reference/gateway/cloud-sessions.md) — Run sessions on paired devices or throwaway cloud machines while the Gateway keeps the transcript, workspace, and credentials
+- [Cloud Workers](reference/gateway/cloud-workers.md) — Dispatch session work to throwaway cloud machines with OpenClaw worker turns or Codex remote execution
+- [Cloud device desktop](reference/gateway/cloud-workers/desktop.md) — Watch or control a desktop-capable cloud worker from the Control UI
+- [Dispatching a cloud session](reference/gateway/cloud-workers/dispatching-a-session.md) — Eligibility gates, the Control UI Place picker, cloud child sessions, and runtime support
+- [Cloud environment file](reference/gateway/cloud-workers/environment-file.md) — Declare cloud project setup and lifecycle commands with a host-mode devcontainer file
+- [Worker-local inference](reference/gateway/cloud-workers/native-inference.md) — Worker inference on an externally managed paired worker host
+- [Per-project default profiles](reference/gateway/cloud-workers/per-project-default-profiles.md) — Map a repository to a default cloud worker profile and retain resource identity for cleanup
+- [Placement and machine selection](reference/gateway/cloud-workers/placement-and-machine-selection.md) — Codex on a paired device, either harness on a cloud profile, and per-session operating system and machine class
+- [Cloud worker security model](reference/gateway/cloud-workers/security-model.md) — Worker ingress, tool authority, minted credentials, enrollment binding, and credential boundaries
+- [Cloud session lifecycle and durability](reference/gateway/cloud-workers/session-lifecycle.md) — Dispatch, workspace reconciliation, moves, stop and reclaim, recovery, and what survives a dead machine
+- [Worker setup and bundle installation](reference/gateway/cloud-workers/setup-and-bundle-installation.md) — The setup command (safe to repeat), Gateway-prepared runtime archives, and building a custom node package
+- [Cloud worker troubleshooting](reference/gateway/cloud-workers/troubleshooting.md) — Symptoms and fixes for profile advertisement, authorization, bootstrap, enrollment, and teardown
+- [Verify a cloud worker profile](reference/gateway/cloud-workers/verify-the-profile.md) — Validate config, confirm the profile is advertised, and prove a new cloud worker profile end to end
+- [Cloud worker warm images](reference/gateway/cloud-workers/warm-images.md) — Capture, reuse, refresh, and recover prepared cloud-worker images
+- [Cloudflare Tunnel and Access](reference/gateway/cloudflare-access.md) — Publish a loopback Gateway through a Cloudflare Tunnel and authenticate every client with Cloudflare Access
+- [Configuration — agents](reference/gateway/config-agents.md) — Agent defaults, multi-agent routing, session, messages, and talk config
+- [Configuration — per-agent entries and multi-agent routing](reference/gateway/config-agents/entries-and-multi-agent.md) — agents.entries overrides, multiAgent bindings, binding match fields, and access profiles
+- [Configuration — agent heartbeat, compaction, and streaming](reference/gateway/config-agents/heartbeat-compaction-and-streaming.md) — Heartbeat migration, system agent, compaction, context pruning, block streaming, and typing indicators
+- [Configuration — messages and talk](reference/gateway/config-agents/messages-and-talk.md) — messages.* delivery, prefixes, ack reactions, queueing, TTS, and talk.* defaults
+- [Configuration — agent models](reference/gateway/config-agents/models.md) — Default model, fallback chain, per-purpose model slots, and model selection scope
+- [Configuration — agent runtime and CLI backends](reference/gateway/config-agents/runtime-and-cli-backends.md) — Agent runtime policy on providers and models, CLI backend selection, and GPT-5 personality
+- [Configuration — agent sandboxing](reference/gateway/config-agents/sandbox.md) — The agents.defaults.sandbox block: image, mounts, workspace mode, and network policy
+- [Configuration — agent sessions](reference/gateway/config-agents/sessions.md) — session.* scope, identity links, reset policy, sharing, and retention
+- [Configuration — agent workspace and bootstrap](reference/gateway/config-agents/workspace-and-bootstrap.md) — Agent workspace paths, bootstrap injection, context budgets, image handling, and timezone
+- [Configuration — automations and media template variables](reference/gateway/config-automation.md) — Automation config under cron plus the media model template variable surface
+- [Configuration — browser, UI, and desktop](reference/gateway/config-browser-ui-desktop.md) — Browser automation, Control UI presentation, and desktop or paired-node config
+- [Configuration — channels](reference/gateway/config-channels.md) — Channel configuration: access control, pairing, per-channel keys across Slack, Discord, Telegram, WhatsApp, Matrix, iMessage, and more
+- [Configuration — chat commands](reference/gateway/config-channels/commands.md) — The commands.* block: native and text command surfaces, bash, config writes, and owner allowlists
+- [Configuration — community chat channels](reference/gateway/config-channels/community-chat.md) — Per-channel config keys for Discord, Matrix, and IRC
+- [Configuration — group mention gating and history](reference/gateway/config-channels/mention-gating-and-history.md) — Group mention gating, visible reply modes, DM history limits, and self-chat mode
+- [Configuration — personal messaging channels](reference/gateway/config-channels/personal-messaging.md) — Per-channel config keys for WhatsApp, Telegram, Signal, iMessage, and LINE
+- [Configuration — shared channel policies](reference/gateway/config-channels/shared-policies.md) — Shared channel keys: DM and group access policies, model overrides, channel defaults, and multi-account setup
+- [Configuration — workplace chat channels](reference/gateway/config-channels/workplace-chat.md) — Per-channel config keys for Google Chat, Slack, Mattermost, and Microsoft Teams
+- [Configuration — cloud worker environments](reference/gateway/config-cloud-workers.md) — Cloud worker profiles under cloudWorkers, including Crabbox and static SSH development
+- [Configuration — MCP, skills, and plugins](reference/gateway/config-extensions.md) — Extension config: MCP servers, skills, plugin entries, and the canvas widget presenter
+- [Configuration — gateway](reference/gateway/config-gateway.md) — Gateway config: bind, auth, roles, Control UI, terminal, remote, nodes, TLS, and reload
+- [Configuration — hooks](reference/gateway/config-hooks.md) — Hook config: HTTP contract, agent payload, session policy, mapping, retries, and Gmail
+- [Configuration — audit, logging, diagnostics, and telemetry](reference/gateway/config-observability.md) — Observability config: audit, logging, diagnostics, and telemetry keys
+- [Configuration — runtime basics](reference/gateway/config-runtime.md) — Runtime config: worktree storage, capacity, and acceleration, model routing, discovery, updates, ACP, and the wizard
+- [Configuration — environment, secrets, and includes](reference/gateway/config-secrets-env.md) — Environment variables, secret providers, auth storage, and $include config splitting
+- [Configuration — tools and custom providers](reference/gateway/config-tools.md) — Tools config (policy, experimental toggles, provider-backed tools) and custom provider/base-URL setup
+- [Configuration — built-in tool settings](reference/gateway/config-tools/built-in-tools.md) — Per-tool settings for exec, delegated administration, loop detection, web search and fetch, media understanding, and the plan tool
+- [Configuration — custom providers and base URLs](reference/gateway/config-tools/custom-providers.md) — models.providers registration, base-URL trust, and the full provider field reference
+- [Configuration — GitHub identity for agent tools](reference/gateway/config-tools/github-identity.md) — tools.github: the shared managed GitHub CLI identity, its refresh, and its execution boundaries
+- [Configuration — provider examples](reference/gateway/config-tools/provider-examples.md) — Worked custom-provider configurations for Cerebras, Kimi, llama.cpp, LM Studio, MiniMax, Moonshot, OpenCode, Synthetic, and Z.AI
+- [Configuration — cross-agent, session, and subagent tools](reference/gateway/config-tools/sessions-and-subagents.md) — tools.agentToAgent, tools.sessions visibility, sessions_spawn attachments, and subagent defaults
+- [Configuration — tool policy](reference/gateway/config-tools/tool-policy.md) — Tool profiles, groups, sandbox tool gates, code mode, and allow/deny policy layers
+- [Configuration](reference/gateway/configuration.md) — Configuration overview: common tasks, quick setup, and links to the Configuration reference
+- [Configuration examples](reference/gateway/configuration-examples.md) — Schema-accurate configuration examples for common OpenClaw setups
+- [Configuration reference](reference/gateway/configuration-reference.md) — Gateway config reference for core OpenClaw keys, defaults, and links to dedicated subsystem references
+- [Common tasks](reference/gateway/configuration/common-tasks.md) — Task-oriented configuration recipes: channels, models, access, sessions, sandboxing, cron, hooks, routing, and $include
+- [Config RPC (programmatic updates)](reference/gateway/configuration/config-rpc.md) — Writing config over the gateway API: config.get, config.patch, config.apply, and replacePaths
+- [Environment variables](reference/gateway/configuration/environment-variables.md) — Env var sources and precedence, inline env config, shell env import, substitution, and secret refs
+- [Config hot reload](reference/gateway/configuration/hot-reload.md) — How the Gateway applies config snapshots, which changes hot-apply, and which need a restart
+- [Diagnostics export](reference/gateway/diagnostics.md) — Create shareable Gateway diagnostics bundles for bug reports
+- [Discovery and transports](reference/gateway/discovery.md) — Node discovery and transports (Bonjour, Tailscale, SSH) for finding the Gateway
+- [Doctor](reference/gateway/doctor.md) — Doctor command: health checks, config migrations, and repair steps
+- [What doctor checks](reference/gateway/doctor/checks.md) — Summary of every repair, migration, and health check doctor runs
+- [Config and migration repairs](reference/gateway/doctor/config-migrations.md) — Config normalization, legacy config key migrations, and update-time schema publication
+- [Gateway, service, and security checks](reference/gateway/doctor/gateway-and-services.md) — Gateway service, pairing, security, workspace status, auth, health, and supervisor checks (checks 8-17)
+- [Provider and route repairs](reference/gateway/doctor/provider-repairs.md) — Provider override, browser, OAuth TLS, and route repairs (checks 2b-2g)
+- [Run doctor](reference/gateway/doctor/running.md) — Run doctor, pick a mode, and read the read-only lint report
+- [State, session, and plugin repairs](reference/gateway/doctor/state-and-sessions.md) — Disk layout, cron store, session, model auth, sandbox, and plugin install repairs (checks 3-7b)
+- [Workspace tips and Dreams UI actions](reference/gateway/doctor/workspace-and-dreams.md) — Config write, workspace tips, repointed aliases, and the Control UI Dreams actions
+- [Embedding OpenClaw](reference/gateway/embedding.md) — Supervise the OpenClaw Gateway as a child process from Electron or another host app
+- [Gateway integrations for external apps](reference/gateway/external-apps.md) — Current integration path for external apps, scripts, dashboards, CI jobs, and IDE extensions
+- [Gateway lock](reference/gateway/gateway-lock.md) — Gateway singleton guard: file lock plus WebSocket/HTTP bind
+- [Health checks](reference/gateway/health.md) — Health check commands and gateway health monitoring
+- [Heartbeat migration](reference/gateway/heartbeat.md) — Migrate retired heartbeat monitors to ordinary automation jobs
+- [Local model services](reference/gateway/local-model-services.md) — Start local model servers on demand before OpenClaw model and embedding requests
+- [Local models](reference/gateway/local-models.md) — Run OpenClaw with hardware-aware local model setup or an existing model server
+- [Gateway logging](reference/gateway/logging.md) — Logging surfaces, file logs, WS log styles, and console formatting
+- [Multiple gateways](reference/gateway/multiple-gateways.md) — Run multiple OpenClaw Gateways on one host (isolation, ports, and profiles)
+- [OpenAI chat completions](reference/gateway/openai-http-api.md) — Expose an OpenAI-compatible /v1/chat/completions HTTP endpoint from the Gateway
+- [OpenResponses API](reference/gateway/openresponses-http-api.md) — Expose an OpenResponses-compatible /v1/responses HTTP endpoint from the Gateway
+- [OpenShell](reference/gateway/openshell.md) — Use OpenShell as a managed sandbox backend for OpenClaw agents
+- [OpenShell worker inference](reference/gateway/openshell-workers.md) — Run worker-local inference with OpenShell-brokered credentials without OCE or Kubernetes
+- [OpenTelemetry export](reference/gateway/opentelemetry.md) — Index of the OpenClaw OpenTelemetry export documentation, one page per reader job
+- [OpenTelemetry configuration](reference/gateway/opentelemetry/configuration.md) — Signal toggles, the diagnostics.otel field reference, OTEL_* environment variables, and sampling and flushing
+- [Model calls and exported metrics](reference/gateway/opentelemetry/model-calls-and-metrics.md) — What a model-call span measures, Claude Code CLI turn fidelity, and the full exported metric catalog
+- [Privacy and trace context](reference/gateway/opentelemetry/privacy-and-trace-context.md) — Continue an upstream W3C trace through the Gateway WebSocket, and control what content leaves the process
+- [Set up OpenTelemetry export](reference/gateway/opentelemetry/setup.md) — Install and enable diagnostics-otel, see which processes export, check exporter health, and turn export off
+- [Exported spans and diagnostic events](reference/gateway/opentelemetry/spans-and-events.md) — The exported span catalog with its attributes, and the diagnostic event catalog behind the metrics and spans
+- [Operator scopes](reference/gateway/operator-scopes.md) — Operator roles, scopes, and approval-time checks for Gateway clients
+- [Node pairing](reference/gateway/pairing.md) — Node capability approvals: how nodes gain command exposure after device pairing
+- [Session permission modes](reference/gateway/permission-modes.md) — Session permission modes, workspace boundaries, and escalation reviewers
+- [Portals](reference/gateway/portals.md) — Expose agent-run development servers to the operator through the Gateway
+- [PostgreSQL operator guide](reference/gateway/postgresql.md) — Set up and operate a PostgreSQL-backed Gateway, with support boundaries, ports, backups, and recovery
+- [Prometheus metrics](reference/gateway/prometheus.md) — Expose OpenClaw diagnostics as Prometheus text metrics through the diagnostics-prometheus plugin
+- [Gateway protocol](reference/gateway/protocol.md) — Gateway WebSocket protocol: handshake, frames, versioning
+- [Gateway protocol auth](reference/gateway/protocol/auth.md) — Handshake auth paths, device identity, pairing signatures, and TLS pinning
+- [Gateway protocol handshake](reference/gateway/protocol/handshake.md) — Connect frame, hello-ok payload, client capabilities, roles, and scopes
+- [Gateway protocol ledger RPCs](reference/gateway/protocol/ledgers.md) — Audit ledger RPCs, scopes, cursors, and payloads
+- [Gateway protocol operator methods](reference/gateway/protocol/operator-methods.md) — Operator helper methods, exec approvals, and agent delivery fallback
+- [Gateway protocol presence and events](reference/gateway/protocol/presence.md) — Presence snapshots, node host stats, and broadcast event scoping
+- [Gateway protocol session bootstrap and events](reference/gateway/protocol/rpc-bootstrap-and-events.md) — Session list bootstrap, the common event families, and the node helper and exec lifecycle contracts
+- [Gateway protocol device, node, and approval methods](reference/gateway/protocol/rpc-devices-nodes-and-approvals.md) — Gateway RPC families for device pairing, node invoke, approvals, Control UI commands, and automation
+- [Gateway protocol RPC methods](reference/gateway/protocol/rpc-methods.md) — RPC method families, discovery, session list bootstrap, and event families
+- [Gateway protocol session control](reference/gateway/protocol/rpc-session-control.md) — The session control RPC family: listing, sending, streaming, forking, and lifecycle methods
+- [Gateway protocol system and channel methods](reference/gateway/protocol/rpc-system-and-channels.md) — Gateway RPC families for system status, memory, models, channels, plugins, messaging, and the operator terminal
+- [Gateway protocol talk, config, and agent methods](reference/gateway/protocol/rpc-talk-config-and-agents.md) — Gateway RPC families for Talk and TTS, secrets and config, updates, the wizard, and agent workspaces
+- [Gateway protocol transport](reference/gateway/protocol/transport.md) — Gateway WS transport: packages, frame shapes, limits, and WebRTC Talk control
+- [Gateway protocol versioning](reference/gateway/protocol/versioning.md) — Protocol version constants, the N-1 node window, and client defaults
+- [Remote access](reference/gateway/remote.md) — Remote access using Gateway WS, SSH tunnels, and tailnets
+- [Restart recovery](reference/gateway/restart-recovery.md) — Gateway restart recovery for interrupted root executions and recorded yield waits
+- [Sandbox vs tool policy vs elevated](reference/gateway/sandbox-vs-tool-policy-vs-elevated.md) — Why a tool is blocked: sandbox runtime, tool allow/deny policy, and elevated exec gates
+- [Sandboxing](reference/gateway/sandboxing.md) — How OpenClaw sandboxing works: modes, scopes, workspace access, and images
+- [Crabbox backend](reference/gateway/sandboxing/crabbox-backend.md) — Tool-call isolation on a Crabbox-leased machine with fixed runtime identity and repository-owned execution
+- [Docker backend](reference/gateway/sandboxing/docker-backend.md) — Docker backend defaults, the restricted runtime posture, DooD constraints, and the sandboxed browser
+- [Images and setup](reference/gateway/sandboxing/images-and-setup.md) — Building the default, common, and browser sandbox images, and the network and certificate defaults
+- [Modes, scope, and backend](reference/gateway/sandboxing/modes-scope-and-backend.md) — The three settings that control when sandboxing applies and how many environments are created
+- [Multiple folders for one agent](reference/gateway/sandboxing/multiple-folders-for-one-agent.md) — Docker bind mounts for extra host folders, their access modes, and the bind security rules
+- [OpenShell backend](reference/gateway/sandboxing/openshell-backend.md) — The OpenShell managed sandbox, its mirror and remote workspace modes, and its lifecycle
+- [Podman backend](reference/gateway/sandboxing/podman-backend.md) — Selecting the native Podman CLI, rootless user mapping, and Podman-outside-of-Podman constraints
+- [setupCommand (one-time container setup)](reference/gateway/sandboxing/setup-command.md) — The one-time container setup hook, where it is configured, and its common pitfalls
+- [SSH backend](reference/gateway/sandboxing/ssh-backend.md) — Sandboxing tools on an arbitrary SSH-accessible machine, and its remote workspace as the source of truth
+- [Supported capability matrix](reference/gateway/sandboxing/supported-capability-matrix.md) — What each sandbox backend supports for shell, files, workspace, network, browser, and plugin tools
+- [What gets sandboxed](reference/gateway/sandboxing/what-gets-sandboxed.md) — Which tool calls move into the sandbox and which stay on the Gateway host
+- [Workspace access](reference/gateway/sandboxing/workspace-access.md) — The none, ro, and rw workspace access modes, the role-required cap, and skill mirroring
+- [Secrets management](reference/gateway/secrets.md) — Secrets management: SecretRef contract, shared secret store, runtime snapshots, and safe one-way scrubbing
+- [Secrets apply plan contract](reference/gateway/secrets-plan-contract.md) — Contract for `secrets apply` plans: target validation, path matching, and SQLite auth-profile target scope
+- [Secrets integration examples](reference/gateway/secrets/integration-examples.md) — Exec provider recipes for external secret managers, MCP server environment variables, and sandbox SSH
+- [Secrets operations and behavior](reference/gateway/secrets/operations.md) — Supported surfaces, precedence, activation triggers, degraded signals, and the audit and configure workflow
+- [Secrets runtime model](reference/gateway/secrets/runtime-model.md) — How the Gateway resolves, injects, and isolates secrets at runtime
+- [Shared secret store and egress proxy](reference/gateway/secrets/secret-store-and-egress.md) — The shared secret store, the default-off secret egress proxy, and file-backed API keys
+- [SecretRef contract and provider config](reference/gateway/secrets/secretref-contract.md) — SecretRef sources, id grammar, validation rules, and provider configuration
+- [Security](reference/gateway/security.md) — Trust model, safe defaults, and hardening guidance for running OpenClaw
+- [Access control and allowlists](reference/gateway/security/access-control.md) — Who can reach the agent: DM policy, allowlists, DM session isolation, context visibility, and command authorization
+- [Security audit checks](reference/gateway/security/audit-checks.md) — Reference catalog of checkIds emitted by openclaw security audit
+- [Browser control risks](reference/gateway/security/browser-control.md) — What giving the model a real browser exposes, and the SSRF policy that bounds it
+- [Dependency locking](reference/gateway/security/dependency-locking.md) — How OpenClaw reviews dependency changes and packages plugin runtime dependencies
+- [Gateway exposure runbook](reference/gateway/security/exposure-runbook.md) — Pre-flight and rollback checklist before exposing an OpenClaw Gateway beyond loopback
+- [Hardened baselines](reference/gateway/security/hardened-baseline.md) — Copy/paste Gateway configurations that keep the deployment private, paired, and tool-restricted
+- [Network exposure](reference/gateway/security/network-exposure.md) — Bind, firewall, discovery, Gateway auth, Tailscale, reverse proxy, and Control UI exposure settings
+- [Operator incident response](reference/gateway/security/operator-incident-response.md) — Contain, rotate, audit, and collect evidence after a suspected compromise of your own Gateway
+- [Prompt injection](reference/gateway/security/prompt-injection.md) — How untrusted content reaches the model, what OpenClaw does about it, and which layers you still have to enforce
+- [Rate limiting](reference/gateway/security/rate-limiting.md) — Reference for every Gateway rate limit: pre-auth socket budgets and lockouts, browser and webhook throttles, the control-plane write backstop, ACP session caps, and restart cooldown
+- [Running the security audit](reference/gateway/security/running-the-audit.md) — What `openclaw security audit` inspects and the order to fix its findings in
+- [Secrets, storage, and logs](reference/gateway/security/secrets-and-storage.md) — What OpenClaw writes to disk, which files hold credentials, and how logs and transcripts are handled
+- [Secure file operations](reference/gateway/security/secure-file-operations.md) — How OpenClaw handles local file access safely, including native Windows credential checks
+- [Tool and agent permissions](reference/gateway/security/tool-permissions.md) — Cross-provider messaging, control-plane tools, node execution, plugins, sandboxing, and per-agent access profiles
+- [Security trust model](reference/gateway/security/trust-model.md) — The trust boundary OpenClaw supports, the controls it does and does not provide, and how to report a vulnerability
+- [Give your Gateway a stable HTTPS URL](reference/gateway/stable-https-url.md) — Give a loopback-only Gateway a stable, tailnet-only HTTPS URL with Tailscale Serve
+- [Tailscale](reference/gateway/tailscale.md) — Integrated Tailscale Serve/Funnel for the Gateway dashboard
+- [Usage telemetry and update checks](reference/gateway/telemetry.md) — Daily update requests, update-outcome reports, approximate location, optional anonymous feature statistics, and privacy controls
+- [Tools invoke API](reference/gateway/tools-invoke-http-api.md) — Invoke a single tool directly via the Gateway HTTP endpoint
+- [Troubleshooting](reference/gateway/troubleshooting.md) — Index of the deep gateway troubleshooting runbook, grouped by symptom area
+- [Agent replies and Control UI](reference/gateway/troubleshooting/agent-replies-and-control-ui.md) — Storage errors, missing replies, and dashboard or Control UI connectivity and auth codes
+- [Channel delivery and tools](reference/gateway/troubleshooting/channel-delivery-and-tools.md) — Channels that connect but do not deliver, automation delivery, and node or browser tool failures
+- [Config validation and checks](reference/gateway/troubleshooting/config-validation-and-probes.md) — Recovering from a rejected config and reading gateway check warnings
+- [Gateway service and process](reference/gateway/troubleshooting/gateway-service-and-process.md) — The managed gateway service not running, macOS launchd faults, and high-memory exits
+- [Skills and model providers](reference/gateway/troubleshooting/skills-and-model-providers.md) — Skill root containment, Anthropic 429s, upstream 403s, and local OpenAI-compatible backends
+- [Updates and rollbacks](reference/gateway/troubleshooting/updates-and-rollbacks.md) — Symptoms that appear after an update, a rollback, or a split-brain install of the Gateway
+- [Trusted proxy auth](reference/gateway/trusted-proxy-auth.md) — Delegate gateway authentication to a trusted reverse proxy (Pomerium, Caddy, nginx + OAuth)
+- [Help](reference/help.md) — Help hub: common fixes, install sanity, and where to look when something breaks
+- [Debugging](reference/help/debugging.md) — Debugging tools: watch mode, raw model streams, and tracing reasoning leakage
+- [Environment variables](reference/help/environment.md) — Where OpenClaw loads environment variables and the precedence order
+- [FAQ](reference/help/faq.md) — Frequently asked questions about OpenClaw setup, configuration, and usage
+- [FAQ: first-run setup](reference/help/faq-first-run.md) — FAQ: quick-start and first-run setup — install, onboard, auth, subscriptions, initial failures
+- [FAQ: providers, hardware, and hosting](reference/help/faq-first-run/providers-and-hosting.md) — FAQ: provider auth and limits, model choice, hardware, and where to run the Gateway
+- [FAQ: quick start and first-run setup](reference/help/faq-first-run/quick-start.md) — FAQ: install, onboarding, first-run failures, builds, and subscription basics
+- [FAQ: models and auth](reference/help/faq-models.md) — FAQ: model defaults, selection, aliases, switching, failover, and auth profiles
+- [Chat commands, aborting tasks, and stopping a run](reference/help/faq/chat-commands-and-stopping.md) — Hiding system messages, cancelling runs, cross-context messaging, and the steering queue
+- [Config basics](reference/help/faq/config-basics.md) — Config format and location, restarts, web search, config.apply recovery, and browser control
+- [Env vars and .env loading](reference/help/faq/env-vars.md) — How OpenClaw loads environment variables and why service starts lose them
+- [Gateway ports, already running, and remote mode](reference/help/faq/gateway-ports-and-remote-mode.md) — Gateway ports, remote-mode clients, bind addresses, and running more than one Gateway
+- [Logging and debugging](reference/help/faq/logging-and-debugging.md) — Where logs are, service start and restart, and what to check when replies never arrive
+- [Media and attachments](reference/help/faq/media-and-attachments.md) — Why a generated image or PDF was not delivered to chat
+- [Remote gateways and nodes](reference/help/faq/remote-gateways-and-nodes.md) — Command propagation, Tailscale setups, multi-device nodes, and applying config remotely
+- [Sandboxing and memory](reference/help/faq/sandboxing-and-memory.md) — Sandbox modes, host folder binds, and how agent memory persists
+- [Security and access control](reference/help/faq/security-and-access-control.md) — Exposure, prompt injection, third-party skills, pairing, and how much autonomy to grant
+- [Sessions and multiple chats](reference/help/faq/sessions-and-chats.md) — Fresh sessions, context truncation, full resets, groups, and multi-agent setups
+- [Skills and automation](reference/help/faq/skills-and-automation.md) — Customizing skills, per-task models, subagents, cron jobs, and background runs
+- [What is OpenClaw?](reference/help/faq/what-is-openclaw.md) — What OpenClaw is, who it is for, how it is funded, and how it compares
+- [Where things live on disk](reference/help/faq/where-things-live-on-disk.md) — Data locations, AGENTS.md and SOUL.md placement, backups, and uninstalling
+- [Scripts](reference/help/scripts.md) — Repository scripts: purpose, scope, and safety notes
+- [Get support](reference/help/support.md) — Official OpenClaw support, safe diagnostics, and separate bug and security reporting routes
+- [Testing](reference/help/testing.md) — Index of the OpenClaw testing kit, one page per reader job
+- [Testing: live suites](reference/help/testing-live.md) — Live (network-touching) tests: model matrix, CLI backends, ACP, media providers, credentials
+- [ACP bind and Codex app-server lanes](reference/help/testing-live/acp-and-codex.md) — The live ACP conversation-bind smoke and the plugin-owned Codex app-server harness smoke
+- [CLI backend and APNs lanes](reference/help/testing-live/cli-backends.md) — Live CLI backend smoke (Claude, Gemini, other local CLIs) and the APNs HTTP/2 proxy reachability check
+- [OpenAI long context and the live model matrix](reference/help/testing-live/long-context-and-matrix.md) — The OpenAI long-context proof runs, the recommended live recipes, and the curated model matrix
+- [Media provider live lanes](reference/help/testing-live/media-providers.md) — Deepgram, BytePlus, ComfyUI, and the shared image/music/video generation live sweeps
+- [Live model smoke (profile keys)](reference/help/testing-live/model-smoke.md) — The two-layer live model smoke: direct completion and the gateway + dev agent pipeline
+- [Quick live smokes and the Android node sweep](reference/help/testing-live/quick-smokes.md) — Ad hoc local media/voice smokes plus the Android node capability sweep
+- [Testing: updates and plugins](reference/help/testing-updates-plugins.md) — How OpenClaw validates update paths, package migrations, and plugin install/update behavior
+- [Behavioral proof scenarios](reference/help/testing/boundary-scenarios.md) — Request, paid-work, recovery, default, and measurement proof contracts
+- [Contract tests](reference/help/testing/contracts.md) — Plugin and channel contract test commands, categories, and when to run them
+- [Control UI protocol load](reference/help/testing/control-ui-load.md) — Measure fixed-duration Control UI protocol load against an isolated Gateway
+- [Docker test runners](reference/help/testing/docker.md) — The Docker works-in-Linux runners, their scheduler, lanes, and env vars
+- [Test fixture recipes](reference/help/testing/fixtures.md) — Temporary directories, module mocks, database cleanup, watchers, and skill eval fixtures
+- [Live and Docker/Parallels workflows](reference/help/testing/live-workflows.md) — Live provider debugging lanes plus the Docker and Parallels smokes that support them
+- [QA-specific runners](reference/help/testing/qa-runners.md) — The qa-lab command surface, shared Convex credentials, and adding a channel to QA
+- [Test suites and commands](reference/help/testing/suites.md) — The unit, e2e, and live suites, which one to run, and the offline regression checks
+- [Writing and adding tests](reference/help/testing/writing-tests.md) — Behavioral integration proof, test value and cost, and regression authoring
+- [General troubleshooting](reference/help/troubleshooting.md) — Symptom first troubleshooting hub for OpenClaw
+- [Install](reference/install.md) — Install OpenClaw - desktop app downloads, installer script, npm/pnpm/bun, from source, Docker, and more
+- [Ansible](reference/install/ansible.md) — Automated, hardened OpenClaw host installation with Ansible, firewall isolation, and optional Tailscale VPN
+- [Azure](reference/install/azure.md) — Run OpenClaw Gateway 24/7 on an Azure Linux VM with durable state
+- [Backups](reference/install/backups.md) — Back up OpenClaw state: archives, per-database snapshots, scheduling, offsite copies, and continuous replication
+- [Boat](reference/install/boat.md) — Run the OpenClaw Gateway on Boat, or select Boat for Crabbox cloud workers
+- [Bun](reference/install/bun.md) — Bun workflow for installs, package scripts, and opt-in runtime use
+- [Bun compatibility](reference/install/bun-compatibility.md) — Bun runtime requirements, macOS SQLite selection, limitations, and release history
+- [Cloudflare Containers](reference/install/cloudflare.md) — Experimental Cloudflare Worker and Container deployment with Litestream backups to R2
+- [Daytona](reference/install/daytona.md) — Run OpenClaw in a Daytona cloud sandbox with SSH access and signed preview URLs
+- [Release channels](reference/install/development-channels.md) — Stable, extended-stable, beta, and dev channels: semantics, switching, pinning, and tagging
+- [DigitalOcean](reference/install/digitalocean.md) — Host OpenClaw on a DigitalOcean Droplet
+- [Docker](reference/install/docker.md) — Optional Docker-based setup and onboarding for OpenClaw
+- [Docker VM runtime](reference/install/docker-vm-runtime.md) — Shared Docker VM runtime steps for long-lived OpenClaw Gateway hosts
+- [Docker Compose operations and image maintenance](reference/install/docker/compose-operations.md) — Day-to-day Compose commands, operational accordions, and image maintenance
+- [Docker environment variables](reference/install/docker/environment-variables.md) — Every environment variable the Docker setup script and Compose file accept
+- [Docker networking, providers, and storage](reference/install/docker/networking-and-storage.md) — Bind modes, reaching host providers, the Claude CLI backend, Bonjour, and what persists
+- [Docker agent sandbox and troubleshooting](reference/install/docker/sandbox-and-troubleshooting.md) — Running agent tools in Docker sandboxes, and fixing a gateway container that misbehaves
+- [exe.dev](reference/install/exe-dev.md) — Run OpenClaw Gateway on exe.dev (VM + HTTPS proxy) for remote access
+- [Fly.io](reference/install/fly.md) — Step-by-step Fly.io deployment for OpenClaw with persistent storage and HTTPS
+- [GCP](reference/install/gcp.md) — Run OpenClaw Gateway 24/7 on a GCP Compute Engine VM with Docker
+- [Hetzner](reference/install/hetzner.md) — Run OpenClaw Gateway 24/7 on a Hetzner VPS with Docker
+- [Hostinger](reference/install/hostinger.md) — Host OpenClaw on Hostinger
+- [Installer internals](reference/install/installer.md) — How the installer scripts work (install.sh, install-cli.sh, install.ps1), flags, and automation
+- [NVIDIA Jetson](reference/install/jetson.md) — Jetson-specific preparation for hosting an OpenClaw Gateway on Linux ARM64
+- [Kubernetes](reference/install/kubernetes.md) — Deploy OpenClaw Gateway to a Kubernetes cluster with Kustomize
+- [macOS VMs](reference/install/macos-vm.md) — Run OpenClaw in a sandboxed macOS VM (local or hosted) when you need isolation or iMessage
+- [Migration guide](reference/install/migrating.md) — Migration hub: cross-system imports, machine-to-machine moves, and plugin upgrades
+- [Migrating from Claude](reference/install/migrating-claude.md) — Move Claude Code and Claude Desktop local state into OpenClaw with a previewed import
+- [Migrating from Hermes](reference/install/migrating-hermes.md) — Move from Hermes to OpenClaw with a previewed, reversible import
+- [Nix](reference/install/nix.md) — Install OpenClaw declaratively with Nix
+- [Node.js](reference/install/node.md) — Install and configure Node.js for OpenClaw - version requirements, install options, and PATH troubleshooting
+- [Node.js compatibility](reference/install/node-compatibility.md) — Supported Node.js versions, SQLite requirements, platform limits, and release history
+- [Northflank](reference/install/northflank.md) — Deploy OpenClaw on Northflank with one-click template
+- [Oracle Cloud](reference/install/oracle.md) — Host OpenClaw on Oracle Cloud's Always Free ARM tier
+- [Podman](reference/install/podman.md) — Run OpenClaw in a rootless Podman container
+- [Railway](reference/install/railway.md) — Deploy OpenClaw on Railway with one-click template
+- [Raspberry Pi](reference/install/raspberry-pi.md) — Host OpenClaw on a Raspberry Pi for always-on self-hosting
+- [Render](reference/install/render.md) — Deploy OpenClaw on Render with Infrastructure-as-Code
+- [Standalone builds](reference/install/standalone.md) — Build a standalone OpenClaw executable with Bun and a companion runtime directory
+- [Experimental AOT Actions artifacts](reference/install/standalone-aot-actions.md) — Build a manually enabled unsigned emitted-JS AOT experiment without changing releases
+- [Uninstall](reference/install/uninstall.md) — Uninstall OpenClaw completely (CLI, service, state, workspace)
+- [Update troubleshooting](reference/install/update-troubleshooting.md) — Recover from failed OpenClaw updates in the Control UI or CLI
+- [Updating](reference/install/updating.md) — Updating OpenClaw safely (global install or source), plus rollback strategy
+- [Automatic updates](reference/install/updating/automatic-updates.md) — The auto-updater, per-channel automatic behavior, and how update campaigns apply and report an update
+- [Rollback and recovery](reference/install/updating/rollback-and-recovery.md) — Downgrading, automatic schema-neutral rollback, verified pre-update backups, and triage when an update leaves you stuck
+- [Other update methods](reference/install/updating/update-methods.md) — Switching install types, the source-server script, re-running the installer, and manual npm/pnpm/bun updates
+- [Upstash Box](reference/install/upstash.md) — Host OpenClaw on Upstash Box with keep-alive and SSH tunnel access
+- [Logging](reference/logging.md) — File logs, console output, CLI tailing, and the Control UI Logs tab
+- [Maturity scorecard](reference/maturity/scorecard.md) — OpenClaw release readiness scores for product areas, integrations, and supported workflows.
+- [Maturity taxonomy](reference/maturity/taxonomy.md) — Detailed reference for the product areas and checks behind the OpenClaw maturity scorecard.
+- [Network](reference/network.md) — Network hub: gateway surfaces, pairing, discovery, and security
+- [Nodes](reference/nodes.md) — Nodes: pairing, capabilities, permissions, and CLI helpers for camera/screen/device/notifications/system and the macOS widget panel
+- [Audio and voice notes](reference/nodes/audio.md) — How inbound audio/voice notes are downloaded, transcribed, and injected into replies
+- [Camera capture](reference/nodes/camera.md) — Camera capture and macOS physical PTZ control on paired nodes
+- [Node command policy](reference/nodes/command-policy.md) — Platform default allowlists, dangerous-command opt-ins, and the gateway.nodes configuration
+- [Computer use](reference/nodes/computer-use.md) — Capability-based control of Gateway and paired node desktops through the computer tool
+- [Node device commands](reference/nodes/device-commands.md) — CLI helpers for the widget panel, camera, screen, location, SMS, and device data
+- [Node file transfers](reference/nodes/file-transfers.md) — Upload files into a node terminal and move files with the File Transfer plugin
+- [Image and media support](reference/nodes/images.md) — Image and media handling rules for send, gateway, and agent replies
+- [Location command](reference/nodes/location-command.md) — Location command for nodes, platform permission modes, and Linux GeoClue setup
+- [Node-hosted MCP servers and skills](reference/nodes/mcp-and-skills.md) — Publish MCP servers, skills, and local model inference from a paired node
+- [Media playback](reference/nodes/media-playback.md) — Inline audio and video playback across the Control UI and native apps
+- [Media understanding](reference/nodes/media-understanding.md) — Inbound image/audio/video understanding (optional) with provider + CLI fallbacks
+- [Run commands on a node](reference/nodes/node-exec.md) — Allowlist node commands, point exec at a node, and invoke commands directly
+- [Run a node host](reference/nodes/node-host.md) — Start a headless or service node host, pair it, and use its system commands
+- [Node pairing and status](reference/nodes/pairing-and-status.md) — Pair a node to the Gateway, read its status, and upgrade a fleet in the right order
+- [Active computer presence](reference/nodes/presence.md) — Detect the Mac you most recently used and route node alerts there
+- [Node session catalogs](reference/nodes/session-catalogs.md) — Discover, import, and continue native session transcripts on the Gateway and paired nodes
+- [Host OpenClaw sessions on a node](reference/nodes/session-hosting.md) — Enable worker session hosting on a paired node, choose a device, and isolate workers in containers
+- [Talk mode](reference/nodes/talk.md) — Talk mode: continuous speech conversations across local STT/TTS and realtime voice
+- [Talk client UI](reference/nodes/talk/client-ui.md) — Talk controls and behavior in the macOS, Apple Watch, and Android clients
+- [Talk on macOS and the Gateway relay](reference/nodes/talk/macos-relay.md) — macOS Talk overlay behavior and the streamed realtime Gateway relay path
+- [Talk realtime sessions and delegation](reference/nodes/talk/realtime-sessions.md) — Voice selection from chat, realtime delegation, steering, transcripts, and browser Talk behavior
+- [Talk session ownership](reference/nodes/talk/session-ownership.md) — How Talk resolves the owning agent, session key, store, and control authority
+- [Node troubleshooting](reference/nodes/troubleshooting.md) — Troubleshoot node pairing, foreground requirements, permissions, and tool failures
+- [Voice wake](reference/nodes/voicewake.md) — Global voice wake words (Gateway-owned) and how they sync across nodes
+- [OpenClaw agent runtime workflow](reference/openclaw-agent-runtime.md) — Developer workflow for OpenClaw agent runtime: build, test, and live validation
+- [Platforms](reference/platforms.md) — Platform support overview (Gateway + companion apps)
+- [Android app](reference/platforms/android.md) — Android app (node): pairing, connection recovery, chat, voice, and device commands
+- [ChromeOS](reference/platforms/chromeos.md) — Run the OpenClaw Gateway on ChromeOS inside a Crostini Linux container
+- [EasyRunner](reference/platforms/easyrunner.md) — Run the OpenClaw Gateway on EasyRunner with Podman and Caddy
+- [iOS app](reference/platforms/ios.md) — iOS node app: connect to the Gateway, pairing, device capabilities, and troubleshooting
+- [HealthKit summaries](reference/platforms/ios-healthkit.md) — Enable and invoke privacy-gated HealthKit summaries from an iOS node
+- [Linux app](reference/platforms/linux.md) — Linux support + companion app status
+- [Gateway on macOS](reference/platforms/mac/bundled-gateway.md) — Run, update, and troubleshoot the Gateway included with the macOS app
+- [Widget panel](reference/platforms/mac/canvas.md) — Present hosted widgets in the macOS panel
+- [macOS dev setup](reference/platforms/mac/dev-setup.md) — Setup guide for developers working on the OpenClaw macOS app
+- [Health checks (macOS)](reference/platforms/mac/health.md) — How the macOS app reports gateway/channel health states
+- [Menu bar icon](reference/platforms/mac/icon.md) — Menu bar icon states and animations for OpenClaw on macOS
+- [macOS logging](reference/platforms/mac/logging.md) — macOS app log redaction, opt-in diagnostics files, and native OSLog privacy flags
+- [Menu bar](reference/platforms/mac/menu-bar.md) — Menu bar status logic and what is surfaced to users
+- [Mac OpenClaw ID sign-in testing](reference/platforms/mac/openclaw-id-sign-in-testing.md) — Verify OpenClaw ID sign-in returns to the Mac app, including the native WebKit boundary
+- [Peekaboo bridge](reference/platforms/mac/peekaboo.md) — PeekabooBridge integration for macOS UI automation
+- [macOS permissions](reference/platforms/mac/permissions.md) — macOS permission persistence (TCC) and signing requirements
+- [Remote control](reference/platforms/mac/remote.md) — macOS app flow for controlling a remote OpenClaw Gateway
+- [macOS signing](reference/platforms/mac/signing.md) — Signing steps for macOS debug builds generated by packaging scripts
+- [Skills (macOS)](reference/platforms/mac/skills.md) — Manage Gateway skills from the macOS app's Dashboard
+- [Voice overlay](reference/platforms/mac/voice-overlay.md) — Voice overlay lifecycle when wake-word and push-to-talk overlap
+- [Voice wake (macOS)](reference/platforms/mac/voicewake.md) — Voice wake and push-to-talk modes plus routing details in the mac app
+- [WebChat (macOS)](reference/platforms/mac/webchat.md) — Choose the Web or experimental Native Mac experience and use Gateway chat windows
+- [macOS IPC](reference/platforms/mac/xpc.md) — macOS IPC architecture for OpenClaw app, gateway node transport, and PeekabooBridge
+- [macOS app](reference/platforms/macos.md) — Install and use the OpenClaw macOS menu bar app
+- [Omarchy](reference/platforms/omarchy.md) — OpenClaw on Omarchy: bar plugin, desktop app handoff, and support
+- [Windows](reference/platforms/windows.md) — Windows Hub (recommended), Tauri desktop backup, native CLI and Gateway, WSL2, and troubleshooting
+- [Adding capabilities (contributor guide)](reference/plugins/adding-capabilities.md) — Contributor guide for adding a new shared capability to the OpenClaw plugin system
+- [Admin HTTP RPC plugin](reference/plugins/admin-http-rpc.md) — Expose selected Gateway control-plane methods through the bundled, opt-in admin-http-rpc plugin
+- [Agent Guidance](reference/plugins/agent-guidance.md) — Shared operator-managed instructions without rewriting agent workspace files
+- [Agents API](reference/plugins/agentsapi.md) — Use the cloud-hosted Agents API harness, powered by Codex, with OpenClaw
+- [Apple Foundation Models](reference/plugins/apple-fm.md) — Use on-device Apple Foundation Models for lightweight OpenClaw setup on a Mac
+- [Plugin internals](reference/plugins/architecture.md) — Plugin internals: capability model, ownership, contracts, load pipeline, and runtime helpers
+- [Plugin architecture internals](reference/plugins/architecture-internals.md) — Plugin architecture internals: load pipeline, registry, runtime hooks, HTTP routes, and reference tables
+- [Channel surfaces](reference/plugins/architecture-internals/channel-surfaces.md) — Conversation binding callbacks, message tool schemas, target resolution, config-backed directories, and read-only inspection
+- [Context engines](reference/plugins/architecture-internals/context-engines.md) — Registering a context engine plugin that owns session ingest, assembly, and compaction
+- [Gateway routes](reference/plugins/architecture-internals/gateway-routes.md) — Registering plugin HTTP routes on the Gateway, and their auth, scope, and lifecycle rules
+- [Plugin load pipeline and registry](reference/plugins/architecture-internals/load-pipeline.md) — How OpenClaw discovers, gates, loads, and registers plugins, and what the plugin cache holds
+- [Adding a new capability](reference/plugins/architecture-internals/new-capability.md) — The sequence, file checklist, and contract-test pattern for adding a capability to the plugin system
+- [Package packs and import paths](reference/plugins/architecture-internals/packaging.md) — Plugin SDK import subpaths, multi-extension package packs, and channel catalog and install metadata
+- [Provider runtime hooks and catalogs](reference/plugins/architecture-internals/provider-hooks.md) — The provider hook order table, worked provider example, bundled hook shapes, and model catalog registration
+- [Core runtime helpers](reference/plugins/architecture-internals/runtime-helpers.md) — Calling core speech, media understanding, subagent, web search, and image generation helpers from a plugin
+- [Beam plugin](reference/plugins/beam.md) — Publish coding sessions for shared viewing and live Team continuation
+- [Building plugins](reference/plugins/building-plugins.md) — Create your first OpenClaw plugin in minutes
+- [Plugin bundles](reference/plugins/bundles.md) — Install and use Agent Plugins, Codex, Claude, and Cursor bundles as OpenClaw plugins
+- [Building CLI backend plugins](reference/plugins/cli-backend-plugins.md) — Build a plugin that registers a local AI CLI backend
+- [Cloudflare](reference/plugins/cloudflare.md) — Configure Cloudflare R2 as an encrypted OpenClaw storage location
+- [Codex Computer Use](reference/plugins/codex-computer-use.md) — Set up Codex Computer Use for Codex-mode OpenClaw agents
+- [Codex harness](reference/plugins/codex-harness.md) — Run OpenClaw embedded agent turns through the official Codex app-server harness
+- [Codex harness reference](reference/plugins/codex-harness-reference.md) — Configuration, auth, discovery, and app-server reference for the Codex harness
+- [Codex app-server transport](reference/plugins/codex-harness-reference/app-server-transport.md) — App-server transport selection, the appServer field table, and local testing env overrides
+- [Codex approval and sandbox modes](reference/plugins/codex-harness-reference/approval-and-sandbox.md) — YOLO and guardian approval presets, and sandboxed native execution paths
+- [Codex auth and environment isolation](reference/plugins/codex-harness-reference/auth.md) — Codex auth selection order, credential handling, and environment isolation
+- [Codex dynamic tools](reference/plugins/codex-harness-reference/dynamic-tools.md) — How OpenClaw dynamic tools are exposed to Codex app-server turns
+- [Codex model discovery](reference/plugins/codex-harness-reference/model-discovery.md) — Codex app-server model discovery, offline hints, and catalog rules
+- [Codex restricted turns](reference/plugins/codex-harness-reference/restricted-turns.md) — When a tool policy restricts the Codex native surface, and what ring zero adds
+- [Codex session catalog and supervision](reference/plugins/codex-harness-reference/supervision.md) — Native Codex session discovery and agent-facing supervision settings
+- [Codex timeouts and turn settlement](reference/plugins/codex-harness-reference/timeouts.md) — Dynamic tool timeout order, turn execution budgets, and local settlement
+- [Codex workspace bootstrap files](reference/plugins/codex-harness-reference/workspace-bootstrap-files.md) — Which workspace bootstrap files reach a Codex turn, and how they are carried
+- [Codex harness runtime](reference/plugins/codex-harness-runtime.md) — Runtime boundaries, hooks, tools, permissions, and diagnostics for the Codex harness
+- [Codex compaction and transcript mirror](reference/plugins/codex-harness-runtime/compaction.md) — Native Codex compaction, the OpenClaw transcript mirror, and continuity projection
+- [Codex hook boundaries](reference/plugins/codex-harness-runtime/hooks.md) — Which hook layer owns each Codex turn event, and what the native hook relay can do
+- [Codex native permissions and elicitations](reference/plugins/codex-harness-runtime/permissions.md) — Native permission decisions, remembered approvals, and MCP elicitation limits
+- [Codex queue steering and feedback upload](reference/plugins/codex-harness-runtime/queue-and-feedback.md) — Active-run queue steering on Codex turns and the Codex feedback upload path
+- [Codex process recovery](reference/plugins/codex-harness-runtime/recovery.md) — Codex app-server process cleanup after discovery timeouts and hard Gateway stops
+- [Codex replies and final answers](reference/plugins/codex-harness-runtime/replies.md) — Visible reply delivery, scheduled turns, and bounded final-answer recovery
+- [Codex sandbox process streaming](reference/plugins/codex-harness-runtime/sandbox-streaming.md) — Experimental native sandbox execution streaming and node-backed remote exec
+- [Codex thread bindings and supervision](reference/plugins/codex-harness-runtime/threads.md) — How OpenClaw binds native Codex threads, changes models, and continues supervised sessions
+- [Codex runtime v1 support contract](reference/plugins/codex-harness-runtime/v1-support-contract.md) — What is and is not supported in Codex runtime v1, with the reason for each boundary
+- [Codex app-server policy](reference/plugins/codex-harness/app-server.md) — App-server transport, approval posture, auth order, and environment isolation
+- [Codex commands and diagnostics](reference/plugins/codex-harness/commands.md) — The /codex command surface, Fast mode controls, and local thread inspection
+- [Codex plugin config fields](reference/plugins/codex-harness/config-fields.md) — Top-level and appServer config fields for the Codex plugin
+- [Codex harness configuration](reference/plugins/codex-harness/configuration.md) — Codex harness config map, restricted turns, project instructions, compaction, and long context
+- [Native Codex state and features](reference/plugins/codex-harness/native-features.md) — Share native Codex threads, supervise sessions, and enable native plugins and Computer Use
+- [Run Codex on another machine](reference/plugins/codex-harness/placement.md) — Place Codex native execution on a paired device or a cloud worker
+- [Codex routing and deployment](reference/plugins/codex-harness/routing.md) — Choose which OpenAI routes select Codex and shape the deployment around them
+- [Codex runtime behavior](reference/plugins/codex-harness/runtime-behavior.md) — Dynamic tools, web search, image loading, turn liveness, and runtime boundaries
+- [Codex harness troubleshooting](reference/plugins/codex-harness/troubleshooting.md) — Symptoms and fixes for Codex harness selection, app-server, and memory problems
+- [Native Codex plugins](reference/plugins/codex-native-plugins.md) — Configure native Codex plugins for Codex-mode OpenClaw agents
+- [Supervise Codex sessions](reference/plugins/codex-supervision.md) — Browse non-archived native Codex sessions and paginated transcripts across OpenClaw nodes
+- [Community plugins](reference/plugins/community.md) — Find and publish community-maintained OpenClaw plugins
+- [Plugin compatibility](reference/plugins/compatibility.md) — Plugin compatibility contracts, deprecation metadata, and migration expectations
+- [Copilot SDK harness](reference/plugins/copilot.md) — Run OpenClaw embedded agent turns through the external GitHub Copilot SDK harness
+- [Plugin dependency resolution](reference/plugins/dependency-resolution.md) — How OpenClaw installs plugin packages and resolves plugin dependencies
+- [FaceTime plugin](reference/plugins/facetime.md) — Set up FaceTime voice calls with your OpenClaw agent on a Mac
+- [FaceTime recovery and removal](reference/plugins/facetime-recovery.md) — Remove FaceTime native artifacts and restore standard Mac security policy
+- [Feature plugins](reference/plugins/feature-plugins.md) — Build plugins with typed operations, native pages, and replaceable Control UI views
+- [GBrain](reference/plugins/gbrain.md) — GBrain: connect OpenClaw to a GBrain brain over MCP, with GBrain running as its own service
+- [Geolocation plugin](reference/plugins/geolocation.md) — Resolve a connecting client's IP address to a coarse city using a locally cached database, with no per-lookup third-party calls
+- [GitHub](reference/plugins/github.md) — Find public GitHub issues and pull requests, and read items beside chat
+- [Google Meet plugin](reference/plugins/google-meet.md) — Google Meet plugin: join explicit Meet URLs through Chrome or Twilio with agent talk-back defaults
+- [Google Meet configuration](reference/plugins/google-meet/config.md) — Google Meet plugin config defaults, overrides, and provider examples
+- [Google Meet OAuth and artifacts](reference/plugins/google-meet/oauth-and-artifacts.md) — Google Meet OAuth setup, refresh tokens, preflight, and conference artifact exports
+- [Google Meet tool and modes](reference/plugins/google-meet/tool-and-modes.md) — The google_meet tool actions, status fields, and agent versus bidi talk-back modes
+- [Google Meet transports and hosts](reference/plugins/google-meet/transports.md) — Google Meet transports: local Chrome, Chrome on a paired node, and Twilio dial-in
+- [Google Meet troubleshooting](reference/plugins/google-meet/troubleshooting.md) — Google Meet live test checklist and fixes for join, speech, creation, and Twilio failures
+- [Plugin hooks](reference/plugins/hooks.md) — Plugin hooks: intercept agent, tool, message, session, and Gateway lifecycle events
+- [Gateway and install lifecycle hooks](reference/plugins/hooks/lifecycle.md) — Plugin install checks, Gateway start and stop, and Gateway-owned cron events
+- [Message and delivery hooks](reference/plugins/hooks/messages.md) — Claim inbound messages and rewrite or cancel outbound deliveries
+- [Prompt and session hooks](reference/plugins/hooks/prompt-and-session.md) — Override the model, shape the prompt, and persist plugin-owned session state
+- [Hook reference](reference/plugins/hooks/reference.md) — How plugin hooks register and execute, plus the complete typed hook catalog
+- [Tool call policy hooks](reference/plugins/hooks/tool-policy.md) — Gate, rewrite, and approve tool calls, and rewrite tool results before persistence
+- [Plugin install overrides](reference/plugins/install-overrides.md) — Test packaged plugin overrides with setup-time install flows
+- [Knowledge](reference/plugins/knowledge.md) — Knowledge: an evidence-backed knowledge vault, memory provider, and Control UI explorer for OpenClaw agents
+- [Knowledge Control UI](reference/plugins/knowledge/control-ui.md) — The Knowledge page and chat panel in the Control UI: views, settings, page addresses, links in chat, and session activity
+- [Knowledge corrections and merges](reference/plugins/knowledge/corrections.md) — Correct, withdraw, supersede, merge, and unmerge Knowledge records while preserving originals and history
+- [Knowledge evidence files](reference/plugins/knowledge/evidence.md) — How Knowledge retains original source files, identifies sources, cites passages, and reconciles page evidence
+- [Knowledge ingestion workflows](reference/plugins/knowledge/ingestion.md) — Knowledge bundled skills and ingestion operations: batch publication, structural verification, and source-change checks
+- [Knowledge local history](reference/plugins/knowledge/local-history.md) — Automatic local Git history for Knowledge vaults: what is committed, failure states, and recovery boundaries
+- [Knowledge maintenance](reference/plugins/knowledge/maintenance.md) — Knowledge scheduled maintenance: zero-model claim relink, schedule configuration, and status
+- [Knowledge as memory provider](reference/plugins/knowledge/memory-provider.md) — How Knowledge works as the selected memory provider: shared reads, prompt, automatic recall, and the pre-compaction flush
+- [Knowledge records and ontology](reference/plugins/knowledge/records-and-ontology.md) — Knowledge record format, structured claim fields, the default ontology, local ontology extensions, and Markdown links
+- [Knowledge retrieval and dates](reference/plugins/knowledge/retrieval.md) — Knowledge keyword search, exact lookup, citations, index behavior, and structured date queries
+- [Knowledge scribes](reference/plugins/knowledge/scribes.md) — Knowledge scribes: conversations Knowledge starts for you that keep a store up to date, once or on a schedule
+- [Knowledge stores and access](reference/plugins/knowledge/stores-and-access.md) — Knowledge stores, storage layout, partitions, caller authority, and catalog limits
+- [Knowledge tools](reference/plugins/knowledge/tools.md) — Knowledge agent tools: inputs, defaults, pagination, response limits, remembering, structured authoring, and attachments
+- [llama.cpp Provider](reference/plugins/llama-cpp.md) — Run GGUF chat with managed or existing llama.cpp servers and managed local embeddings
+- [Logbook plugin](reference/plugins/logbook.md) — Optional automatic work journal built from periodic screen snapshots
+- [Manage plugins](reference/plugins/manage-plugins.md) — Manage OpenClaw plugins from the Control UI or CLI
+- [Plugin manifest](reference/plugins/manifest.md) — Plugin manifest + JSON schema requirements (strict config validation)
+- [Manifest capability fields](reference/plugins/manifest/capabilities.md) — Manifest capability ownership, tool availability metadata, and activation planning
+- [Manifest config and secret fields](reference/plugins/manifest/config-and-secrets.md) — Manifest dangerous-flag, SecretRef migration, and secret provider preset metadata
+- [Manifest model fields](reference/plugins/manifest/models.md) — Manifest model catalog, shorthand family, id normalization, and pricing fields
+- [Manifest versus package.json](reference/plugins/manifest/package-json.md) — Which pre-runtime metadata lives in package.json, and which duplicate plugin id wins
+- [Manifest provider fields](reference/plugins/manifest/providers.md) — Manifest generation, media-understanding, endpoint, and request provider metadata
+- [Manifest setup and auth fields](reference/plugins/manifest/setup-and-auth.md) — Manifest setup descriptors, auth choices, conversation discovery, and config UI hints
+- [Manifest host surface fields](reference/plugins/manifest/surfaces.md) — Manifest fields for icons, themes, CLI, MCP, Control UI, dashboard, QA, channel, and backup surfaces
+- [MCP Relay](reference/plugins/mcp-relay.md) — Connect ChatGPT and Claude to your Gateway through the opt-in MCP relay plugin
+- [Meeting plugins](reference/plugins/meeting-plugins.md) — Choose and configure Google Meet, Microsoft Teams, Slack huddles, or Zoom participation
+- [Memory LanceDB](reference/plugins/memory-lancedb.md) — Configure the official external LanceDB memory plugin, including local Ollama-compatible embeddings
+- [Memory wiki](reference/plugins/memory-wiki.md) — memory-wiki: compiled knowledge vault with provenance, claims, dashboards, and bridge mode
+- [Message presentation](reference/plugins/message-presentation.md) — Semantic message cards, charts, tables, controls, fallback text, and delivery hints for channel plugins
+- [Muse Code agent runtime](reference/plugins/muse.md) — Run OpenClaw embedded agent turns for Meta models through the Muse Code CLI
+- [OC Path plugin](reference/plugins/oc-path.md) — Bundled `oc-path` plugin: ships the `openclaw path` CLI for the `oc://` workspace-file addressing scheme
+- [1Password plugin](reference/plugins/onepassword.md) — Resolve SecretRefs and give agents curated, audited access to 1Password
+- [Local ONNX decision models](reference/plugins/onnx.md) — Run typed decisions locally with verified ONNX classifiers
+- [Plugin inventory](reference/plugins/plugin-inventory.md) — Generated inventory of OpenClaw plugins shipped in core, published externally, or kept source-only
+- [Plugin permission requests](reference/plugins/plugin-permission-requests.md) — Ask users to approve plugin tool calls and plugin-owned permission prompts
+- [Plugin reference](reference/plugins/reference.md) — Pointer to the generated OpenClaw plugin reference pages
+- [A2a plugin reference](reference/plugins/reference/a2a.md) — A2A v1.0 Agent-to-Agent protocol channel plugin.
+- [Abliteration plugin reference](reference/plugins/reference/abliteration.md) — OpenClaw Abliteration provider plugin.
+- [ACPx plugin reference](reference/plugins/reference/acpx.md) — OpenClaw ACP runtime backend with plugin-owned session and transport management.
+- [Active Memory plugin reference](reference/plugins/reference/active-memory.md) — Runs bounded pre-reply memory retrieval and implements per-agent Remember across conversations for eligible private conversations.
+- [Admin Http Rpc plugin reference](reference/plugins/reference/admin-http-rpc.md) — OpenClaw admin HTTP RPC endpoint.
+- [Advisor plugin reference](reference/plugins/reference/advisor.md) — Reviews ongoing agent work on the session's own model and offers one short correction.
+- [Agent Guidance plugin reference](reference/plugins/reference/agent-guidance.md) — Shares instruction files across selected agents without editing their workspace files.
+- [Agentsapi plugin reference](reference/plugins/reference/agentsapi.md) — OpenAI Agents API harness with hosted or self-hosted sessions.
+- [Alibaba plugin reference](reference/plugins/reference/alibaba.md) — Adds video generation provider support.
+- [Amazon Bedrock plugin reference](reference/plugins/reference/amazon-bedrock.md) — OpenClaw Amazon Bedrock provider plugin with model discovery, embeddings, and guardrail support.
+- [Amazon Bedrock Mantle plugin reference](reference/plugins/reference/amazon-bedrock-mantle.md) — OpenClaw Amazon Bedrock Mantle provider plugin for OpenAI Responses, Chat Completions, and Anthropic Messages routing.
+- [Anthropic plugin reference](reference/plugins/reference/anthropic.md) — Anthropic models, Claude CLI, and native Claude session catalog.
+- [Anthropic Vertex plugin reference](reference/plugins/reference/anthropic-vertex.md) — OpenClaw Anthropic Vertex provider plugin for Claude models on Google Vertex AI.
+- [Apple Fm plugin reference](reference/plugins/reference/apple-fm.md) — On-device Apple Intelligence inference for lightweight setup and short tasks.
+- [Arcee plugin reference](reference/plugins/reference/arcee.md) — Adds Arcee model provider support to OpenClaw.
+- [Autoreview plugin reference](reference/plugins/reference/autoreview.md) — Review changes in the current sandbox with the installed Auto Review helper.
+- [Azure Speech plugin reference](reference/plugins/reference/azure-speech.md) — Azure AI Speech text-to-speech (MP3, native Ogg/Opus voice notes, PCM telephony).
+- [Baseten plugin reference](reference/plugins/reference/baseten.md) — OpenClaw Baseten provider plugin.
+- [Beam plugin reference](reference/plugins/reference/beam.md) — Read-only coding-session Beam receiver.
+- [Bifrost plugin reference](reference/plugins/reference/bifrost.md) — Adds Bifrost model provider support to OpenClaw.
+- [Bonjour plugin reference](reference/plugins/reference/bonjour.md) — Advertise the local OpenClaw gateway over Bonjour/mDNS.
+- [Brave plugin reference](reference/plugins/reference/brave.md) — OpenClaw Brave Search provider plugin for web search.
+- [Browser plugin reference](reference/plugins/reference/browser.md) — Adds agent-callable tools.
+- [Buzz plugin reference](reference/plugins/reference/buzz.md) — Connect OpenClaw agents to Buzz rooms.
+- [BytePlus plugin reference](reference/plugins/reference/byteplus.md) — Adds BytePlus, BytePlus Plan model provider support to OpenClaw.
+- [Canvas plugin reference](reference/plugins/reference/canvas.md) — Presents hosted widget documents on paired macOS panels.
+- [Celeris plugin reference](reference/plugins/reference/celeris.md) — Adds Celeris model provider support to OpenClaw.
+- [Cerebras plugin reference](reference/plugins/reference/cerebras.md) — Adds Cerebras model provider support to OpenClaw.
+- [Chutes plugin reference](reference/plugins/reference/chutes.md) — Adds Chutes model provider support to OpenClaw.
+- [ClawRouter plugin reference](reference/plugins/reference/clawrouter.md) — Adds ClawRouter model provider support to OpenClaw.
+- [Clickclack plugin reference](reference/plugins/reference/clickclack.md) — OpenClaw ClickClack channel plugin.
+- [Cloudflare plugin reference](reference/plugins/reference/cloudflare.md) — Cloudflare R2 storage for named OpenClaw storage locations.
+- [Cloudflare AI Gateway plugin reference](reference/plugins/reference/cloudflare-ai-gateway.md) — Adds Cloudflare AI Gateway model provider support to OpenClaw.
+- [Code Mode Quickjs plugin reference](reference/plugins/reference/code-mode-quickjs.md) — Hardened JavaScript execution for Code Mode using QuickJS in WebAssembly.
+- [Codex plugin reference](reference/plugins/reference/codex.md) — Codex app-server harness and native session catalog.
+- [Cohere plugin reference](reference/plugins/reference/cohere.md) — OpenClaw Cohere provider plugin.
+- [ComfyUI plugin reference](reference/plugins/reference/comfy.md) — Adds ComfyUI model provider support to OpenClaw.
+- [Copilot plugin reference](reference/plugins/reference/copilot.md) — Registers the GitHub Copilot agent runtime.
+- [Copilot Proxy plugin reference](reference/plugins/reference/copilot-proxy.md) — Adds Copilot Proxy model provider support to OpenClaw.
+- [Crabbox plugin reference](reference/plugins/reference/crabbox.md) — Cloud worker provider and lease-backed sandbox backend for the Crabbox CLI.
+- [Cua Computer plugin reference](reference/plugins/reference/cua-computer.md) — Experimental CUA Driver computer control for macOS, Windows, and Linux node hosts.
+- [Deep Research plugin reference](reference/plugins/reference/deep-research.md) — Bounded research with source-backed findings and explicit gaps.
+- [Deepgram plugin reference](reference/plugins/reference/deepgram.md) — Deepgram audio transcription with Nova and Flux models, plus realtime speech recognition.
+- [DeepInfra plugin reference](reference/plugins/reference/deepinfra.md) — Adds DeepInfra model provider support to OpenClaw.
+- [DeepSeek plugin reference](reference/plugins/reference/deepseek.md) — Adds DeepSeek model provider support to OpenClaw.
+- [Device Pair plugin reference](reference/plugins/reference/device-pair.md) — Generate setup codes and approve device pairing requests.
+- [Diagnostics OpenTelemetry plugin reference](reference/plugins/reference/diagnostics-otel.md) — OpenClaw diagnostics OpenTelemetry exporter for metrics, traces, and logs.
+- [Diagnostics Prometheus plugin reference](reference/plugins/reference/diagnostics-prometheus.md) — OpenClaw diagnostics Prometheus exporter for runtime metrics.
+- [Diffs plugin reference](reference/plugins/reference/diffs.md) — OpenClaw read-only diff viewer plugin and file renderer for agents.
+- [Diffs Language Pack plugin reference](reference/plugins/reference/diffs-language-pack.md) — Adds syntax highlighting for languages outside the default diffs viewer set.
+- [Discord plugin reference](reference/plugins/reference/discord.md) — OpenClaw Discord channel plugin for channels, DMs, commands, and app events.
+- [Document Extract plugin reference](reference/plugins/reference/document-extract.md) — Extract text and fallback page images from local document attachments.
+- [DuckDuckGo plugin reference](reference/plugins/reference/duckduckgo.md) — Adds web search provider support.
+- [Elevenlabs plugin reference](reference/plugins/reference/elevenlabs.md) — Adds media understanding provider support. Adds realtime transcription provider support. Adds text-to-speech provider support.
+- [Exa plugin reference](reference/plugins/reference/exa.md) — Adds web search provider support.
+- [Facetime plugin reference](reference/plugins/reference/facetime.md) — Experimental FaceTime realtime voice carrier for OpenClaw agents.
+- [fal plugin reference](reference/plugins/reference/fal.md) — Adds fal model provider support to OpenClaw.
+- [Fastino plugin reference](reference/plugins/reference/fastino.md) — Native GLiDE Boolean, Choice and Score decisions.
+- [Featherless plugin reference](reference/plugins/reference/featherless.md) — OpenClaw Featherless AI provider plugin.
+- [Feishu plugin reference](reference/plugins/reference/feishu.md) — OpenClaw Feishu/Lark channel plugin for chats and workplace tools (community maintained by @m1heng).
+- [File Transfer plugin reference](reference/plugins/reference/file-transfer.md) — Fetch, list, and write files on paired nodes via dedicated node commands. Bypasses bash stdout truncation by using base64 over node.invoke for binaries up to 16 MB.
+- [Firecrawl plugin reference](reference/plugins/reference/firecrawl.md) — Adds agent-callable tools. Adds web fetch provider support. Adds web search provider support.
+- [Fireworks plugin reference](reference/plugins/reference/fireworks.md) — Adds Fireworks model provider support to OpenClaw.
+- [Fish Audio Speech plugin reference](reference/plugins/reference/fish-audio-speech.md) — Fish Audio hosted text-to-speech with streaming, voice notes, and telephony output.
+- [Gbrain plugin reference](reference/plugins/reference/gbrain.md) — Connects OpenClaw to a GBrain brain: sets up GBrain's own service when needed and adds it as the gbrain MCP server.
+- [Geolocation plugin reference](reference/plugins/reference/geolocation.md) — Resolves client IP addresses to a coarse city using a locally cached IP-geolocation database.
+- [GitHub plugin reference](reference/plugins/reference/github.md) — Public GitHub link previews and document reader.
+- [GitHub Copilot plugin reference](reference/plugins/reference/github-copilot.md) — Adds GitHub Copilot model provider support to OpenClaw.
+- [Gmi plugin reference](reference/plugins/reference/gmi.md) — OpenClaw GMI Cloud provider plugin.
+- [Google plugin reference](reference/plugins/reference/google.md) — Adds Google, Google Gemini CLI, Google Vertex model provider support to OpenClaw.
+- [Google Meet plugin reference](reference/plugins/reference/google-meet.md) — OpenClaw Google Meet participant plugin for joining calls through Chrome or Twilio transports.
+- [Google Chat plugin reference](reference/plugins/reference/googlechat.md) — OpenClaw Google Chat channel plugin for spaces and direct messages.
+- [Gradium plugin reference](reference/plugins/reference/gradium.md) — Adds text-to-speech provider support.
+- [Groq plugin reference](reference/plugins/reference/groq.md) — Adds Groq model provider support to OpenClaw.
+- [Hugging Face plugin reference](reference/plugins/reference/huggingface.md) — Adds Hugging Face model provider support to OpenClaw.
+- [Imap plugin reference](reference/plugins/reference/imap.md) — Watch IMAP mailboxes and dispatch authenticated incoming email to isolated agent sessions.
+- [iMessage plugin reference](reference/plugins/reference/imessage.md) — OpenClaw iMessage channel plugin using imsg on a signed-in Mac.
+- [Inworld plugin reference](reference/plugins/reference/inworld.md) — Inworld streaming text-to-speech (MP3, OGG_OPUS, PCM telephony).
+- [IRC plugin reference](reference/plugins/reference/irc.md) — OpenClaw IRC channel plugin.
+- [Kie plugin reference](reference/plugins/reference/kie.md) — Adds Kie model provider support to OpenClaw.
+- [Kilocode plugin reference](reference/plugins/reference/kilocode.md) — Adds Kilocode model provider support to OpenClaw.
+- [Kimi plugin reference](reference/plugins/reference/kimi.md) — Adds Kimi, Kimi Code, Kimi Coding model provider support to OpenClaw.
+- [Knowledge plugin reference](reference/plugins/reference/knowledge.md) — Evidence-backed knowledge, inspectable in OpenClaw.
+- [Levanto plugin reference](reference/plugins/reference/levanto.md) — Native Yes/No, Choice, Scale, Sort, and Tags decisions with explicit abstention.
+- [LINE plugin reference](reference/plugins/reference/line.md) — OpenClaw LINE channel plugin for LINE Bot API chats.
+- [Linux Node plugin reference](reference/plugins/reference/linux-node.md) — Desktop notifications, camera capture, and location for Linux node hosts.
+- [Liquid AI plugin reference](reference/plugins/reference/liquid-ai.md) — Adds Liquid AI model provider support to OpenClaw.
+- [LiteLLM plugin reference](reference/plugins/reference/litellm.md) — Adds LiteLLM model provider support to OpenClaw.
+- [Llama Cpp plugin reference](reference/plugins/reference/llama-cpp.md) — Managed and external llama.cpp servers for GGUF chat, embeddings and local images.
+- [LLM Task plugin reference](reference/plugins/reference/llm-task.md) — Generic JSON-only LLM tool for structured tasks callable from workflows.
+- [LM Studio plugin reference](reference/plugins/reference/lmstudio.md) — Adds LM Studio model provider support to OpenClaw.
+- [Lobster plugin reference](reference/plugins/reference/lobster.md) — Lobster workflow tool plugin for typed pipelines and resumable approvals.
+- [Logbook plugin reference](reference/plugins/reference/logbook.md) — Automatic work journal: captures periodic screen snapshots from a paired node and turns them into a reviewable timeline of your day.
+- [LongCat plugin reference](reference/plugins/reference/longcat.md) — OpenClaw LongCat provider plugin.
+- [Matrix plugin reference](reference/plugins/reference/matrix.md) — OpenClaw Matrix channel plugin for rooms and direct messages.
+- [Mattermost plugin reference](reference/plugins/reference/mattermost.md) — OpenClaw Mattermost channel plugin.
+- [Mcp Events plugin reference](reference/plugins/reference/mcp-events.md) — Subscribe to events from configured MCP accounts and trigger authored automations.
+- [Mcp Relay plugin reference](reference/plugins/reference/mcp-relay.md) — Connect remote MCP clients to your OpenClaw Gateway.
+- [Memory Core plugin reference](reference/plugins/reference/memory-core.md) — Adds agent-callable tools.
+- [Memory Lancedb plugin reference](reference/plugins/reference/memory-lancedb.md) — OpenClaw LanceDB-backed long-term memory plugin with auto-recall, auto-capture, and vector search.
+- [Memory Wiki plugin reference](reference/plugins/reference/memory-wiki.md) — Persistent wiki compiler and Obsidian-friendly knowledge vault for OpenClaw.
+- [Meta plugin reference](reference/plugins/reference/meta.md) — Adds Meta model provider support to OpenClaw.
+- [Microsoft plugin reference](reference/plugins/reference/microsoft.md) — Adds text-to-speech provider support.
+- [Microsoft Foundry plugin reference](reference/plugins/reference/microsoft-foundry.md) — Adds Microsoft Foundry model provider support to OpenClaw.
+- [Migrate Claude plugin reference](reference/plugins/reference/migrate-claude.md) — Imports Claude Code and Claude Desktop instructions, MCP servers, skills, and safe configuration into OpenClaw.
+- [Migrate Hermes plugin reference](reference/plugins/reference/migrate-hermes.md) — Imports Hermes configuration, memories, skills, and supported credentials into OpenClaw.
+- [MiniMax plugin reference](reference/plugins/reference/minimax.md) — Adds MiniMax, MiniMax Portal model provider support to OpenClaw.
+- [Mistral plugin reference](reference/plugins/reference/mistral.md) — Adds Mistral model provider support to OpenClaw.
+- [Moonshot plugin reference](reference/plugins/reference/moonshot.md) — Adds Moonshot model provider support to OpenClaw.
+- [Microsoft Teams plugin reference](reference/plugins/reference/msteams.md) — OpenClaw Microsoft Teams channel plugin for bot conversations.
+- [Muse plugin reference](reference/plugins/reference/muse.md) — Runs Meta models through the Muse Code CLI.
+- [Mxc plugin reference](reference/plugins/reference/mxc.md) — OS-level sandboxed tool execution via MXC: runs commands in a Windows ProcessContainer with configured MXC policy files.
+- [Nace plugin reference](reference/plugins/reference/nace.md) — Adds Nace model provider support to OpenClaw.
+- [Nextcloud Talk plugin reference](reference/plugins/reference/nextcloud-talk.md) — OpenClaw Nextcloud Talk channel plugin for conversations.
+- [Nostr plugin reference](reference/plugins/reference/nostr.md) — OpenClaw Nostr channel plugin for NIP-04 encrypted direct messages.
+- [Novita plugin reference](reference/plugins/reference/novita.md) — Adds Novita, Novita AI, Novitaai model provider support to OpenClaw.
+- [NVIDIA plugin reference](reference/plugins/reference/nvidia.md) — Adds NVIDIA model provider support to OpenClaw.
+- [Oc Path plugin reference](reference/plugins/reference/oc-path.md) — Adds the openclaw path CLI for oc:// workspace file addressing.
+- [Ollama plugin reference](reference/plugins/reference/ollama.md) — Adds Ollama, Ollama Cloud model provider support to OpenClaw.
+- [Omlx plugin reference](reference/plugins/reference/omlx.md) — Adds Omlx model provider support to OpenClaw.
+- [Onepassword plugin reference](reference/plugins/reference/onepassword.md) — 1Password SecretRef resolver and curated agent broker with approval policy and SQLite audit history.
+- [Onnx plugin reference](reference/plugins/reference/onnx.md) — Local typed decisions using pinned ONNX classifiers.
+- [OpenAI plugin reference](reference/plugins/reference/openai.md) — Adds OpenAI model provider support to OpenClaw.
+- [Openclaw Id Access plugin reference](reference/plugins/reference/openclaw-id-access.md) — Choose who can reach this claw remotely: invite people, approve their requests, and see and remove members.
+- [OpenCode plugin reference](reference/plugins/reference/opencode.md) — Adds OpenCode model provider support to OpenClaw.
+- [OpenCode Go plugin reference](reference/plugins/reference/opencode-go.md) — Adds OpenCode Go model provider support to OpenClaw.
+- [OpenRouter plugin reference](reference/plugins/reference/openrouter.md) — Adds OpenRouter model provider support to OpenClaw.
+- [Openshell plugin reference](reference/plugins/reference/openshell.md) — OpenClaw sandbox backend for the NVIDIA OpenShell CLI with mirrored local workspaces and SSH command execution.
+- [Particle plugin reference](reference/plugins/reference/particle.md) — Adds Particle model provider support to OpenClaw.
+- [Perplexity plugin reference](reference/plugins/reference/perplexity.md) — Adds Perplexity Decisions model provider support to OpenClaw.
+- [PixVerse plugin reference](reference/plugins/reference/pixverse.md) — OpenClaw PixVerse video generation provider plugin.
+- [Policy plugin reference](reference/plugins/reference/policy.md) — Adds policy-backed doctor checks for workspace conformance.
+- [QA Channel plugin reference](reference/plugins/reference/qa-channel.md) — OpenClaw QA synthetic channel plugin.
+- [QA Lab plugin reference](reference/plugins/reference/qa-lab.md) — OpenClaw QA lab plugin with private debugger UI and scenario runner.
+- [Qianfan plugin reference](reference/plugins/reference/qianfan.md) — Adds Qianfan model provider support to OpenClaw.
+- [QQ Bot plugin reference](reference/plugins/reference/qqbot.md) — OpenClaw QQ Bot channel plugin for group and direct-message workflows.
+- [Qwen plugin reference](reference/plugins/reference/qwen.md) — Adds Qwen, Qwen Cloud, Model Studio, DashScope, Qwen Token Plan, Bailian Token Plan model provider support to OpenClaw.
+- [Radius plugin reference](reference/plugins/reference/radius.md) — Radius model gateway provider.
+- [Raft plugin reference](reference/plugins/reference/raft.md) — OpenClaw Raft channel plugin for secure CLI wake bridges.
+- [Reef plugin reference](reference/plugins/reference/reef.md) — Guarded end-to-end encrypted claw channel.
+- [Requesty plugin reference](reference/plugins/reference/requesty.md) — Adds Requesty model provider support to OpenClaw.
+- [Rerank plugin reference](reference/plugins/reference/rerank.md) — Use any /rerank endpoint as a Decision model.
+- [Runway plugin reference](reference/plugins/reference/runway.md) — Adds video generation provider support.
+- [SearXNG plugin reference](reference/plugins/reference/searxng.md) — Adds web search provider support.
+- [Senseaudio plugin reference](reference/plugins/reference/senseaudio.md) — Adds media understanding provider support.
+- [Session Share plugin reference](reference/plugins/reference/session-share.md) — Read-only OpenClaw sessions on paired gateways.
+- [SGLang plugin reference](reference/plugins/reference/sglang.md) — Adds SGLang model provider support to OpenClaw.
+- [Signal plugin reference](reference/plugins/reference/signal.md) — OpenClaw Signal channel plugin.
+- [Skill Workshop plugin reference](reference/plugins/reference/skill-workshop.md) — Learned skills each agent saves from its own work.
+- [Slack plugin reference](reference/plugins/reference/slack.md) — OpenClaw Slack channel plugin for channels, DMs, commands, and app events.
+- [Slack huddles plugin reference](reference/plugins/reference/slack-huddles.md) — Join Slack huddles through a dedicated Slack user in Chrome.
+- [Sms plugin reference](reference/plugins/reference/sms.md) — Twilio SMS/MMS channel plugin for OpenClaw messages.
+- [StepFun plugin reference](reference/plugins/reference/stepfun.md) — Adds StepFun, StepFun Plan model provider support to OpenClaw.
+- [Subq plugin reference](reference/plugins/reference/subq.md) — SubQ Snap typed decisions (not a conversational model).
+- [Synology Chat plugin reference](reference/plugins/reference/synology-chat.md) — Synology Chat channel plugin for OpenClaw channels and direct messages.
+- [Synthetic plugin reference](reference/plugins/reference/synthetic.md) — Adds Synthetic model provider support to OpenClaw.
+- [Talk Voice plugin reference](reference/plugins/reference/talk-voice.md) — Manage Talk voice selection (list/set).
+- [Tavily plugin reference](reference/plugins/reference/tavily.md) — Adds agent-callable tools. Adds web search provider support.
+- [Team Reports plugin reference](reference/plugins/reference/team-reports.md) — Daily, weekly, and monthly team activity reports from GitHub and Discord, with model-written summaries, shown in the OpenClaw app.
+- [Microsoft Teams meetings plugin reference](reference/plugins/reference/teams-meetings.md) — Join Microsoft Teams meetings as a Chrome browser guest.
+- [Telegram plugin reference](reference/plugins/reference/telegram.md) — OpenClaw Telegram channel plugin.
+- [Tencent plugin reference](reference/plugins/reference/tencent.md) — Adds Tencent TokenHub, Tencent Tokenplan model provider support to OpenClaw.
+- [Tlon plugin reference](reference/plugins/reference/tlon.md) — OpenClaw Tlon/Urbit channel plugin for chat workflows.
+- [Together plugin reference](reference/plugins/reference/together.md) — Adds Together model provider support to OpenClaw.
+- [Tokenjuice plugin reference](reference/plugins/reference/tokenjuice.md) — Compacts exec and bash tool results with tokenjuice reducers.
+- [TTS Local CLI plugin reference](reference/plugins/reference/tts-local-cli.md) — Adds text-to-speech provider support.
+- [Twitch plugin reference](reference/plugins/reference/twitch.md) — OpenClaw Twitch channel plugin for chat and moderation workflows.
+- [Typesafe plugin reference](reference/plugins/reference/typesafe.md) — Typed decision provider for hosted Jev and local System One models.
+- [Vault plugin reference](reference/plugins/reference/vault.md) — HashiCorp Vault SecretRef provider integration.
+- [Venice plugin reference](reference/plugins/reference/venice.md) — Adds Venice model provider support to OpenClaw.
+- [Vercel AI Gateway plugin reference](reference/plugins/reference/vercel-ai-gateway.md) — Adds Vercel AI Gateway model provider support to OpenClaw.
+- [Visitor Access plugin reference](reference/plugins/reference/visitor-access.md) — Manage expiring visitor grants through one Cloudflare Access email policy.
+- [vLLM plugin reference](reference/plugins/reference/vllm.md) — Adds vLLM model provider support to OpenClaw.
+- [Voice Call plugin reference](reference/plugins/reference/voice-call.md) — OpenClaw voice-call plugin for Twilio, Telnyx, and Plivo phone calls.
+- [Volcengine plugin reference](reference/plugins/reference/volcengine.md) — Adds Volcengine, Volcengine Plan model provider support to OpenClaw.
+- [Voyage plugin reference](reference/plugins/reference/voyage.md) — Adds embedding provider support, including memory search.
+- [Vydra plugin reference](reference/plugins/reference/vydra.md) — Adds Vydra model provider support to OpenClaw.
+- [Web Readability plugin reference](reference/plugins/reference/web-readability.md) — Extract readable article content from local HTML web fetch responses.
+- [WhatsApp plugin reference](reference/plugins/reference/whatsapp.md) — OpenClaw WhatsApp channel plugin for WhatsApp Web chats.
+- [Workboard plugin reference](reference/plugins/reference/workboard.md) — Dashboard workboard for agent-owned issues and sessions.
+- [X plugin reference](reference/plugins/reference/x.md) — Allowlisted X mentions and public replies.
+- [xAI plugin reference](reference/plugins/reference/xai.md) — xAI provider for Grok models, Grok web and X search, code execution, speech, and media generation.
+- [Xiaomi plugin reference](reference/plugins/reference/xiaomi.md) — Adds Xiaomi, Xiaomi Token Plan model provider support to OpenClaw.
+- [Z.AI plugin reference](reference/plugins/reference/zai.md) — Adds Z.AI model provider support to OpenClaw.
+- [Zalo plugin reference](reference/plugins/reference/zalo.md) — OpenClaw Zalo channel plugin for bot and webhook chats.
+- [Zalo Personal plugin reference](reference/plugins/reference/zalouser.md) — OpenClaw Zalo Personal Account plugin via native zca-js integration.
+- [Zoom meetings plugin reference](reference/plugins/reference/zoom-meetings.md) — Join Zoom meetings as a Chrome browser guest.
+- [Research adapters](reference/plugins/research-adapters.md) — Versioned managed-research adapters over existing plugin RPC
+- [Plugin runtime compatibility](reference/plugins/runtime-compatibility.md) — Inspect plugin and dependency runtime hazards without activating the plugin
+- [Agent harness plugins](reference/plugins/sdk-agent-harness.md) — Experimental SDK surface for plugins that replace the low level embedded agent executor
+- [Agent harness attempt runtime](reference/plugins/sdk-agent-harness/attempt-runtime.md) — Runtime helpers a selected harness calls during and after an attempt: injection, middleware, outcome classification, usage, and agent-end side effects
+- [Agent harness core ownership](reference/plugins/sdk-agent-harness/core-ownership.md) — What OpenClaw core prepares and owns before a harness runs an attempt, and the contracts a harness can declare to take some of it back
+- [Agent harness native inventories](reference/plugins/sdk-agent-harness/native-inventories.md) — Read-only model and MCP catalogs a harness reports from its own native runtime
+- [Register an agent harness](reference/plugins/sdk-agent-harness/registration.md) — Register an AgentHarnessV2, plus the optional isolated-completion and delegated-execution capabilities
+- [Agent harness runtime configuration](reference/plugins/sdk-agent-harness/runtime-config.md) — Operator config for the native Codex harness mode and for strict provider or model runtime policy
+- [Agent harness selection policy](reference/plugins/sdk-agent-harness/selection-policy.md) — How OpenClaw picks a harness after provider and model resolution, and why most harnesses also register a provider
+- [Agent harness sessions and results](reference/plugins/sdk-agent-harness/sessions-and-results.md) — Native session bindings, the OpenClaw transcript mirror, tool and media result delivery, terminal tool outcomes, and settled-turn finalization
+- [Agent harness user input and execution authority](reference/plugins/sdk-agent-harness/user-input-and-execution.md) — Blocking user-input surfaces, host tool capabilities, exec review outcomes, and paired-device command authority
+- [Channel inbound API](reference/plugins/sdk-channel-inbound.md) — Inbound event helpers for channel plugins: context building, shared runner orchestration, session record, and prepared reply dispatch
+- [Channel ingress API](reference/plugins/sdk-channel-ingress.md) — Experimental channel ingress API for inbound message authorization
+- [Channel outbound API](reference/plugins/sdk-channel-outbound.md) — Outbound message lifecycle API for channel plugins: adapters, receipts, durable sends, live preview, and reply pipeline helpers
+- [Building channel plugins](reference/plugins/sdk-channel-plugins.md) — Step-by-step guide to building a messaging channel plugin for OpenClaw
+- [Channel approvals](reference/plugins/sdk-channel-plugins/approvals.md) — Approval capabilities for channel plugins: approval auth, payload lifecycle and setup guidance, native approval delivery, and the narrower approval runtime subpaths
+- [Durable channel ingress](reference/plugins/sdk-channel-plugins/durable-ingress.md) — Durable inbound ingress for channel plugins: the ingress resolver, replay dedupe, transport retention classes, at-least-once side effects, and the reload and restart contract
+- [Channel mention policy](reference/plugins/sdk-channel-plugins/mention-policy.md) — Split inbound mention handling into plugin-owned evidence gathering and shared policy evaluation
+- [Channel message adapter](reference/plugins/sdk-channel-plugins/message-adapter.md) — The channel message adapter surface: live and finalizer capabilities, progress visibility, commentary delivery, and native TTS voice delivery
+- [Channel sessions and bindings](reference/plugins/sdk-channel-plugins/sessions-and-bindings.md) — Session conversation grammar, conversation route ownership, and account-scoped conversation binding support for channel plugins
+- [Channel setup and config](reference/plugins/sdk-channel-plugins/setup-and-config.md) — Setup subpaths, account schemas and inheritance, and the other narrow channel subpaths for config, inbound, targets, and threading
+- [Channel status and media](reference/plugins/sdk-channel-plugins/status-and-media.md) — Channel runtime status signals plus media and payload shaping: lifecycle status, typing indicators, media source params, and native payload shaping
+- [Plugin entry points](reference/plugins/sdk-entrypoints.md) — Reference for defineToolPlugin, definePluginEntry, defineChannelPluginEntry, and defineSetupPluginEntry
+- [Plugin SDK defineChannelPluginEntry helper](reference/plugins/sdk-entrypoints/define-channel-plugin-entry.md) — The channel entry helper, its mode-gated callbacks, and CLI registration
+- [Plugin SDK definePluginEntry helper](reference/plugins/sdk-entrypoints/define-plugin-entry.md) — The general entry helper, its fields, and the session catalog provider contract
+- [Plugin SDK defineSetupPluginEntry helper](reference/plugins/sdk-entrypoints/define-setup-plugin-entry.md) — The lightweight setup entry helper and the narrow setup helper families
+- [Plugin SDK defineToolPlugin helper](reference/plugins/sdk-entrypoints/define-tool-plugin.md) — The tool-only entry helper, its schemas, and generated manifest metadata
+- [Plugin SDK native provider factories](reference/plugins/sdk-entrypoints/native-providers.md) — Factory-form speech, transcription, and voice registration, and Computer Use providers
+- [Plugin SDK package entries](reference/plugins/sdk-entrypoints/package-entries.md) — package.json openclaw source and runtime entry fields and their resolution order
+- [Plugin SDK registration mode](reference/plugins/sdk-entrypoints/registration-mode.md) — How api.registrationMode reports the load mode and what to register in each
+- [Plugin SDK tool policy and sandbox helpers](reference/plugins/sdk-entrypoints/tool-policy-and-sandbox.md) — toolPolicy matchers, tool-group expansion, and splitSandboxBindSpec
+- [Remote Control UI ingress](reference/plugins/sdk-gateway-ingress.md) — Principal-bound remote Control UI transport and Gateway RPC for trusted plugin grants
+- [Plugin SDK migration](reference/plugins/sdk-migration.md) — Migrate from the legacy backwards-compatibility layer to the modern plugin SDK
+- [Awaited transcript and TTS helpers](reference/plugins/sdk-migration/async-transcript-and-tts.md) — Awaited replacements for historical transcript-key lookup and TTS prompt preparation
+- [Compatibility policy and records](reference/plugins/sdk-migration/compatibility-policy.md) — The external-plugin compatibility policy and the dated per-surface compatibility records
+- [How to migrate a plugin](reference/plugins/sdk-migration/how-to-migrate.md) — Ordered steps for moving a plugin off the removed SDK compatibility layer
+- [Import path reference](reference/plugins/sdk-migration/import-paths.md) — Which typed-public SDK subpath replaces each legacy import, including the removed channel facades
+- [Removal timeline](reference/plugins/sdk-migration/removal-timeline.md) — When deprecated plugin SDK surfaces become eligible for removal
+- [Removed surfaces and replacements](reference/plugins/sdk-migration/removed-surfaces.md) — Removed SDK surfaces and the replacement for each removed or deprecated API
+- [Migrate synchronous SQLite APIs](reference/plugins/sdk-migration/sqlite-async.md) — Replace deprecated synchronous SQLite SDK calls before the December 31, 2026 compatibility cutoff
+- [Talk and realtime voice migration](reference/plugins/sdk-migration/talk.md) — Migrating realtime voice, telephony, and meeting code to the unified Talk session API
+- [Plugin SDK overview](reference/plugins/sdk-overview.md) — Import map, registration API reference, and SDK architecture
+- [Plugin SDK capability registration](reference/plugins/sdk-overview/capabilities.md) — Provider, storage, worker, and embedding registration on OpenClawPluginApi
+- [Plugin SDK CLI and discovery registration](reference/plugins/sdk-overview/cli-and-discovery.md) — Gateway discovery services, CLI registrars and descriptors, and CLI backend registration
+- [Plugin SDK events and hook semantics](reference/plugins/sdk-overview/events-and-hooks.md) — Typed lifecycle hooks and the decision rules each hook applies
+- [Plugin SDK host hooks for workflow plugins](reference/plugins/sdk-overview/host-hooks.md) — Session extensions, trusted tool policies, Control UI descriptors, and runtime lifecycle
+- [Plugin SDK imports and module layout](reference/plugins/sdk-overview/imports.md) — Which plugin SDK subpath to import from, and how to lay out a plugin's own barrels
+- [Plugin SDK infrastructure registration](reference/plugins/sdk-overview/infrastructure.md) — Hooks, HTTP routes, Gateway methods, services, and the webhook and SQLite helpers
+- [Plugin SDK memory and context slots](reference/plugins/sdk-overview/memory-and-context.md) — The exclusive context-engine and memory-capability slots and their embedding adapters
+- [Plugin SDK tools and commands](reference/plugins/sdk-overview/tools-and-commands.md) — Registering agent tools, custom commands, node-host commands, and widget presenters
+- [Building provider plugins](reference/plugins/sdk-provider-plugins.md) — Step-by-step guide to building a model provider plugin for OpenClaw
+- [Provider hook families](reference/plugins/sdk-provider-plugins/hook-families.md) — Shared replay, stream, and tool-compat family builders for provider plugins
+- [Provider media and search](reference/plugins/sdk-provider-plugins/media-and-search.md) — Embedding, image and video generation, web fetch, and web search provider capabilities
+- [Provider model catalogs](reference/plugins/sdk-provider-plugins/model-catalogs.md) — Live model discovery, catalog helpers, and provider-owned pricing normalization
+- [Provider hook wiring](reference/plugins/sdk-provider-plugins/runtime-hooks.md) — Per-hook provider wiring for auth exchange, headers, transport identity, usage, and the hook order table
+- [Provider voice capabilities](reference/plugins/sdk-provider-plugins/voice-and-audio.md) — Speech, realtime transcription, realtime voice, and media understanding provider capabilities
+- [Plugin runtime helpers](reference/plugins/sdk-runtime.md) — api.runtime -- the injected runtime helpers available to plugins
+- [Plugin runtime agent helpers](reference/plugins/sdk-runtime/agent.md) — Agent identity, directories, session store, transcripts, and sandbox authority
+- [Plugin runtime background work](reference/plugins/sdk-runtime/background-work.md) — Hook agent turns and subagent runs
+- [Plugin runtime channel helpers](reference/plugins/sdk-runtime/channel.md) — Channel-specific runtime helper groups for chunking, routing, pairing, media, and mentions
+- [Plugin runtime config and utilities](reference/plugins/sdk-runtime/config-and-utilities.md) — Runtime config reads and writes, plus the shared process, error, and model-picker utilities
+- [Plugin runtime Gateway and nodes](reference/plugins/sdk-runtime/gateway-and-nodes.md) — In-process Gateway requests, paired node invocation, and Gateway service events
+- [Plugin runtime media helpers](reference/plugins/sdk-runtime/media.md) — Speech, media understanding, image/video/music generation, web search, and media utilities
+- [Plugin runtime model helpers](reference/plugins/sdk-runtime/models.md) — Host-owned completions, model-selection policy, and provider auth resolution
+- [Plugin runtime state and system](reference/plugins/sdk-runtime/state-and-system.md) — Config snapshot, shared plugin state, system utilities, events, and logging
+- [Plugin setup and config](reference/plugins/sdk-setup.md) — Setup wizards, setup-entry.ts, config schemas, and package.json metadata
+- [Plugin SDK subpaths](reference/plugins/sdk-subpaths.md) — Plugin SDK subpath catalog: which imports live where, grouped by area
+- [Plugin testing](reference/plugins/sdk-testing.md) — Testing utilities and patterns for OpenClaw plugins
+- [Session Share plugin](reference/plugins/session-share.md) — Share selected OpenClaw sessions through paired nodes or outbound Gateway reads
+- [Slack huddles plugin](reference/plugins/slack-huddles.md) — Slack huddles plugin: join active huddles through a signed-in Chrome user account
+- [SubQ](reference/plugins/subq.md) — Use SubQ Snap for typed decisions, not chat completions
+- [Team Reports plugin](reference/plugins/team-reports.md) — Daily, weekly, and monthly team reports from GitHub activity and Discord discussion
+- [Microsoft Teams meetings plugin](reference/plugins/teams-meetings.md) — Microsoft Teams meetings plugin: join work or consumer meetings as a Chrome browser guest
+- [Tool plugins](reference/plugins/tool-plugins.md) — Build simple typed agent tools with defineToolPlugin and openclaw plugins init/build/validate
+- [TypeSafe AI](reference/plugins/typesafe.md) — Use hosted Jev or a local System One server for typed decisions
+- [Vault SecretRefs](reference/plugins/vault.md) — Use the bundled Vault plugin to resolve SecretRefs from HashiCorp Vault
+- [Voice call plugin](reference/plugins/voice-call.md) — Place outbound and accept inbound voice calls via Twilio, Telnyx, or Plivo, with optional realtime voice and streaming transcription
+- [Voice call configuration](reference/plugins/voice-call/configuration.md) — Plugin config keys, the call owner, the config reference table, and session scope
+- [Voice call realtime and streaming](reference/plugins/voice-call/realtime-and-streaming.md) — Realtime voice conversations, tool policy, agent voice context, and streaming transcription
+- [Voice call security and interfaces](reference/plugins/voice-call/security-and-interfaces.md) — Webhook security options and the CLI, agent tool, and Gateway RPC surfaces
+- [Voice call troubleshooting](reference/plugins/voice-call/troubleshooting.md) — Fixes for voice-call setup, webhooks, signatures, Meet dial-in, and silent calls
+- [Voice call TTS and inbound calls](reference/plugins/voice-call/tts-and-inbound-calls.md) — Telephony TTS, inbound policy, per-number routing, and call lifecycle timers
+- [Workboard plugin](reference/plugins/workboard.md) — Optional Workboard boards for agent-owned cards and rule-based session views
+- [Zalo personal plugin](reference/plugins/zalouser.md) — Zalo Personal plugin: QR login + messaging via native zca-js (plugin install + channel config + tool)
+- [Zoom meetings plugin](reference/plugins/zoom-meetings.md) — Zoom meetings plugin: join meetings as a Chrome browser guest
+- [OpenProse removal and migration](reference/prose.md) — OpenClaw no longer bundles OpenProse or the /prose command. Move to the maintained upstream Agent Skill and clean stale plugin configuration.
+- [Provider directory](reference/providers.md) — Model providers (LLMs) supported by OpenClaw
+- [Abliteration](reference/providers/abliteration.md) — Abliteration setup, model selection, reasoning, and prompt caching
+- [Alibaba Model Studio](reference/providers/alibaba.md) — Alibaba Model Studio Wan video generation in OpenClaw
+- [Anthropic](reference/providers/anthropic.md) — Use Anthropic Claude via API keys or Claude CLI in OpenClaw
+- [Arcee AI](reference/providers/arcee.md) — Arcee AI setup (auth + model selection)
+- [Azure Speech](reference/providers/azure-speech.md) — Azure AI Speech text-to-speech for OpenClaw replies
+- [Baseten](reference/providers/baseten.md) — Baseten setup for DeepSeek V4.1 Flash and hosted Model APIs
+- [Amazon Bedrock](reference/providers/bedrock.md) — Use Amazon Bedrock (Converse API) models with OpenClaw
+- [Amazon Bedrock Mantle](reference/providers/bedrock-mantle.md) — Use Amazon Bedrock Mantle OpenAI-compatible and Claude Messages models with OpenClaw
+- [Bifrost](reference/providers/bifrost.md) — Connect OpenClaw to a Bifrost OpenAI-compatible model gateway
+- [Celeris](reference/providers/celeris.md) — Connect Celeris-1.1 Decision as a native Decision model
+- [Cerebras](reference/providers/cerebras.md) — Cerebras setup (auth + model selection)
+- [Chutes](reference/providers/chutes.md) — Chutes setup (OAuth or API key, model discovery, aliases)
+- [Claude Max API proxy](reference/providers/claude-max-api-proxy.md) — Community proxy to expose Claude subscription credentials as an OpenAI-compatible endpoint
+- [ClawRouter](reference/providers/clawrouter.md) — Route credential-scoped models through ClawRouter and show managed quotas
+- [Cloudflare AI gateway](reference/providers/cloudflare-ai-gateway.md) — Cloudflare AI Gateway setup (auth + model selection)
+- [Cohere](reference/providers/cohere.md) — Cohere setup (auth + model selection)
+- [ComfyUI](reference/providers/comfy.md) — ComfyUI workflow generation and Comfy Cloud MCP OAuth setup in OpenClaw
+- [Deepgram](reference/providers/deepgram.md) — Deepgram transcription for inbound voice notes
+- [DeepInfra](reference/providers/deepinfra.md) — Use DeepInfra's unified API to access the most popular open source and frontier models in OpenClaw
+- [DeepSeek](reference/providers/deepseek.md) — DeepSeek setup (auth + model selection)
+- [ds4](reference/providers/ds4.md) — Run OpenClaw through ds4, a local DeepSeek V4 Flash OpenAI-compatible server
+- [ElevenLabs](reference/providers/elevenlabs.md) — Use ElevenLabs speech, Scribe STT, and realtime transcription with OpenClaw
+- [Fal](reference/providers/fal.md) — fal image, video, and music generation setup in OpenClaw
+- [Fastino](reference/providers/fastino.md) — Connect Fastino GLiDE to the separate Decision model role
+- [Featherless AI](reference/providers/featherless.md) — Featherless AI setup, model selection, and tool calling
+- [Fireworks](reference/providers/fireworks.md) — Fireworks setup (auth + model selection)
+- [Fish Audio](reference/providers/fish-audio.md) — Use Fish Audio Drama 3 or S2.1 hosted TTS, or local S2 Pro on Apple silicon
+- [GitHub Copilot](reference/providers/github-copilot.md) — Sign in to GitHub Copilot from OpenClaw using the device flow or non-interactive token import
+- [GMI Cloud](reference/providers/gmi.md) — Use GMI Cloud's OpenAI-compatible API with OpenClaw
+- [Google (Gemini)](reference/providers/google.md) — Google Gemini setup (AI Studio API key, Vertex AI, optional CLI runtime, and multimodal tools)
+- [Google (Vertex AI)](reference/providers/google-vertex.md) — Use Gemini through Google Cloud Vertex AI with Application Default Credentials
+- [Gradium](reference/providers/gradium.md) — Use Gradium text-to-speech in OpenClaw
+- [Groq](reference/providers/groq.md) — Groq setup (auth + model selection + Whisper transcription)
+- [Hugging Face (inference)](reference/providers/huggingface.md) — Hugging Face Inference setup (auth + model selection)
+- [Inworld](reference/providers/inworld.md) — Inworld streaming text-to-speech for OpenClaw replies
+- [Kie AI](reference/providers/kie.md) — Kie AI video generation setup and supported models
+- [Kilo Gateway](reference/providers/kilocode.md) — Use Kilo Gateway's unified API to access many models in OpenClaw
+- [Levanto Sage](reference/providers/levanto.md) — Connect Levanto Sage for native typed decisions
+- [Liquid AI](reference/providers/liquid-ai.md) — Connect Liquid AI d1 and d1 Ultra as native Decision models
+- [Liquid Inference](reference/providers/liquid-inference.md) — Connect Liquid Inference as a custom OpenAI-compatible provider
+- [LiteLLM](reference/providers/litellm.md) — Run OpenClaw through LiteLLM Proxy for unified model access and cost tracking
+- [llmman](reference/providers/llmman.md) — Run OpenClaw with llmman (local models, hosted providers, and hybrid local + hosted routing)
+- [LM Studio](reference/providers/lmstudio.md) — Run OpenClaw with LM Studio
+- [LongCat](reference/providers/longcat.md) — LongCat API setup for LongCat-2.0
+- [Meta](reference/providers/meta.md) — Meta setup, authentication, and Muse Wonder and Muse Spark model selection
+- [MiniMax](reference/providers/minimax.md) — Use MiniMax models in OpenClaw
+- [Mistral](reference/providers/mistral.md) — Use Mistral models and Voxtral transcription with OpenClaw
+- [Model provider quickstart](reference/providers/models.md) — Model providers (LLMs) supported by OpenClaw
+- [Moonshot AI](reference/providers/moonshot.md) — Configure Moonshot Kimi models vs Kimi Coding (separate providers + keys)
+- [Nace](reference/providers/nace.md) — Connect Drex Max v1.1 as a native Decision model
+- [Neon AI Gateway](reference/providers/neon.md) — Route OpenClaw through Neon AI Gateway with one branch-scoped Neon credential
+- [NovitaAI](reference/providers/novita.md) — Use NovitaAI's OpenAI-compatible API with OpenClaw
+- [NVIDIA](reference/providers/nvidia.md) — Use NVIDIA's OpenAI-compatible API in OpenClaw
+- [Ollama](reference/providers/ollama.md) — Run OpenClaw with Ollama (cloud and local models)
+- [Ollama Cloud](reference/providers/ollama-cloud.md) — Use Ollama Cloud directly with OpenClaw
+- [Ollama advanced configuration](reference/providers/ollama/advanced.md) — Context windows, thinking control, costs, embeddings, and streaming for Ollama
+- [Ollama configuration](reference/providers/ollama/configuration.md) — The basic, explicit, and custom base URL config shapes for the Ollama provider
+- [Ollama model discovery](reference/providers/ollama/model-discovery.md) — How OpenClaw discovers Ollama models implicitly, plus narrow smoke tests
+- [Ollama node-local inference](reference/providers/ollama/node-local-inference.md) — Delegate a bounded prompt to an Ollama model running on a paired node
+- [Ollama config recipes](reference/providers/ollama/recipes.md) — Copyable Ollama config recipes, model selection, and quick verification
+- [Ollama setup](reference/providers/ollama/setup.md) — Connect OpenClaw to Ollama: auth rules, onboarding, and cloud models through a local host
+- [Ollama troubleshooting](reference/providers/ollama/troubleshooting.md) — Fixes for common Ollama failures in OpenClaw
+- [Ollama vision and image description](reference/providers/ollama/vision.md) — Route image understanding through local or hosted Ollama vision models
+- [Ollama Web Search](reference/providers/ollama/web-search.md) — Use Ollama as the OpenClaw web_search provider
+- [oMLX](reference/providers/omlx.md) — Use oMLX for local chat and memory embeddings on Apple Silicon
+- [OpenAI](reference/providers/openai.md) — Use OpenAI via API keys or Codex subscription in OpenClaw
+- [OpenAI advanced configuration](reference/providers/openai/advanced.md) — Prompt contribution, transport, Fast mode, compaction, and route compat
+- [OpenAI authentication](reference/providers/openai/authentication.md) — Choose Codex login, Sign in with ChatGPT, or an API key for the OpenAI capabilities you need
+- [Azure OpenAI endpoints](reference/providers/openai/azure.md) — Point the bundled openai provider at an Azure OpenAI resource
+- [OpenAI coverage and cost](reference/providers/openai/coverage-and-cost.md) — Which OpenAI capabilities OpenClaw exposes, embeddings, and spend reporting
+- [OpenAI image generation](reference/providers/openai/image-and-video.md) — Generate and edit images with OpenAI gpt-image
+- [OpenAI models](reference/providers/openai/models.md) — Pick an OpenAI model ref, including GPT-6.1 Sol, GPT-6 Astra, Sol, Luna, and the GPT-5.6 tiers
+- [OpenAI runtimes and Codex auth](reference/providers/openai/runtimes.md) — Choose an OpenAI runtime and understand native Codex auth
+- [OpenAI setup](reference/providers/openai/setup.md) — Connect OpenAI with an API key, Codex subscription, or Sign in with ChatGPT
+- [OpenAI voice and speech](reference/providers/openai/voice-and-speech.md) — OpenAI text-to-speech, transcription, and realtime voice settings and auth
+- [OpenCode](reference/providers/opencode.md) — Use OpenCode Zen and Go catalogs with OpenClaw
+- [OpenCode Go](reference/providers/opencode-go.md) — Use the OpenCode Go catalog with the shared OpenCode setup
+- [OpenRouter](reference/providers/openrouter.md) — Use OpenRouter's unified API to access many models in OpenClaw
+- [Particle](reference/providers/particle.md) — Use Particle-1 with an API key in OpenClaw
+- [Perplexity](reference/providers/perplexity-provider.md) — Perplexity web search provider setup (API key, search modes, filtering)
+- [PixVerse](reference/providers/pixverse.md) — PixVerse video generation setup in OpenClaw
+- [Poolside (Laguna)](reference/providers/poolside.md) — Use Poolside Laguna models or the Poolside Agent with OpenClaw
+- [Qianfan](reference/providers/qianfan.md) — Use Qianfan's unified API to access many models in OpenClaw
+- [Qwen](reference/providers/qwen.md) — Use Qwen Cloud through its OpenClaw plugin
+- [Radius](reference/providers/radius.md) — Connect OpenClaw to Radius with browser sign-in or an organization API key
+- [Requesty](reference/providers/requesty.md) — Use Requesty's unified OpenAI-compatible router to access hundreds of models in OpenClaw
+- [Rerank (Decision models)](reference/providers/rerank.md) — Use any /rerank endpoint (vLLM, TEI, Infinity, Cohere, Jina, Voyage) as a Decision model
+- [Runway](reference/providers/runway.md) — Runway video generation setup in OpenClaw
+- [SenseAudio](reference/providers/senseaudio.md) — SenseAudio batch speech-to-text for inbound voice notes
+- [SGLang](reference/providers/sglang.md) — Run OpenClaw with SGLang (OpenAI-compatible self-hosted server)
+- [StepFun](reference/providers/stepfun.md) — Use StepFun models with OpenClaw
+- [Synthetic](reference/providers/synthetic.md) — Use Synthetic's Anthropic-compatible API in OpenClaw
+- [Telnyx](reference/providers/telnyx.md) — Telnyx setup for OpenAI-compatible AI inference
+- [Tencent Cloud (TokenHub / TokenPlan)](reference/providers/tencent.md) — Tencent Cloud TokenHub and TokenPlan setup for hy4-preview
+- [Together AI](reference/providers/together.md) — Together AI setup (auth + model selection)
+- [Venice AI](reference/providers/venice.md) — Use Venice AI privacy-focused models in OpenClaw
+- [Vercel AI gateway](reference/providers/vercel-ai-gateway.md) — Vercel AI Gateway setup (auth + model selection)
+- [vLLM](reference/providers/vllm.md) — Run OpenClaw with vLLM (OpenAI-compatible local server)
+- [Volcengine (Doubao)](reference/providers/volcengine.md) — Volcano Engine setup (Doubao models, coding endpoints, and Seed Speech TTS)
+- [Vydra](reference/providers/vydra.md) — Use Vydra image, video, and speech in OpenClaw
+- [xAI](reference/providers/xai.md) — Use xAI Grok models in OpenClaw
+- [Xiaomi MiMo](reference/providers/xiaomi.md) — Use Xiaomi MiMo pay-as-you-go and Token Plan models with OpenClaw
+- [Z.AI](reference/providers/zai.md) — Use Z.AI (GLM models) with OpenClaw
+- [Conversation transcript ownership](reference/refactor/conversation-transcript-ownership.md) — Single ownership of transcript entries: every visible message is in its chat's model history once
+- [Worker-owned cron](reference/refactor/cron-worker-owned.md) — Proposed worker-owned cron scheduling with committed run requests and a small launcher
+- [Transcript event bytes](reference/refactor/transcript-event-bytes.md) — Encode-once transcript events: ownership, transport copies, and implemented slices
+- [Default AGENTS.md](reference/reference/AGENTS.default.md) — Default OpenClaw agent instructions and skills roster for the personal assistant setup
+- [API usage and costs](reference/reference/api-usage-costs.md) — Audit what can spend money, which keys are used, and how to view usage
+- [Earlier warm transcript display](reference/reference/control-ui-warm-transcript-design.md) — Presentation timing for displaying the last-viewed conversation earlier without a second cache or new authority
+- [Credits](reference/reference/credits.md) — Project origin, contributors, and license.
+- [Database engines](reference/reference/database-engines.md) — Select SQLite or PostgreSQL storage, understand local anchors, and observe database work
+- [Database schemas](reference/reference/database-schemas.md) — OpenClaw database locations, schema versions, integrity checks, and downgrade recovery
+- [Agent schema history](reference/reference/database-schemas/agent-schema-history.md) — Per-agent database schema versions, their changes, and their first releases
+- [Integrity, troubleshooting, and recovery](reference/reference/database-schemas/integrity-and-recovery.md) — Integrity checks, common database errors, and the supported downgrade recovery path
+- [Database layout](reference/reference/database-schemas/layout.md) — Which SQLite database holds what, and the tables behind individual features
+- [Per-person and companion storage](reference/reference/database-schemas/personal-data.md) — Where personal GitHub connections, personal model accounts, Apple companion journals, and native chat drafts live
+- [State schema history](reference/reference/database-schemas/state-schema-history.md) — Shared state database schema versions, their changes, and their first releases
+- [Storage changes and release preflight](reference/reference/database-schemas/storage-changes.md) — Proposing a persistent-store change, the review checkpoint, and preflighting a target release
+- [Versioning contract](reference/reference/database-schemas/versioning.md) — How OpenClaw records schema versions, when a bump is required, and how updaters cross one
+- [Database access in workers](reference/reference/database-schemas/worker-access.md) — Worker-owned database access, write receipts, session actors, and final authority
+- [Database worker migration inventory](reference/reference/database-schemas/worker-access-inventory.md) — Generated inventory and migration priorities for synchronous SQLite access
+- [Device model database](reference/reference/device-models.md) — How OpenClaw vendors Apple device model identifiers for friendly names in the macOS app.
+- [Full release validation](reference/reference/full-release-validation.md) — Index of the Full Release Validation reference, one page per reader job
+- [Continue a failed validation](reference/reference/full-release-validation/continuation.md) — Continuing a failed Full Release Validation parent, attempt adoption rules, and the post-merge continuation proof
+- [Dispatch a validation run](reference/reference/full-release-validation/dispatch.md) — Dispatching Full Release Validation: Code SHA and Tooling SHA selection, helper inputs, and the immutable execution plan
+- [Evidence to keep](reference/reference/full-release-validation/evidence.md) — Full Release Validation evidence, checked-in release-tooling waivers, and backing workflows
+- [Extended-stable and changelog-only validation](reference/reference/full-release-validation/extended-stable.md) — Extended-stable validation dispatch, changelog-only Release SHA reuse, coverage policies, and beta Telegram deferrals
+- [Release profiles and focused reruns](reference/reference/full-release-validation/profiles.md) — Release profile coverage, full-only additions, and the focused rerun handles and suite filters
+- [Release checks stages](reference/reference/full-release-validation/release-checks.md) — OpenClaw Release Checks stage matrix and the Docker release-path chunk list
+- [Top-level stages](reference/reference/full-release-validation/stages.md) — The Full Release Validation umbrella stage matrix, evidence reuse, artifact producers, and decision states
+- [Memory configuration reference](reference/reference/memory-config.md) — Built-in memory search, admission exclusions, and dreaming configuration
+- [@openclaw/ai package](reference/reference/openclaw-ai.md) — The @openclaw/ai npm package: reusable model transports, isolated runtimes, and host policy ports
+- [Prompt caching](reference/reference/prompt-caching.md) — Prompt caching knobs, merge order, provider behavior, and tuning patterns
+- [Pull request review flow](reference/reference/pull-request-review-flow.md) — How Barnacle and ClawSweeper feedback helps move OpenClaw pull requests through review.
+- [Release performance sweep](reference/reference/release-performance-sweep.md) — Visual summary and technical evidence for the May 2026 performance, package-size, dependency, and shrinkwrap cleanup
+- [Release policy](reference/reference/RELEASING.md) — OpenClaw release channels, version numbers, validation, and published assets
+- [Rich output protocol](reference/reference/rich-output-protocol.md) — Rich output protocol for structured media, embeds, audio hints, and replies
+- [RPC adapters](reference/reference/rpc.md) — RPC adapters for external CLIs (signal-cli, imsg) and gateway patterns
+- [PR GitHub transport](reference/reference/scripts/github-transport.md) — GitHub observations, publication, and protected Octopool dispatch for scripts/pr
+- [PR merge admission](reference/reference/scripts/merge-admission.md) — Main movement, mergeability, transport, and receipt contracts for scripts/pr
+- [PR merge recovery](reference/reference/scripts/merge-recovery.md) — Retained merge outcomes, investigated recovery, and ownership-checked completion
+- [PR preparation](reference/reference/scripts/pr-preparation.md) — Preparation, correction reviews, source acquisition, and gate bindings for scripts/pr
+- [PR wrapper tooling](reference/reference/scripts/pr-tooling.md) — Canonical wrapper trust, process locks, and materialized dependencies for scripts/pr
+- [Prior-CI admin admission](reference/reference/scripts/prior-ci.md) — Exact evidence and authority requirements for prior-CI admin landing
+- [Remote PR gates](reference/reference/scripts/remote-gates.md) — Optional remote PR gate contracts and Testbox execution-workspace ownership
+- [Secret Placeholder Conventions](reference/reference/secret-placeholder-conventions.md) — Secret-scanner-safe placeholder conventions for docs and examples
+- [SecretRef credential surface](reference/reference/secretref-credential-surface.md) — Supported and unsupported SecretRef credentials
+- [Session management deep dive](reference/reference/session-management-compaction.md) — Deep dive: session store + transcripts, lifecycle, and (auto)compaction internals
+- [Compaction behavior and settings](reference/reference/session-management-compaction/compaction.md) — What compaction does, when auto-compaction runs, its settings, pluggable providers, and where it surfaces
+- [Silent turns and the memory flush](reference/reference/session-management-compaction/housekeeping.md) — The NO_REPLY silent-turn contract and the pre-compaction memory flush configuration
+- [Store maintenance and retention](reference/reference/session-management-compaction/maintenance.md) — The session.maintenance keys, disk-budget cleanup tiers, cron run retention, and the SQLite downgrade path
+- [Session transcript working sets](reference/reference/session-management-compaction/resident-history.md) — Proposed worker-owned transcript acquisition and bounded SessionManager working sets
+- [Session keys, ids, and transcript events](reference/reference/session-management-compaction/schema.md) — sessionKey patterns, sessionId lifecycle, SessionEntry fields, and the transcript event stream
+- [Session state on disk](reference/reference/session-management-compaction/store.md) — Where the Gateway keeps session rows and transcripts, and the on-disk paths per agent
+- [Session-start measurement](reference/reference/session-start-measurement.md) — Measure session-start ACK, subscriber-visible text, and tool-start latency on a synthetic busy Gateway
+- [Team immutable update design](reference/reference/team-immutable-update-design.md) — Immutable update design: installation, preparation, native activation, and retained recovery contracts
+- [AGENTS.md template](reference/reference/templates/AGENTS.md) — Workspace template for AGENTS.md
+- [AGENTS.dev template](reference/reference/templates/AGENTS.dev.md) — Dev agent AGENTS.md (C-3PO)
+- [BOOT.md template](reference/reference/templates/BOOT.md) — Workspace template for BOOT.md
+- [BOOTSTRAP.md template](reference/reference/templates/BOOTSTRAP.md) — First-run ritual for new agents
+- [Retired HEARTBEAT.md workspace file](reference/reference/templates/HEARTBEAT.md) — Migration guide for the retired HEARTBEAT.md workspace file
+- [IDENTITY template](reference/reference/templates/IDENTITY.md) — Agent identity record
+- [IDENTITY.dev template](reference/reference/templates/IDENTITY.dev.md) — Dev agent identity (C-3PO)
+- [Chief of staff soul](reference/reference/templates/roles/coordinator/CLAW.md) — 
+- [Chief of staff operating program](reference/reference/templates/roles/coordinator/workspace/AGENTS.md) — 
+- [Researcher soul](reference/reference/templates/roles/researcher/CLAW.md) — 
+- [Researcher operating program](reference/reference/templates/roles/researcher/workspace/AGENTS.md) — 
+- [Reviewer soul](reference/reference/templates/roles/reviewer/CLAW.md) — 
+- [Reviewer operating program](reference/reference/templates/roles/reviewer/workspace/AGENTS.md) — 
+- [Writer soul](reference/reference/templates/roles/writer/CLAW.md) — 
+- [Writer operating program](reference/reference/templates/roles/writer/workspace/AGENTS.md) — 
+- [SOUL.md template](reference/reference/templates/SOUL.md) — Workspace template for SOUL.md
+- [SOUL.dev template](reference/reference/templates/SOUL.dev.md) — Dev agent soul (C-3PO)
+- [TOOLS.md retired](reference/reference/templates/TOOLS.md) — Retired TOOLS.md workspace template
+- [USER template](reference/reference/templates/USER.md) — Durable user preference and profile directives
+- [USER.dev template](reference/reference/templates/USER.dev.md) — Dev agent user profile (C-3PO)
+- [Tests](reference/reference/test.md) — Index of the OpenClaw testing reference, one page per reader job
+- [Docker test suites](reference/reference/test/docker.md) — The full Docker suite scheduler, its lanes, and the onboarding and QR smokes
+- [Control UI, TUI, and E2E lanes](reference/reference/test/lanes.md) — Control UI, TUI, extension, Gateway, and live lane commands and fixture rules
+- [Run tests locally](reference/reference/test/local.md) — Focused local proof, core test commands, and optional full local runs
+- [Test performance and benchmarks](reference/reference/test/performance.md) — Import profiling, CPU and heap profiles, shard timings, and benchmark scripts
+- [Remote test proof](reference/reference/test/remote-proof.md) — When agents use Crabbox or Testbox, and the wrapper, lease, and trust rules
+- [Test runner internals](reference/reference/test/runner-internals.md) — Shared build locks, isolated test state and homes, and JSON report merging
+- [Token use and costs](reference/reference/token-use.md) — How OpenClaw builds prompt context and reports token usage + costs
+- [Transcript hygiene](reference/reference/transcript-hygiene.md) — Reference: provider-specific transcript sanitization and repair rules
+- [Release notes](reference/releases.md) — OpenClaw release notes, complete Markdown changelogs, and contribution records.
+- [v2026.10.1](reference/releases/2026.10.1.md) — Installed-skill discovery, MCP Apps and full backups, with updates across chat, native apps and automations.
+- [v2026.10.10](reference/releases/2026.10.10.md) — Chat Details, experimental Advisor and split mode for browser Talk.
+- [v2026.10.2](reference/releases/2026.10.2.md) — Upgrade and repair fixes, missing or repeated replies, long conversations and credential masking.
+- [v2026.10.3](reference/releases/2026.10.3.md) — Update and Doctor repairs, Mac setup, conversation continuation, Muse Wonder and MiniMax fixes.
+- [v2026.10.4](reference/releases/2026.10.4.md) — Update and recovery fixes, chat refresh, messaging and sign-in repairs.
+- [v2026.10.5](reference/releases/2026.10.5.md) — A refreshed sidebar, Skill Workshop 2.0, and public conversation links.
+- [v2026.10.6](reference/releases/2026.10.6.md) — Windows setup, Discord commands, and iPhone Talk fixes.
+- [v2026.10.7](reference/releases/2026.10.7.md) — 
+- [v2026.10.8](reference/releases/2026.10.8.md) — 
+- [v2026.10.9](reference/releases/2026.10.9.md) — Security remediations and fixes for updates, database recovery, sessions and model refreshes.
+- [v2026.11.1](reference/releases/2026.11.1.md) — Patch fixes for updates, conversations, apps and model connections
+- [v2026.11.2](reference/releases/2026.11.2.md) — Fixes for updates, scheduled reminders, chat and model connections.
+- [v2026.11.3](reference/releases/2026.11.3.md) — Fixes for update recovery, backup discovery, privacy and reliability.
+- [v2026.11.4](reference/releases/2026.11.4.md) — Fixes for updates, conversations, data recovery and privacy.
+- [v2026.11.5](reference/releases/2026.11.5.md) — OpenClaw v2026.11.5 release notes by product area.
+- [v2026.11.6](reference/releases/2026.11.6.md) — Bug fixes and quality-of-life improvements throughout OpenClaw.
+- [v2026.6.11](reference/releases/2026.6.11.md) — Reliability fixes for replies, sends, reconnects, model setup, sessions, and safer admin defaults.
+- [v2026.7.1](reference/releases/2026.7.1.md) — Major Control UI and onboarding overhauls, big iOS, Android, and macOS updates, expanded model support, and substantial Telegram, Slack, Discord, and Apple Messages improvements.
+- [v2026.8.1 (AKA OpenClaw 2.0)](reference/releases/2026.8.1.md) — A rebuilt web experience, simpler onboarding, stronger memory and session continuity, and a very large reliability pass across OpenClaw.
+- [v2026.8.1: Automations and Scheduling](reference/releases/2026.8.1/automations-and-scheduling.md) — 
+- [v2026.8.1: Browser and Computer Use](reference/releases/2026.8.1/browser-and-computer-use.md) — 
+- [v2026.8.1: Installation and Onboarding](reference/releases/2026.8.1/installation-and-onboarding.md) — 
+- [v2026.8.1: Maintainer and Internal Changes](reference/releases/2026.8.1/maintainer-and-internal-changes.md) — 
+- [v2026.8.1: Maintenance changes (part 1 of 8)](reference/releases/2026.8.1/maintenance-changes-part-1.md) — 
+- [v2026.8.1: Maintenance changes (part 2 of 8)](reference/releases/2026.8.1/maintenance-changes-part-2.md) — 
+- [v2026.8.1: Maintenance changes (part 3 of 8)](reference/releases/2026.8.1/maintenance-changes-part-3.md) — 
+- [v2026.8.1: Maintenance changes (part 4 of 8)](reference/releases/2026.8.1/maintenance-changes-part-4.md) — 
+- [v2026.8.1: Maintenance changes (part 5 of 8)](reference/releases/2026.8.1/maintenance-changes-part-5.md) — 
+- [v2026.8.1: Maintenance changes (part 6 of 8)](reference/releases/2026.8.1/maintenance-changes-part-6.md) — 
+- [v2026.8.1: Maintenance changes (part 7 of 8)](reference/releases/2026.8.1/maintenance-changes-part-7.md) — 
+- [v2026.8.1: Maintenance changes (part 8 of 8)](reference/releases/2026.8.1/maintenance-changes-part-8.md) — 
+- [v2026.8.1: Memory](reference/releases/2026.8.1/memory.md) — 
+- [v2026.8.1: Messaging](reference/releases/2026.8.1/messaging.md) — 
+- [v2026.8.1: Models and Providers](reference/releases/2026.8.1/models-and-providers.md) — 
+- [v2026.8.1: Native Apps](reference/releases/2026.8.1/native-apps.md) — 
+- [v2026.8.1: Other Bug Fixes](reference/releases/2026.8.1/other-bug-fixes.md) — 
+- [v2026.8.1: Plugins and Integrations](reference/releases/2026.8.1/plugins-and-integrations.md) — 
+- [v2026.8.1: Quality-of-Life Improvements](reference/releases/2026.8.1/quality-of-life-improvements.md) — 
+- [v2026.8.1: Security and Privacy](reference/releases/2026.8.1/security-and-privacy.md) — 
+- [v2026.8.1: Skills](reference/releases/2026.8.1/skills.md) — 
+- [v2026.8.1: The New Web UI](reference/releases/2026.8.1/the-new-web-ui.md) — 
+- [v2026.8.1: Updates and Maintenance](reference/releases/2026.8.1/updates-and-maintenance.md) — 
+- [v2026.8.2](reference/releases/2026.8.2.md) — Home beside your work, a Linux desktop companion, background sessions, browser control without a running Gateway, four new Control UI looks, and focused reply, voice, update, and recovery fixes.
+- [v2026.9.1](reference/releases/2026.9.1.md) — Mermaid diagrams across chat surfaces, a fuller Android experience, safer update recovery, and lower overhead for long conversations and large installations.
+- [v2026.9.2](reference/releases/2026.9.2.md) — 
+- [v2026.9.3](reference/releases/2026.9.3.md) — Clean update recovery, faster session reconnects, live browser automation, revocable chat links, searchable meeting transcripts, and repository-backed cloud work.
+- [v2026.9.4](reference/releases/2026.9.4.md) — Plugin and skill discovery, visible skill learning, cloud-worker controls, GPT Image 2.5, and terminal questions.
+- [v2026.9.5](reference/releases/2026.9.5.md) — Atomic Updates, plugin hot reloading, conversation sharing, GPT Live, shared browser pages, conversation archiving, and guided specialist teams.
+- [v2026.9.6](reference/releases/2026.9.6.md) — Managed updates, restart recovery, complete 30-day Usage reporting, GitHub and remote workspace tools, live meeting notes, and new model choices.
+- [v2026.9.7](reference/releases/2026.9.7.md) — Snappier under load, smoother long conversations, update recovery, OpenAI Agents API, and Sign in with ChatGPT (Beta).
+- [v2026.9.8](reference/releases/2026.9.8.md) — Update recovery, Windows startup and reply fixes.
+- [v2026.9.9](reference/releases/2026.9.9.md) — GPT-6.1 Sol in Codex, Claude Haiku 5.5 support, update recovery, and fixes for replies and scheduled jobs.
+- [Historical member recovery-kit live proof](reference/screens/member-recovery-kit/live-history/README.md) — 
+- [Contributing to the threat model](reference/security/CONTRIBUTING-THREAT-MODEL.md) — How to contribute to the OpenClaw threat model
+- [Formal verification (security models)](reference/security/formal-verification.md) — Machine-checked security models for OpenClaw's highest-risk paths.
+- [Incident response](reference/security/incident-response.md) — How OpenClaw triages, responds to, and follows up on security incidents
+- [Network proxy](reference/security/network-proxy.md) — How to route OpenClaw runtime HTTP and WebSocket traffic through an operator-managed filtering proxy
+- [Threat model (MITRE ATLAS)](reference/security/THREAT-MODEL-ATLAS.md) — OpenClaw threat model mapped to the MITRE ATLAS framework
+- [Collection and exfiltration (AML.TA0009, AML.TA0010)](reference/security/THREAT-MODEL-ATLAS/collection-and-exfiltration.md) — OpenClaw collection and exfiltration threats (AML.TA0009, AML.TA0010): T-EXFIL-001, T-EXFIL-002, T-EXFIL-003
+- [Defense evasion (AML.TA0007)](reference/security/THREAT-MODEL-ATLAS/defense-evasion.md) — OpenClaw defense evasion threats (AML.TA0007): T-EVADE-001, T-EVADE-002
+- [Discovery (AML.TA0008)](reference/security/THREAT-MODEL-ATLAS/discovery.md) — OpenClaw discovery threats (AML.TA0008): T-DISC-001, T-DISC-002
+- [Execution (AML.TA0005)](reference/security/THREAT-MODEL-ATLAS/execution.md) — OpenClaw execution threats (AML.TA0005): T-EXEC-001, T-EXEC-002, T-EXEC-003, T-EXEC-004
+- [Impact (AML.TA0011)](reference/security/THREAT-MODEL-ATLAS/impact.md) — OpenClaw impact threats (AML.TA0011): T-IMPACT-001, T-IMPACT-002, T-IMPACT-003
+- [Initial access (AML.TA0004)](reference/security/THREAT-MODEL-ATLAS/initial-access.md) — OpenClaw initial access threats (AML.TA0004): T-ACCESS-001, T-ACCESS-002, T-ACCESS-003
+- [Persistence (AML.TA0006)](reference/security/THREAT-MODEL-ATLAS/persistence.md) — OpenClaw persistence threats (AML.TA0006): T-PERSIST-001, T-PERSIST-002, T-PERSIST-003
+- [Reconnaissance (AML.TA0002)](reference/security/THREAT-MODEL-ATLAS/reconnaissance.md) — OpenClaw reconnaissance threats (AML.TA0002): T-RECON-001, T-RECON-002
+- [Codex supervision](reference/specs/codex-supervision.md) — Architecture and product boundary for supervising native Codex sessions from OpenClaw.
+- [Native local personal identity proposal](reference/specs/native-local-personal-identity.md) — Proposal for verified personal admission in a local native app without changing shared or device identity.
+- [Agent bootstrapping](reference/start/bootstrapping.md) — Agent bootstrapping ritual that seeds the workspace and identity files
+- [Docs directory](reference/start/docs-directory.md) — Curated links to the most used OpenClaw docs.
+- [Getting started](reference/start/getting-started.md) — Get OpenClaw installed and run your first chat in minutes.
+- [Docs hubs](reference/start/hubs.md) — Hubs that link the main OpenClaw docs
+- [OpenClaw lore](reference/start/lore.md) — Backstory and lore of OpenClaw for context and tone
+- [Multiplayer](reference/start/multiplayer.md) — Run OpenClaw as a multiplayer claw: one shared Gateway for a trusted team, from first setup to an always-on production deployment
+- [Onboarding (macOS app)](reference/start/onboarding.md) — First-run setup flow for OpenClaw (macOS app)
+- [Onboarding overview](reference/start/onboarding-overview.md) — Overview of OpenClaw onboarding options and flows
+- [Personal assistant setup](reference/start/openclaw.md) — End-to-end guide for running OpenClaw as a personal assistant with safety cautions
+- [Setup](reference/start/setup.md) — Advanced setup and development workflows for OpenClaw
+- [Why OpenClaw](reference/start/why-openclaw.md) — The architecture case for OpenClaw: a trusted gateway, untrusted execution, policy enforced by code, and versioned state, compared source-by-source with single-process harnesses
+- [Identity and roles](reference/start/why-openclaw/identity-and-roles.md) — Pairing, operator scopes, role ceilings, and the one-gateway-is-one-trust-domain boundary
+- [OpenClaw and Hermes Agent](reference/start/why-openclaw/openclaw-and-hermes-agent.md) — Source-by-source comparison of OpenClaw and Hermes Agent at the reviewed August 2026 snapshots, with the property table
+- [Policy as code](reference/start/why-openclaw/policy-as-code.md) — Permission modes, tool policy, and exec approvals as code-enforced gates rather than prompt requests
+- [Provenance](reference/start/why-openclaw/provenance.md) — Memory origin classes, trust gating, deletion boundaries, and the audit ledger's recorded non-claims
+- [Secrets](reference/start/why-openclaw/secrets.md) — SecretRefs, the protected store, egress sentinels, and the custody limits of each
+- [The trust boundary](reference/start/why-openclaw/the-trust-boundary.md) — Where OpenClaw's Gateway authority ends and configured sandbox, node, and cloud-worker execution begins
+- [Versioned state, guarded upgrades](reference/start/why-openclaw/versioned-state-guarded-upgrades.md) — Database-first state, schema version contracts, guarded updates, release channels, and the maturity scorecard
+- [Onboarding (CLI)](reference/start/wizard.md) — CLI onboarding: quick start with detected AI access or choose custom setup
+- [CLI automation](reference/start/wizard-cli-automation.md) — Scripted onboarding and agent setup for the OpenClaw CLI
+- [CLI setup reference](reference/start/wizard-cli-reference.md) — Step-by-step behavior for openclaw onboard: what each step does, config it writes, and internals
+- [Overview](reference/tools.md) — OpenClaw tools, skills, and plugins overview: what agents can call and how to extend them
+- [ACP agents](reference/tools/acp-agents.md) — Index of the OpenClaw ACP agents documentation, one page per reader job
+- [ACP agents — setup](reference/tools/acp-agents-setup.md) — Setting up ACP agents: acpx harness config, plugin setup, permissions
+- [ACP agents bindings](reference/tools/acp-agents/bindings.md) — Bind a conversation or thread to an ACP session, and configure persistent bindings[] entries
+- [ACP agents controls](reference/tools/acp-agents/controls.md) — Session target resolution and the full /acp command and runtime option reference
+- [ACP agents delivery model](reference/tools/acp-agents/delivery.md) — How ACP output is delivered for interactive and parent-owned sessions, and the sandbox boundary
+- [ACP agents quickstart](reference/tools/acp-agents/quickstart.md) — Install the acpx ACP runtime plugin, confirm it is usable, and pick a harness target id
+- [ACP agents operator runbook](reference/tools/acp-agents/runbook.md) — Day-to-day /acp flow from chat, ACP session lifecycle, and native Codex versus ACP routing
+- [ACP agents sessions](reference/tools/acp-agents/sessions.md) — Start ACP sessions from sessions_spawn or /acp spawn, with the parameter and mode reference
+- [ACP agents troubleshooting](reference/tools/acp-agents/troubleshooting.md) — Symptom, likely cause, and fix for ACP backend, plugin wiring, and delivery failures
+- [Agent send](reference/tools/agent-send.md) — Run agent turns from the CLI and optionally deliver replies to channels
+- [apply_patch tool](reference/tools/apply-patch.md) — Apply multi-file patches with the apply_patch tool
+- [Ask user](reference/tools/ask-user.md) — Pause for a human decision or a required manual step without losing the task
+- [Auto Review](reference/tools/autoreview.md) — Run the installed Auto Review checkpoint against the current sandbox
+- [Brave search](reference/tools/brave-search.md) — Brave Search API setup for web_search
+- [Browser (OpenClaw-managed)](reference/tools/browser.md) — Index of the OpenClaw browser documentation, one page per reader job
+- [Browser control API](reference/tools/browser-control.md) — OpenClaw browser control API, CLI reference, and scripting actions
+- [Browser troubleshooting](reference/tools/browser-linux-troubleshooting.md) — Fix Chrome/Brave/Edge/Chromium CDP startup issues for OpenClaw browser control on Linux
+- [Browser login](reference/tools/browser-login.md) — Manual logins for browser automation + X/Twitter posting
+- [WSL2 + Windows + remote Chrome CDP troubleshooting](reference/tools/browser-wsl2-windows-remote-cdp-troubleshooting.md) — Troubleshoot WSL2 Gateway + Windows Chrome remote CDP in layers
+- [Browser agent tools](reference/tools/browser/agent-tools.md) — The single browser tool, its actions, and the arguments an agent passes
+- [Browser configuration](reference/tools/browser/configuration.md) — The browser config block, tab cleanup, screenshot vision, ports, SSRF policy, and picking a Chromium binary
+- [Multi-profile and existing-session attach](reference/tools/browser/existing-session.md) — Named browser profiles and attaching to a running Chrome session through Chrome DevTools MCP
+- [Isolation and browser selection](reference/tools/browser/isolation.md) — What the managed profile isolates, which browser binary is picked, and where the control API reference lives
+- [Lightweight browsers](reference/tools/browser/lightweight.md) — Use externally managed Lightpanda and Kitesurf browser engines
+- [Browser profiles](reference/tools/browser/profiles.md) — The built-in openclaw, user, and chrome profiles and the Control UI Browser panel
+- [Remote and hosted browsers](reference/tools/browser/remote.md) — Local versus remote control, the node browser proxy, and hosted CDP providers
+- [Browser security](reference/tools/browser/security.md) — Loopback auth for the browser control API and remote CDP credential handling
+- [Browser setup](reference/tools/browser/setup.md) — Quick start commands, plugin enablement, agent tool policy, and the missing-command fix
+- [Browser troubleshooting](reference/tools/browser/troubleshooting.md) — Separating CDP startup failures from navigation SSRF blocks, plus the platform-specific pages
+- [BTW side questions](reference/tools/btw.md) — Ephemeral side questions with /btw
+- [Chrome Extension](reference/tools/chrome-extension.md) — Chrome extension: securely automate signed-in tabs with automatic local pairing
+- [Code execution](reference/tools/code-execution.md) — code_execution: run sandboxed remote Python analysis with xAI
+- [Code Mode](reference/tools/code-mode.md) — Index of the OpenClaw Code Mode documentation, one page per reader job
+- [Code Mode configuration](reference/tools/code-mode/configuration.md) — Code Mode configuration fields, automatic per-model activation, and the activation order
+- [Code Mode executors](reference/tools/code-mode/executors.md) — Choose Node or QuickJS for Code Mode and understand their execution and security boundaries
+- [Code Mode guest API](reference/tools/code-mode/guest-api.md) — Globals, catalog handles, MCP namespaces, and virtual API declarations inside guest code
+- [Code Mode internals](reference/tools/code-mode/internals.md) — Code Mode scope, nested tool execution, executor continuations, and security boundaries
+- [Code Mode maintainer notes](reference/tools/code-mode/maintainers.md) — Code Mode implementation layout, the validation checklist, and the E2E test plan
+- [Code Mode output](reference/tools/code-mode/output.md) — Declared output contracts for tool results and the guest output API
+- [Code Mode quickstart](reference/tools/code-mode/quickstart.md) — Enable OpenClaw Code Mode, override one model, and recover from tool errors
+- [Code Mode tool surface](reference/tools/code-mode/tool-surface.md) — The model-visible exec and wait contracts, the hidden tool catalog, and name collisions
+- [Code Mode troubleshooting](reference/tools/code-mode/troubleshooting.md) — Code Mode error codes, telemetry fields, and the debug environment variables
+- [Creating skills](reference/tools/creating-skills.md) — Build, test, and publish custom SKILL.md workspace skills or personal skills on a shared Gateway.
+- [Custodian skills](reference/tools/custodian-skills.md) — Release-versioned operational skills that only the configured Custodian agent can discover and use.
+- [Deep Research](reference/tools/deep-research.md) — Bounded portable research and explicitly enabled provider-managed research
+- [Diffs](reference/tools/diffs.md) — Read-only diff viewer and file renderer for agents (optional plugin tool)
+- [DuckDuckGo search](reference/tools/duckduckgo-search.md) — DuckDuckGo web search -- key-free provider (experimental, HTML-based)
+- [Elevated mode](reference/tools/elevated.md) — Elevated exec mode: run commands outside the sandbox from a sandboxed agent
+- [Exa search](reference/tools/exa-search.md) — Exa AI search -- neural and keyword search with content extraction
+- [Exec tool](reference/tools/exec.md) — Exec tool usage, stdin modes, and TTY support
+- [Exec approvals](reference/tools/exec-approvals.md) — Host exec approvals: policy knobs, allowlists, and the YOLO/strict workflow
+- [Exec approvals — advanced](reference/tools/exec-approvals-advanced.md) — Advanced exec approvals: safe bins, interpreter binding, approval forwarding, native delivery
+- [Firecrawl](reference/tools/firecrawl.md) — Firecrawl search, scrape, and web_fetch fallback
+- [Gemini search](reference/tools/gemini-search.md) — Gemini web search with Google Search grounding
+- [Goal](reference/tools/goal.md) — Session goals: durable per-session objectives, /goal controls, model goal tools, token budgets, and TUI status
+- [Grok search](reference/tools/grok-search.md) — Grok web search via xAI web-grounded responses
+- [Image generation](reference/tools/image-generation.md) — Generate and edit images via image_generate across OpenAI, Google, fal, Microsoft Foundry, MiniMax, ComfyUI, DeepInfra, OpenRouter, LiteLLM, xAI, Vydra
+- [Kimi search](reference/tools/kimi-search.md) — Kimi web search via Moonshot web search
+- [LLM task](reference/tools/llm-task.md) — JSON-only LLM tasks for workflows (optional plugin tool)
+- [Lobster](reference/tools/lobster.md) — Typed workflow runtime for OpenClaw with resumable approval and input gates.
+- [Tool-loop detection](reference/tools/loop-detection.md) — How the tool repeat guard stops identical tool-call loops
+- [Connect MCP servers](reference/tools/mcp.md) — Connect MCP servers to OpenClaw from the Control UI, CLI, or config
+- [Media overview](reference/tools/media-overview.md) — Image, video, music, speech, and media-understanding capabilities at a glance
+- [MiniMax search](reference/tools/minimax-search.md) — MiniMax Search via the Token Plan search API
+- [Multi-agent sandbox and tools](reference/tools/multi-agent-sandbox-tools.md) — Per-agent sandbox + tool restrictions, precedence, and examples
+- [Music generation](reference/tools/music-generation.md) — Generate music via music_generate across ComfyUI, fal, Google Lyria, MiniMax, and OpenRouter workflows
+- [Ollama web search](reference/tools/ollama-search.md) — Ollama Web Search via a local Ollama host or the hosted Ollama API
+- [Parallel search](reference/tools/parallel-search.md) — Parallel Search and web-grounded typed Decisions
+- [PDF tool](reference/tools/pdf.md) — Analyze one or more PDF documents with native provider support and extraction fallback
+- [Permission modes](reference/tools/permission-modes.md) — Permission modes for host exec, Codex Guardian approvals, and ACPX harness sessions
+- [Perplexity search](reference/tools/perplexity-search.md) — Perplexity Search API and Sonar/OpenRouter compatibility for web_search
+- [Plugins](reference/tools/plugin.md) — Install, configure, and manage OpenClaw plugins
+- [Progress card](reference/tools/progress-card.md) — Maintain one durable plan and status card for a session
+- [Reactions](reference/tools/reactions.md) — Reaction tool semantics across all supported channels
+- [Screen](reference/tools/screen.md) — Let an agent arrange the connected Control UI
+- [SearXNG search](reference/tools/searxng-search.md) — SearXNG web search -- self-hosted, key-free meta-search provider
+- [Secrets](reference/tools/secrets.md) — How the secrets tool lets the agent request credentials it never sees
+- [Self-learning](reference/tools/self-learning.md) — How OpenClaw reviews finished work in the background and saves lessons as learned skills
+- [Show widget](reference/tools/show-widget.md) — Show HTML widgets on supported chat surfaces or pin native data reports to dashboards
+- [Skill Workshop](reference/tools/skill-workshop.md) — Skills your agent learns on its own: how they are saved, undo, unused-skill cleanup, skill diet, /learn, config, storage, and operator surfaces
+- [Personal library authoring](reference/tools/skill-workshop/personal-library.md) — Create and update profile-owned personal skills on a shared Gateway
+- [Skills](reference/tools/skills.md) — Skills teach your agent how to use tools. Learn how they load, how precedence works, and how to configure gating, allowlists, and environment injection.
+- [Skills config](reference/tools/skills-config.md) — Full reference for the skills.* config schema, agent allowlists, workshop settings, and sandbox env var handling.
+- [Slash commands](reference/tools/slash-commands.md) — All available slash commands, directives, and inline shortcuts — configuration, routing, and per-surface behavior.
+- [Steer](reference/tools/steer.md) — Steer an active run without changing queue mode
+- [Sub-agents](reference/tools/subagents.md) — Index of the OpenClaw sub-agent documentation, one page per reader job
+- [Sub-agent announce](reference/tools/subagents/announce.md) — How a sub-agent reports its result back, the announce context block, and why sessions_history is preferred
+- [Nested sub-agents and authentication](reference/tools/subagents/nesting.md) — Recursive delegation depth, the announce chain, cascade stop, and how sub-agent auth and memory audience resolve
+- [Sub-agent concurrency, recovery, and stopping](reference/tools/subagents/operations.md) — The subagent queue lane, restart recovery, stop scope, and the standing limitations
+- [Sub-agent slash command](reference/tools/subagents/slash-command.md) — Inspect sub-agent runs with /subagents, use the thread-binding commands, and follow the completion-delivery path
+- [Thread-bound sub-agent sessions](reference/tools/subagents/thread-bound-sessions.md) — Bind a sub-agent to a channel thread, and the allowlist, discovery, and auto-archive rules
+- [Sub-agent tool policy](reference/tools/subagents/tool-policy.md) — The sub-agent tool restriction layer and how to narrow it with config
+- [Sub-agent tool reference](reference/tools/subagents/tool-reference.md) — Context modes and the sessions_spawn, sessions_yield, and subagents tool contracts
+- [Swarm](reference/tools/swarm.md) — Orchestrate concurrent sub-agents from Code Mode scripts with structured results, bounded fan-out, and live progress
+- [Tavily](reference/tools/tavily.md) — Tavily search and extract tools
+- [Theme](reference/tools/theme.md) — Let an agent select plugin themes or create a personal OpenClaw theme
+- [Thinking levels](reference/tools/thinking.md) — Directive syntax for /think, /fast, /verbose, /trace, and reasoning visibility
+- [Tokenjuice](reference/tools/tokenjuice.md) — Compact noisy exec and bash tool results with the optional Tokenjuice plugin
+- [Tool Search](reference/tools/tool-search.md) — Tool Search: compact large OpenClaw tool catalogs behind search, describe, and call
+- [Trajectory bundles](reference/tools/trajectory.md) — Export redacted trajectory bundles for debugging an OpenClaw agent session
+- [Text-to-speech](reference/tools/tts.md) — Index of the OpenClaw text-to-speech documentation, one page per reader job
+- [Text-to-speech agent tool and Gateway RPC](reference/tools/tts/api.md) — The tts agent tool and the Gateway TTS RPC methods
+- [Text-to-speech commands and directives](reference/tools/tts/commands.md) — Model-emitted TTS directives, the /tts slash commands, and per-user preferences
+- [Text-to-speech configuration](reference/tools/tts/configuration.md) — The tts config block, per-provider settings, local speech engines, and override precedence
+- [Text-to-speech field reference](reference/tools/tts/field-reference.md) — Every tts.* and tts.providers.<id>.* configuration field
+- [Text-to-speech output and Auto-TTS behavior](reference/tools/tts/output.md) — Per-channel audio formats, transcoding, and what Auto-TTS sends
+- [Text-to-speech personas](reference/tools/tts/personas.md) — Persona definitions, provider bindings, resolution order, and fallback policy
+- [Text-to-speech quickstart](reference/tools/tts/quickstart.md) — Turn on text-to-speech, pick a provider, and send a first audio reply
+- [Video generation](reference/tools/video-generation.md) — Generate videos via video_generate from text, image, or video references across 18 provider backends
+- [Web search](reference/tools/web.md) — web_search, x_search, and web_fetch -- search the web, search X posts, or fetch page content
+- [Web fetch](reference/tools/web-fetch.md) — web_fetch tool -- HTTP fetch with readable content extraction
+- [Linux server](reference/vps.md) — Run OpenClaw on a Linux server or cloud VPS — provider picker, architecture, and tuning
+- [Web](reference/web.md) — Gateway web surfaces: Control UI, bind modes, and security
+- [Control UI](reference/web/control-ui.md) — Browser-based control UI for the Gateway (chat, activity, nodes, config)
+- [Control UI asset delivery](reference/web/control-ui/asset-delivery.md) — Control UI asset delivery, compression measurements, and HTTP multiplexing boundaries
+- [Chat](reference/web/control-ui/chat.md) — Composer controls, transcript rendering, side chat, and hosted embeds
+- [Connect and pair](reference/web/control-ui/connect-and-pair.md) — Pair browsers and phones with the Gateway and reach the Control UI over Tailscale
+- [Build and develop](reference/web/control-ui/development.md) — Build the Control UI, run the dev server, and point it at a remote Gateway
+- [Feature and RPC reference](reference/web/control-ui/feature-reference.md) — What the Control UI can do today, grouped by capability with its Gateway RPC names
+- [Offline and reconnect](reference/web/control-ui/offline-and-reconnect.md) — What the Control UI keeps when the Gateway connection drops, and how it recovers
+- [Panels and docks](reference/web/control-ui/panels.md) — Ask OpenClaw, the Home dock, the operator terminal, and the browser panel
+- [Security model](reference/web/control-ui/security-model.md) — Content security policy, public transcript boundaries, authenticated media routes, and approval links
+- [Sessions and sidebar](reference/web/control-ui/sessions-and-sidebar.md) — Sidebar zones, session menus, and the New session page
+- [Settings](reference/web/control-ui/settings.md) — Identity, appearance, plugins, updates, MCP, activity, and meetings
+- [Dashboard](reference/web/dashboard.md) — Gateway dashboard (Control UI) access and auth
+- [Dashboard Architecture](reference/web/dashboard-architecture.md) — Session dashboard architecture: widget hosting, capabilities, board storage, and protocol
+- [Session Dashboards](reference/web/dashboards.md) — Session dashboards: agent-built widgets, boards, tabs, and flexible task layouts
+- [The Lobster](reference/web/lobster.md) — A lobster sometimes visits the Control UI. This page explains just enough.
+- [Notifications](reference/web/notifications.md) — Enable and test browser or macOS notifications from the Control UI
+- [TUI](reference/web/tui.md) — Terminal UI (TUI): connect to the Gateway or run locally in embedded mode
+- [Control UI URLs](reference/web/urls.md) — Control UI routes, focus presentations, stable session links, and connection handoff parameters
+- [WebChat](reference/web/webchat.md) — Native and Control UI WebChat usage over the Gateway WebSocket
+
+## Additional pages in full export
+

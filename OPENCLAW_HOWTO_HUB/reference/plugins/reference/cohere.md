@@ -1,0 +1,25 @@
+# Cohere plugin reference
+Source: https://docs.openclaw.ai/plugins/reference/cohere
+
+<!-- Generated file. Do not edit by hand.
+Run `pnpm plugins:inventory:gen` to rebuild it. Hand-written text survives only
+between the openclaw-plugin-reference:manual-start and
+openclaw-plugin-reference:manual-end comment markers. -->
+
+OpenClaw Cohere provider plugin.
+
+## Distribution
+
+- Package: `@openclaw/cohere-provider`
+- Install route: npm or ClawHub: `@openclaw/cohere-provider`
+
+## Surface
+
+- Providers: `cohere`
+
+## Related docs
+
+- [cohere](/providers/cohere)
+
+---
+

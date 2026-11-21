@@ -1,0 +1,252 @@
+# Mistral
+Source: https://docs.openclaw.ai/providers/mistral
+
+The official external `mistral` plugin registers four contracts: chat completions,
+media understanding (Voxtral batch transcription), realtime STT for Voice Call
+(Voxtral Realtime), and memory embeddings (`mistral-embed`).
+
+| Property         | Value                                       |
+| ---------------- | ------------------------------------------- |
+| Provider id      | `mistral`                                   |
+| Plugin           | `@openclaw/mistral-provider`                |
+| Auth env var     | `MISTRAL_API_KEY`                           |
+| Onboarding flag  | `--auth-choice mistral-api-key`             |
+| Direct CLI flag  | `--mistral-api-key <key>`                   |
+| API              | OpenAI-compatible (`openai-completions`)    |
+| Base URL         | `https://api.mistral.ai/v1`                 |
+| Default model    | `mistral/mistral-large-latest`              |
+| Embedding model  | `mistral-embed`                             |
+| Voxtral batch    | `voxtral-mini-latest` (audio transcription) |
+| Voxtral realtime | `voxtral-mini-transcribe-realtime-2602`     |
+
+## Getting started
+
+Steps
+
+  
+Install the plugin
+
+    ```bash
+    openclaw plugins install @openclaw/mistral-provider
+    ```
+
+    Installation applies to a running Gateway automatically; otherwise it takes effect
+    on the next startup. See [Apply changes and inspect](/plugins/manage-plugins#apply-changes-and-inspect).
+
+  
+  
+Get your API key
+
+    Create an API key in the [Mistral Console](https://console.mistral.ai/).
+  
+  
+Run onboarding
+
+    ```bash
+    openclaw onboard --auth-choice mistral-api-key
+    ```
+
+    Or pass the key directly:
+
+    ```bash
+    openclaw onboard --mistral-api-key "$MISTRAL_API_KEY"
+    ```
+
+  
+  
+Set a default model
+
+    ```json5
+    {
+      env: { vars: { MISTRAL_API_KEY: "sk-..." } },
+      agents: { defaults: { model: { primary: "mistral/mistral-large-latest" } } },
+    }
+    ```
+  
+  
+Verify the model is available
+
+    ```bash
+    openclaw models list --provider mistral
+    ```
+  
+
+## Built-in LLM catalog
+
+| Model ref                        | Input       | Context | Max output | Notes                                                 |
+| -------------------------------- | ----------- | ------- | ---------- | ----------------------------------------------------- |
+| `mistral/mistral-large-latest`   | text, image | 262,144 | 16,384     | Default model                                         |
+| `mistral/mistral-medium-3-5`     | text, image | 262,144 | 8,192      | Mistral Medium 3.5; adjustable reasoning              |
+| `mistral/mistral-small-latest`   | text, image | 262,144 | 16,384     | Mistral Small 4 latest; adjustable `reasoning_effort` |
+| `mistral/mistral-small-2603`     | text, image | 262,144 | 16,384     | Mistral Small 4 pinned; adjustable `reasoning_effort` |
+| `mistral/codestral-latest`       | text        | 128,000 | 4,096      | Coding                                                |
+| `mistral/mistral-medium-2508`    | text, image | 128,000 | 8,192      | Deprecated; hidden; use Mistral Medium 3.5            |
+| `mistral/devstral-medium-latest` | text        | 262,144 | 32,768     | Deprecated; hidden; use Mistral Medium 3.5            |
+
+Browse the plugin catalog row before changing config:
+
+```bash
+openclaw models list --all --provider mistral --plain
+```
+
+Smoke-test a model without starting the Gateway:
+
+```bash
+openclaw infer model run --local \
+  --model mistral/mistral-medium-3-5 \
+  --prompt "Reply with exactly: mistral-ok" \
+  --json
+```
+
+## Audio transcription (Voxtral)
+
+Use Voxtral for batch audio transcription through the media understanding pipeline:
+
+```json5
+{
+  tools: {
+    media: {
+      models: [{ provider: "mistral", model: "voxtral-mini-latest", capabilities: ["audio"] }],
+      audio: {
+        enabled: true,
+      },
+    },
+  },
+}
+```
+
+Tip
+
+The media transcription path uses `/v1/audio/transcriptions`. The default audio model for Mistral is `voxtral-mini-latest`.
+
+## Voice Call streaming STT
+
+The `mistral` plugin registers Voxtral Realtime as a Voice Call streaming STT provider.
+
+| Setting      | Config path                                                            | Default                                                              |
+| ------------ | ---------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| API key      | `plugins.entries.voice-call.config.streaming.providers.mistral.apiKey` | Falls back to `MISTRAL_API_KEY`, then a saved `mistral` auth profile |
+| Model        | `...mistral.model`                                                     | `voxtral-mini-transcribe-realtime-2602`                              |
+| Encoding     | `...mistral.encoding`                                                  | `pcm_mulaw`                                                          |
+| Sample rate  | `...mistral.sampleRate`                                                | `8000`                                                               |
+| Target delay | `...mistral.targetStreamingDelayMs`                                    | `800`                                                                |
+
+The saved auth profile is used only when Mistral is the named provider, for example
+`streaming.provider: "mistral"`. Automatic selection counts only the config and
+environment keys.
+
+```json5
+{
+  plugins: {
+    entries: {
+      "voice-call": {
+        config: {
+          streaming: {
+            enabled: true,
+            provider: "mistral",
+            providers: {
+              mistral: {
+                apiKey: "${MISTRAL_API_KEY}",
+                targetStreamingDelayMs: 800,
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+}
+```
+
+Note
+
+OpenClaw defaults Mistral realtime STT to `pcm_mulaw` at 8 kHz so Voice Call can forward Twilio media frames directly. Use `encoding: "pcm_s16le"` and a matching `sampleRate` only if your upstream stream is already raw PCM.
+
+## Advanced configuration
+
+AccordionGroup
+
+  
+Adjustable reasoning
+
+    `mistral/mistral-small-latest`, `mistral/mistral-small-2603`, and `mistral/mistral-medium-3-5` support [adjustable reasoning](https://docs.mistral.ai/studio-api/conversations/reasoning) on the Chat Completions API via `reasoning_effort` (`none` minimizes extra thinking in the output; `high` surfaces full thinking traces before the final answer).
+
+    Thinking defaults to **off**. OpenClaw accepts these session thinking levels and maps them to Mistral's API:
+
+    | OpenClaw thinking level                                              | Mistral `reasoning_effort` |
+    | ----------------------------------------------------------------------- | --------------------------- |
+    | **off** / **minimal**                                                 | `none`                      |
+    | **low** / **medium** / **high** / **xhigh** / **adaptive** / **max** | `high`                       |
+
+    
+Warning
+
+    Avoid combining Medium 3.5 reasoning mode with `temperature: 0`. The Mistral HTTP API has been reported to reject `reasoning_effort="high"` plus `temperature: 0` with a 400 response. Leave temperature unset, or turn thinking off/minimal so OpenClaw sends `reasoning_effort: "none"` before you set a low temperature.
+    
+
+    Example model-scoped config for Medium 3.5 reasoning:
+
+    ```json5
+    {
+      agents: {
+        defaults: {
+          model: { primary: "mistral/mistral-medium-3-5" },
+          models: {
+            "mistral/mistral-medium-3-5": {
+              params: { thinking: "high" },
+            },
+          },
+        },
+      },
+    }
+    ```
+
+    
+Note
+
+    Other Mistral catalog models do not use this parameter. Mistral's native Magistral models are deprecated. Use adjustable reasoning on Mistral Small 4 or Mistral Medium 3.5 for current API models.
+    
+
+  
+
+  
+Memory embeddings
+
+    Mistral can serve memory embeddings via `/v1/embeddings` (default model: `mistral-embed`):
+
+    ```json5
+    {
+      memory: {
+        search: { provider: "mistral" },
+      },
+    }
+    ```
+
+  
+
+  
+Auth and base URL
+
+    - Mistral auth uses `MISTRAL_API_KEY` (Bearer header).
+    - Provider base URL defaults to `https://api.mistral.ai/v1` and accepts the standard OpenAI-compatible chat-completions request shape.
+    - Onboarding default model is `mistral/mistral-large-latest`.
+    - Override the base URL under `models.providers.mistral.baseUrl` only when Mistral explicitly publishes a regional endpoint you need.
+
+  
+
+## Related
+
+CardGroup
+
+  
+Model selection
+
+    Choosing providers, model refs, and failover behavior.
+  
+  
+Media understanding
+
+    Audio transcription setup and provider selection.
+
+---
+
